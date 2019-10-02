@@ -1,0 +1,18 @@
+/*------HEADER------*/
+.navbar-nav{
+	text-align: center;
+}
+
+.navbar-dark .navbar-toggler{
+	border-color:rgba(255,255,255,.0);
+}
+
+@media only screen and (min-width: 48em){	
+	.navbar-nav{
+		position: absolute;
+		right: 15px;
+	}
+}
+@media only screen and (min-width: 64em){
+	
+}
