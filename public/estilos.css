@@ -65,15 +65,13 @@ header .navbar-toggler {
 	header .form-inline{
 		justify-content: center;
 		margin: auto;
-	}
-
+	}	
+}
+@media only screen and (min-width: 64em){
 	header .form-control{
 		width: 100%
 	}
 }
-/*@media only screen and (min-width: 64em){
-	
-}*/
 
 
 /*------FOOTER------*/
