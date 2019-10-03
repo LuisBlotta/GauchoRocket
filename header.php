@@ -1,13 +1,15 @@
 	<header>
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-			<!-- Brand -->
-			<a class="navbar-brand" href="#">Navbar</a>
+			<!-- Logo -->
+			<a class="logo" href="#"><img src="public/img/logo-b.png"></a>
 
-			<!-- Search -->
-			<form class="form-inline" action="/action_page.php">
+			<!-- Search -->	
+			<section class="buscador">		
+			<form class="form-buscador" action="#" method="get">
 				<input class="form-control mr-sm-2" type="text" placeholder="Buscar">
-				<button class="btn btn-info" type="submit">Buscar</button>
-			</form>
+				<button class="btn btn-info" type="submit"><img src="public/img/search.png"></button>
+			</form>	
+			</section>		
 
 			<!-- Toggler/collapsibe Button -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
