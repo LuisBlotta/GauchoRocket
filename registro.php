@@ -25,8 +25,8 @@ $buscarUsuario = "SELECT * FROM usuario
 
  //$hash = clave_hash($form_pass, clave_BCRYPT);
 
- $query = "INSERT INTO usuario (nombre, mail, password, rol, nivel_vuelo)
-           VALUES ('$usuario','$email','$password',1,1)";
+ $query = "INSERT INTO usuario (nombre, mail, password, rol)
+           VALUES ('$usuario','$email','$password',1)";
 
 
 //echo $query;
