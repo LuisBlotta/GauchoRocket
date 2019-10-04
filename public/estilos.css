@@ -1,4 +1,14 @@
 /*------HEADER------*/
+header{
+	width: 100%;
+	position: fixed;
+	top: 0;
+}
+
+main{
+	margin-top: 60px;
+}
+
 header .navbar{
 	justify-content: inherit;
 	padding: 10px 20px;
@@ -68,6 +78,14 @@ header .navbar-toggler {
 	}	
 }
 @media only screen and (min-width: 64em){
+	header{
+		position: static;
+	}
+
+	main{
+		margin-top: 0px;
+	}
+
 	header .form-control{
 		width: 100%
 	}
