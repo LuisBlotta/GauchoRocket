@@ -10,20 +10,20 @@
 			<form action="registro.php" method="post">
 				<div class="form-group">
 					<label for="user_name">Nombre de Usuario</label>
-					<input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Usuario">
+					<input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Usuario" required>
 				</div>
 				<div class="form-group">
 					<label for="user_name">Email</label>
-					<input class="form-control mr-sm-2" type="email" name="email" placeholder="email@example.com">
+					<input class="form-control mr-sm-2" type="email" name="email" placeholder="email@example.com" required>
 				</div>
 				<div class="form-group">
 					<label for="user_name">Contraseña</label>
-					<input class="form-control mr-sm-2" type="password" name="password" placeholder="Contraseña">
+					<input class="form-control mr-sm-2" type="password" name="password" placeholder="Contraseña" required>
 				</div>
 				<button class="btn btn-info">Registrarse</button>
 			</form>			
 		</section>
+		<p><a href="index.php">Volver al Inicio</a></p>
 	</main>
-
 </body>
 </html>
