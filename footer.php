@@ -16,8 +16,8 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Link</a>
 				</li>
-				<li class="nav-item">
-					<a type="button" class="btn btn-info" href="login-form.php">Iniciar Sesión</a>
+				<li class="nav-item">					
+					<?php include("boton-sesion.php") ?>
 				</li>
 			</ul>
 
