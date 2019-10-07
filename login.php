@@ -21,7 +21,7 @@ include("conexion.php");
 
              
         } else {
-            header('location:login-form.php?error=1');
+            header('location:login-form.php?fallo=true');
                    
           
         }
