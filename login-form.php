@@ -1,7 +1,4 @@
-<?php
-include("sesion.php");
-
-?>
+<?php include("sesion.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,14 +19,14 @@ include("sesion.php");
 					<input class="form-control mr-sm-2" type="password" name="password" placeholder="Contraseña">
 				</div>
 				<?php
-       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
-       {
-          echo "<div style='color:red'>Usuario o contraseña invalido </div>";
-       }
-     ?>
+					if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true'){
+						echo "<div style='color:red'>Usuario o contraseña invalido </div>";
+					}
+				?>
 				<button class="btn btn-info">Entrar</button>
 			</form>
 			<p>¿No tienes cuenta?<a href="registro-form.php">Regístrate</a></p>
+			<p><a href="registro-form.php">Volver al Inicio</a></p>
 		</section>
 	</main>
 
