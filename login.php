@@ -1,8 +1,5 @@
 <?php
-$a="";
-    if (isset($_COOKIE["login"])) {
-     $a = $_COOKIE["login"];
-    }
+include("sesion.php");
 include("conexion.php");
     login();
     function login(){
@@ -20,13 +17,13 @@ include("conexion.php");
             setcookie("login", $usuario, time() + 1000);
             session_start();
             $_SESSION['usuario'] = true;
-            header('location:prueba.php');
+            header('location:index.php');
 
-                // header('location:ppal.php');
+             
         } else {
-            //header('location:login.php');
-            echo("Ingrese usuario y clave");
-            exit();
+            header('location:login-form.php?error=1');
+                   
+          
         }
 }
 ?>

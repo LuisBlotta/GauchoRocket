@@ -1,8 +1,6 @@
 <?php
-$a="";
-    if (isset($_COOKIE["login"])) {
-     $a = $_COOKIE["login"];
-    }
+include("sesion.php");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +15,8 @@ $a="";
 				<div class="form-group">
 					<label for="user_name">Nombre de Usuario</label>
 					<input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Usuario" value='<?php echo $a; ?>'>
-				</div>
+				</div>	
+			
 				<div class="form-group">
 					<label for="user_name">Contraseña</label>
 					<input class="form-control mr-sm-2" type="password" name="password" placeholder="Contraseña">
