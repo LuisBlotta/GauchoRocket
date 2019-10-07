@@ -26,9 +26,8 @@
 				<button class="btn btn-info">Entrar</button>
 			</form>
 			<p>¿No tienes cuenta?<a href="registro-form.php">Regístrate</a></p>
-			<p><a href="registro-form.php">Volver al Inicio</a></p>
+			<p><a href="index.php">Volver al Inicio</a></p>
 		</section>
 	</main>
-
 </body>
 </html>
