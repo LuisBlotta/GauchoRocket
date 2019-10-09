@@ -7,8 +7,8 @@ include("conexion.php");
         $password = $_POST["password"];
         $conn = getConexion();
 
-        $query = "SELECT nombre, password FROM usuario 
-                    WHERE nombre ='$usuario' AND password ='$password'";
+        $query = "SELECT nick, password FROM login 
+                    WHERE nick ='$usuario' AND password ='$password'";
 		//echo $query;
 		//exit();
         $resultado = mysqli_query($conn, $query);

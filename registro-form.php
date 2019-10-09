@@ -12,6 +12,10 @@
 					<label for="user_name">Nombre de Usuario</label>
 					<input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Usuario" required>
 				</div>
+                div class="form-group">
+                <label for="user_name"Nick</label>
+                <input class="form-control mr-sm-2" type="text" name="nick" placeholder="Nick" required>
+                </div>
 				<div class="form-group">
 					<label for="user_name">Email</label>
 					<input class="form-control mr-sm-2" type="email" name="email" placeholder="email@example.com" required>
