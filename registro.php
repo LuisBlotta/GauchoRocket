@@ -3,7 +3,7 @@ include("conexion.php");
 include("head.php");
  registro();
  function registro(){
- 	$usuario = $_POST["user_name"];
+ 	$nombre = $_POST["nombre"];
  	$nick = $_POST["nick"];
  	$email = $_POST["email"];
     $password = $_POST["password"];
@@ -39,14 +39,14 @@ include("head.php");
 				//exit();
 
 				//Segunda parte del guardado (en tabla usuario)
-				$sqlGuardado = "insert into usuario (nombre, mail, rol, login) values ('$usuario','$email',1,'$dato[0]' )";
+				$sqlGuardado = "insert into usuario (nombre, mail, rol, login) values ('$nombre','$email',1,'$dato[0]' )";
 				$result = mysqli_query($conn, $sqlGuardado);
 
 
 				echo "<br />" . "<h2>" . "Usuario Creado Exitosamente!" . "</h2>";
- 				echo "<h4>" . "Bienvenido: " . $usuario . "</h4>" . "\n\n";
+ 				echo "<h4>" . "Bienvenido: " . $nombre . "</h4>" . "\n\n";
  				echo "<br><a type='button' class='btn btn-info' href='login-form.php'>Iniciar Sesión</a>"; 
- 				setcookie("login", $usuario, time() + 1000);
+ 				setcookie("login", $nombre, time() + 1000);
  				session_start();
  				$_SESSION['usuario'] = true; 				
  			}else{

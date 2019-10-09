@@ -10,10 +10,10 @@
 			<form action="registro.php" method="post">
 				<div class="form-group">
 					<label for="user_name">Nombre de Usuario</label>
-					<input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Usuario" required>
+					<input class="form-control mr-sm-2" type="text" name="nombre" placeholder="Nombre" required>
 				</div>
-                div class="form-group">
-                <label for="user_name"Nick</label>
+                <div class="form-group">
+                <label for="user_name">Nick</label>
                 <input class="form-control mr-sm-2" type="text" name="nick" placeholder="Nick" required>
                 </div>
 				<div class="form-group">
