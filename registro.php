@@ -6,9 +6,10 @@ include("head.php");
  	$usuario = $_POST["user_name"];
  	$email = $_POST["email"];
     $password = $_POST["password"];
+    $passwordConfirmada = $_POST["passwordConfirmada"];
  	$conn = getConexion();
+	if ($password == $passwordConfirmada){
 
- 
  	$buscarUsuario = "SELECT * FROM usuario
  	WHERE nombre = '$usuario' ";
 
@@ -33,11 +34,16 @@ include("head.php");
  				session_start();
  				$_SESSION['usuario'] = true; 				
  			}else{
+
  				echo "Error al crear el usuario." . $query . "<br>" . $conn->error; 
  				//header('location:registro.php');
  			}
  	}
  	mysqli_close($conn);
+	}
+	else{
+		header('location:registro-form.php?falloPass=true');
+	}
  }
  
 

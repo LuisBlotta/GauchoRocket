@@ -20,6 +20,16 @@
 					<label for="user_name">Contraseña</label>
 					<input class="form-control mr-sm-2" type="password" name="password" placeholder="Contraseña" required>
 				</div>
+                <div class="form-group">
+                    <label for="user_name">Confirmar Contraseña</label>
+                    <input class="form-control mr-sm-2" type="password" name="passwordConfirmada" placeholder="Contraseña" required>
+                </div>
+
+                <?php
+                if(isset($_GET["falloPass"]) && $_GET["falloPass"] == 'true'){
+                    echo "<div style='color:red'>Las contraseñas no coinciden</div>";
+                }
+                ?>
 				<button class="btn btn-info">Registrarse</button>
 			</form>			
 		</section>
