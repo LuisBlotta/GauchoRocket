@@ -27,12 +27,12 @@ include("head.php");
  		//$hash = clave_hash($form_pass, clave_BCRYPT);
 		//Inserto datos en la tabla login
  		$query = "INSERT INTO login (userConfirmado, nick, password)
- 		VALUES ($userConfirmado,'$nick','$password')";
+ 		VALUES ('$userConfirmado','$nick','$password')";
 		//echo $query;
  		//	exit();
  			if ($conn->query($query) === TRUE) {
 				//traigo el ID del usuario creado
-				$queryConsulta ="select id from login where nick='$nick';";
+				$queryConsulta ="SELECT id FROM login WHERE nick='$nick'";
 
 				$result = mysqli_query($conn, $queryConsulta);
 				$dato=mysqli_fetch_row($result);
@@ -40,7 +40,7 @@ include("head.php");
 				//exit();
 
 				//Segunda parte del guardado (en tabla usuario)
-				$sqlGuardado = "insert into usuario (nombre, mail, rol, login) values ('$nombre','$email',1,'$dato[0]' )";
+				$sqlGuardado = "insert into usuario (nombre, mail, rol, loginID) values ('$nombre','$email',1,'$dato[0]' )";
 				$result = mysqli_query($conn, $sqlGuardado);
 
 

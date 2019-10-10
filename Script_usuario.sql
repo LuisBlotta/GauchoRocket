@@ -24,6 +24,3 @@ insert into  usuario (nombre, mail, rol, loginID) values ("admin", "admin@gaucho
 
 select id from login where nick = "admin";
 select * from usuario join login on usuario.loginID = login.id;
-
-SELECT userConfirmado FROM login 
-                    WHERE nick ='admin' AND password ='e67732763718fbafa22f23adb5679c2f';

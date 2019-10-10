@@ -1,4 +1,5 @@
 <?php
+include("head.php");
 include("sesion.php");
 include("conexion.php");
     login();
@@ -12,7 +13,7 @@ include("conexion.php");
                     WHERE nick ='$nick' AND password ='$password'";
         $resultado = mysqli_query($conn, $query);
 
-        //Revisa si el usuario está confirmado
+        //Revisa si el usuario está confirmado------------------------
         $query2 = "SELECT userConfirmado FROM login 
                     WHERE nick ='$nick' AND password ='$password'";
         $resultado2 = mysqli_query($conn, $query2);
@@ -21,9 +22,10 @@ include("conexion.php");
         if (isset($userConfirmado["userConfirmado"])&& $userConfirmado["userConfirmado"]==false) {
             echo "<p>Para ingresar necesitar confirmar el registro</p>";
             echo "<p>Revisa tu correo y hazlo!</p>";
+            echo "<br><a type='button' class='btn btn-info' href='index.php'>Volver al inicio</a>";
             die();
         }
-        
+        //-------------------------------------------------------------
         if (mysqli_num_rows($resultado)>0) {
             setcookie("login", $nick, time() + 1000);
             session_start();
