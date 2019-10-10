@@ -20,11 +20,12 @@ include("conexion.php");
             session_start();
             $_SESSION['usuario'] = true;            
             header('location:index.php');
-            fwrite($file, "El usuario $nick quiso ingresar y no pudo ". PHP_EOL );
+            fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
+
             fclose($file);
         } else {
             header('location:login-form.php?fallo=true');
-            fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
+            fwrite($file, "El usuario $nick quiso ingresar y no pudo ". PHP_EOL );
             fclose($file);
         }
 }
