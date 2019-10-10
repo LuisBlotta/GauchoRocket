@@ -6,8 +6,8 @@ include("head.php");
  	$nombre = $_POST["nombre"];
  	$nick = $_POST["nick"];
  	$email = $_POST["email"];
-    $password = $_POST["password"];
-    $passwordConfirmada = $_POST["passwordConfirmada"];
+    $password = md5($_POST["password"]);
+    $passwordConfirmada = md5($_POST["passwordConfirmada"]);
  	$conn = getConexion();
 
  	//Confirma igualdad de passwords
@@ -46,7 +46,7 @@ include("head.php");
 				echo "<br />" . "<h2>" . "Usuario Creado Exitosamente!" . "</h2>";
  				echo "<h4>" . "Bienvenido: " . $nombre . "</h4>" . "\n\n";
  				echo "<br><a type='button' class='btn btn-info' href='login-form.php'>Iniciar Sesión</a>"; 
- 				setcookie("login", $nombre, time() + 1000);
+ 				setcookie("login", $nick, time() + 1000); // recuerda el nick en el login
  				session_start();
  				$_SESSION['usuario'] = true; 				
  			}else{

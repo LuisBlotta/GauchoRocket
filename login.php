@@ -3,19 +3,19 @@ include("sesion.php");
 include("conexion.php");
     login();
     function login(){
-        $usuario = $_POST["user_name"];
-        $password = $_POST["password"];
+        $nick = $_POST["user_name"];
+        $password = md5($_POST["password"]);
         $conn = getConexion();
 
         $query = "SELECT nick, password FROM login 
-                    WHERE nick ='$usuario' AND password ='$password'";
+                    WHERE nick ='$nick' AND password ='$password'";
 		//echo $query;
 		//exit();
         $resultado = mysqli_query($conn, $query);
         //echo $query;
         //exit();
         if (mysqli_num_rows($resultado)>0) {
-            setcookie("login", $usuario, time() + 1000);
+            setcookie("login", $nick, time() + 1000);
             session_start();
             $_SESSION['usuario'] = true;            
             header('location:index.php');             
