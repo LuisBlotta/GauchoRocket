@@ -3,24 +3,35 @@ include("sesion.php");
 include("conexion.php");
     login();
     function login(){
+        
         $nick = $_POST["user_name"];
         $password = md5($_POST["password"]);
         $conn = getConexion();
 
         $query = "SELECT nick, password FROM login 
                     WHERE nick ='$nick' AND password ='$password'";
-		//echo $query;
-		//exit();
         $resultado = mysqli_query($conn, $query);
-        //echo $query;
-        //exit();
+
+        //Revisa si el usuario está confirmado
+        $query2 = "SELECT userConfirmado FROM login 
+                    WHERE nick ='$nick' AND password ='$password'";
+        $resultado2 = mysqli_query($conn, $query2);
+        $userConfirmado = mysqli_fetch_array($resultado2, MYSQLI_ASSOC);
+        
+        if (isset($userConfirmado["userConfirmado"])&& $userConfirmado["userConfirmado"]==false) {
+            echo "<p>Para ingresar necesitar confirmar el registro</p>";
+            echo "<p>Revisa tu correo y hazlo!</p>";
+            die();
+        }
+        
         if (mysqli_num_rows($resultado)>0) {
             setcookie("login", $nick, time() + 1000);
             session_start();
             $_SESSION['usuario'] = true;            
             header('location:index.php');             
         } else {
-            header('location:login-form.php?fallo=true');
+                header('location:login-form.php?fallo=true');
         }
+                  
 }
 ?>

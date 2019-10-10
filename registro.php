@@ -3,6 +3,7 @@ include("conexion.php");
 include("head.php");
  registro();
  function registro(){
+ 	$userConfirmado = false;
  	$nombre = $_POST["nombre"];
  	$nick = $_POST["nick"];
  	$email = $_POST["email"];
@@ -25,8 +26,8 @@ include("head.php");
  	}else{
  		//$hash = clave_hash($form_pass, clave_BCRYPT);
 		//Inserto datos en la tabla login
- 		$query = "INSERT INTO login (nick, password)
- 		VALUES ('$nick','$password')";
+ 		$query = "INSERT INTO login (userConfirmado, nick, password)
+ 		VALUES ($userConfirmado,'$nick','$password')";
 		//echo $query;
  		//	exit();
  			if ($conn->query($query) === TRUE) {
@@ -43,12 +44,13 @@ include("head.php");
 				$result = mysqli_query($conn, $sqlGuardado);
 
 
-				echo "<br />" . "<h2>" . "Usuario Creado Exitosamente!" . "</h2>";
- 				echo "<h4>" . "Bienvenido: " . $nombre . "</h4>" . "\n\n";
- 				echo "<br><a type='button' class='btn btn-info' href='login-form.php'>Iniciar Sesión</a>"; 
+				//echo "<br />" . "<h2>" . "Usuario Creado Exitosamente!" . "</h2>";
+ 				echo "<h2>" . "Bienvenido: " . $nombre . "</h2>" . "\n\n";
+ 				echo "<p>Por favor revisa tu correo para confirmar el registro</p>";
+ 				echo "<br><a type='button' class='btn btn-info' href='login-form.php'>Confirmar</a>"; 
  				setcookie("login", $nick, time() + 1000); // recuerda el nick en el login
- 				session_start();
- 				$_SESSION['usuario'] = true; 				
+ 				//session_start();
+ 				//$_SESSION['usuario'] = true; 				
  			}else{
 
  				echo "Error al crear el usuario." . $query . "<br>" . $conn->error; 
