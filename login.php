@@ -20,9 +20,10 @@ include("conexion.php");
         $userConfirmado = mysqli_fetch_array($resultado2, MYSQLI_ASSOC);
         
         if (isset($userConfirmado["userConfirmado"])&& $userConfirmado["userConfirmado"]==false) {
-            echo "<p>Para ingresar necesitar confirmar el registro</p>";
+            echo "<p>Para ingresar necesitas confirmar el registro</p>";
             echo "<p>Revisa tu correo y hazlo!</p>";
             echo "<br><a type='button' class='btn btn-info' href='index.php'>Volver al inicio</a>";
+            echo "<br><br><a type='button' class='btn btn-info' href='pantalla-confirmacion.php'>Confirmar</a>";
             die();
         }
         //-------------------------------------------------------------
@@ -30,9 +31,13 @@ include("conexion.php");
             setcookie("login", $nick, time() + 1000);
             session_start();
             $_SESSION['usuario'] = true;            
-            header('location:index.php');             
+            header('location:index.php');
+            fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
+            fclose($file);
         } else {
-                header('location:login-form.php?fallo=true');
+            header('location:login-form.php?fallo=true');
+            fwrite($file, "El usuario $nick quiso ingresar y no pudo ". PHP_EOL );
+            fclose($file);
         }
                   
 }

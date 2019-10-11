@@ -3,6 +3,7 @@ create database gauchoRocket;
 use gauchoRocket;
 create table login (id int primary key auto_increment,
 					userConfirmado boolean not null,
+                    hashConfirmacion varchar(50) not null,
 					nick varchar(50) not null,
                     password varchar(50) not null);
                     
@@ -18,7 +19,7 @@ create table usuario (id int primary key auto_increment,
 								usuarioID INT,
                                 foreign key(usuarioID) references usuario(id));*/
                         
-insert into  login (userConfirmado, nick, password) values (true,"admin", "e67732763718fbafa22f23adb5679c2f");
+insert into  login (userConfirmado, hashConfirmacion, nick, password) values (true,"f50686d5dc72f5d073c5295937bc58ce","admin", "e67732763718fbafa22f23adb5679c2f");
 insert into  usuario (nombre, mail, rol, loginID) values ("admin", "admin@gauchorocket.com", 2,1) ;
 
 
