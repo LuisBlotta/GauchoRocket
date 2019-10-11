@@ -46,25 +46,28 @@ include("head.php");
 
 					echo "<h2>" . "Bienvenido: " . $nombre . "</h2>" . "\n\n";
  					echo "<p>Por favor revisa tu correo para confirmar el registro</p>";
- 					echo "<br><a type='button' class='btn btn-info' href='index.php'>Volver al inicio</a>"; 
+ 					//----borrar si se hace con mail
+ 					echo "<br><a type='button' class='btn btn-info' href='index.php?hash=".$hashConfirmacion."'>Volver al inicio</a>";
  					echo "<br><br><a type='button' class='btn btn-info' href='pantalla-confirmacion.php?hash=".$hashConfirmacion."'>Confirmar</a>"; 
+ 					//------------------------------
+ 					//echo "<br><a type='button' class='btn btn-info' href='index.php'>Volver al inicio</a>";
  					setcookie("login", $nick, time() + 1000); // recuerda el nick en el login 					
 
  					/*
- 					//Crea el mail de confirmacion 					
- 					$cuerpo='';
+ 					//Crea el mail de confirmacion 	
 
 					// datos de email
 					$para=$email;
 					$asunto= "Confirmacion de cuenta";
+					$cuerpo='';
 
 					// cuerpo de email
 					$cuerpo.="Gracias ".$nombre." por registrarte en GauchoRocket\n";
 					$cuerpo.="Haz click aqui para confirmar\n";
 					$cuerpo.="http://localhost/htdocs-progra-2/GauchoRocket/confirmacion.php?hash=".$hashConfirmacion."\n";
 
-					mail($para, $asunto, $cuerpo);*/
-					
+					mail($para, $asunto, $cuerpo);
+					*/					
  				}else{
  					echo "Error al crear el usuario." . $query . "<br>" . $conn->error; 
  					//header('location:registro.php');

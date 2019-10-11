@@ -8,7 +8,16 @@
 <body>
 	<main>
 		<section>
-			<form action="login.php" method="post">
+		<?php
+			//----borrar si se hace con mail		
+			if (isset($_GET["hash"])) {
+				$hashConfirmacion=$_GET["hash"];
+				echo "<form action='login.php?hash=".$hashConfirmacion."' method='post'>";
+			}else{
+			//------------------------------
+				echo "<form action='login.php' method='post'>";
+			}
+		?>
 				<div class="form-group">
 					<label for="user_name">Nombre de Usuario</label>
 					<input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Usuario" value='<?php echo $a; ?>'>
@@ -21,8 +30,9 @@
 				<?php
 					if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true'){
 						echo "<div style='color:red'>Usuario o contraseña invalido </div>";
-					}
+					}					
 				?>
+
 				<button class="btn btn-info">Entrar</button>
 			</form>
 			<p>¿No tienes cuenta?<a href="registro-form.php">Regístrate</a></p>
