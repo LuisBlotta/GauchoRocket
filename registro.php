@@ -4,7 +4,8 @@ include("head.php");
  registro();
  function registro(){
  	$userConfirmado = false;
- 	$hashConfirmacion = md5($_POST["nick"]);
+ 	$hoy = getdate();
+ 	$hashConfirmacion =hash('ripemd160', $hoy['seconds'].$hoy['minutes'].$hoy['hours']);
  	$nombre = $_POST["nombre"];
  	$nick = $_POST["nick"];
  	$email = $_POST["email"];
@@ -25,7 +26,6 @@ include("head.php");
  			echo "<br />". "El Nombre de Usuario ya a sido tomado." . "<br />";
  			echo "<a href='registro-form.php'>Por favor escoga otro Nombre</a>";
  		}else{
- 			//$hash = clave_hash($form_pass, clave_BCRYPT);
 			//Inserto datos en la tabla login
  			$query = "INSERT INTO login (userConfirmado, hashConfirmacion, nick, password)
  			VALUES ('$userConfirmado','$hashConfirmacion','$nick','$password')";

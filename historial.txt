@@ -1,3 +1,5 @@
 .admin quizo entrar y le kbió
 .admin entro piola.
 milagrossv entro piola.
+El usuario Juan quiso ingresar y no pudo 
+El usuario pepe ingresó correctamente
