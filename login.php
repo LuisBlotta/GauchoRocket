@@ -19,13 +19,13 @@ include("conexion.php");
                     WHERE nick ='$nick' AND password ='$password'";
         $resultado2 = mysqli_query($conn, $query2);
         $userConfirmado = mysqli_fetch_array($resultado2, MYSQLI_ASSOC);
-        
-        $hashConfirmacion=$_GET["hash"];
+                
         if (isset($userConfirmado["userConfirmado"])&& $userConfirmado["userConfirmado"]==false) {
             echo "<p>Para ingresar necesitas confirmar el registro</p>";
             echo "<p>Revisa tu correo y hazlo!</p>";
             //----borrar si se hace con mail
-            if (isset($hashConfirmacion)) {
+            if (isset($_GET["hash"])) {
+                $hashConfirmacion=$_GET["hash"];
                 echo "<br><a type='button' class='btn btn-info' href='index.php?hash=".$hashConfirmacion."'>Volver al inicio</a>";
             }else{
             //------------------------------
