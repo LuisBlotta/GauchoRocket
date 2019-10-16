@@ -1,0 +1,91 @@
+<?php
+include("conexion.php");
+
+function getVuelos(){
+    $conn = getConexion();    
+
+    $fecha_ida=$_GET['fecha_ida'];
+    $partida=$_GET['partida'];
+    $destino=$_GET['destino'];
+
+    $sql="SELECT trayecto.dia_partida fecha_ida, d1.descripcion partida, d0.descripcion llegada FROM trayecto 
+            JOIN destino d0 on trayecto.punto_llegada = d0.id
+            JOIN destino d1 on trayecto.punto_partida = d1.id
+            WHERE d1.descripcion='$partida' AND d0.descripcion='$destino'";
+    
+    $result = mysqli_query($conn, $sql);
+    $vuelos = Array();
+    if (mysqli_num_rows($result) > 0) {        
+        while($row = mysqli_fetch_assoc($result)) {
+            $vuelo = Array();
+            $vuelo['fecha_ida'] =  $row["fecha_ida"];
+            $vuelo['partida'] =  $row["partida"];
+            $vuelo['destino'] =  $row["destino"];            
+            $vuelos[] = $vuelo;            
+        }
+    }else{           
+        echo "<p class='error-busqueda'>Vuelo no encontrado</p>";        
+    }
+    mysqli_close($conn);
+    return $vuelos;   
+}
+$vuelos = getVuelos();
+?>
+
+
+html
+
+<form class="container buscar_vuelos" action="buscar_vuelos.php" method="post">
+			<label>Fecha de Partida</label>
+			<input type="date" name="fecha_ida">
+
+			<!--<label>Fecha de Vuelta</label>
+			<input type="date" name="fecha_vuelta">-->
+
+			<label>Partida</label>
+			<input name="partida" list="partida">
+			<datalist id="partida">
+				<option value="Buenos Aires"></option>
+				<option value="Ankara"></option>
+				<option value="Estación Espacial Internacional"></option>
+				<option value="Orbital Hotel"></option>
+				<option value="Luna"></option>
+				<option value="Marte"></option>
+				<option value="Ganimedes"></option>
+				<option value="Europa"></option>
+				<option value="Io"></option>
+				<option value="Encedalo"></option>
+				<option value="Titán"></option>
+			</datalist>
+
+			<label>Destino</label>
+			<input name="destino" list="destino">
+			<datalist id="destino">
+				<option value="Buenos Aires"></option>
+				<option value="Ankara"></option>
+				<option value="Estación Espacial Internacional"></option>
+				<option value="Orbital Hotel"></option>
+				<option value="Luna"></option>
+				<option value="Marte"></option>
+				<option value="Ganimedes"></option>
+				<option value="Europa"></option>
+				<option value="Io"></option>
+				<option value="Encedalo"></option>
+				<option value="Titán"></option>
+			</datalist>
+			<button>Buscar</button>			
+		</form>
+		<?php
+			include("buscar_vuelos.php");
+
+			foreach ($vuelos as $vuelo){				
+				echo "<tr>
+				<td>" . $vuelo['fecha_ida'] . "</td>										
+				<td>" . $vuelo['partida'] . "</td>
+				<td>" . $vuelo['destino'] . "</td>				
+				</tr>";
+			}
+
+		?>	
+	</main>	
+	<?php include("footer.php") ?>
