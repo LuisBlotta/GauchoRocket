@@ -37,7 +37,44 @@
 			<a class="carousel-control-next" href="#demo" data-slide="next">
 				<span class="carousel-control-next-icon"></span>
 			</a>
-		</div>		
+		</div>
+		<form class="container buscar_vuelos" action="resultado_busqueda.php" method="post">
+			<label>Fecha de Partida</label>
+			<input type="date" name="fecha_ida">			
+
+			<label>Partida</label>
+			<input name="partida" list="partida">
+			<datalist id="partida">
+				<option value="Buenos Aires"></option>
+				<option value="Ankara"></option>
+				<option value="Estación Espacial Internacional"></option>
+				<option value="Orbital Hotel"></option>
+				<option value="Luna"></option>
+				<option value="Marte"></option>
+				<option value="Ganimedes"></option>
+				<option value="Europa"></option>
+				<option value="Io"></option>
+				<option value="Encedalo"></option>
+				<option value="Titán"></option>
+			</datalist>
+
+			<label>Destino</label>
+			<input name="destino" list="destino">
+			<datalist id="destino">
+				<option value="Buenos Aires"></option>
+				<option value="Ankara"></option>
+				<option value="Estación Espacial Internacional"></option>
+				<option value="Orbital Hotel"></option>
+				<option value="Luna"></option>
+				<option value="Marte"></option>
+				<option value="Ganimedes"></option>
+				<option value="Europa"></option>
+				<option value="Io"></option>
+				<option value="Encedalo"></option>
+				<option value="Titán"></option>
+			</datalist>
+			<button name="buscar">Buscar</button>			
+		</form>			
 	</main>	
 	<?php include("footer.php") ?>
 </body>
