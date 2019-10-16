@@ -1,7 +1,7 @@
 	<header>
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 			<!-- Logo -->
-			<a class="logo" href="#"><img src="public/img/logo-b.png"></a>
+			<a class="logo" href="index.php"><img src="public/img/logo-b.png"></a>
 
 			<!-- Search -->	
 			<section class="buscador">		
