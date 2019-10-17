@@ -9,7 +9,6 @@
 	<?php include("header.php") ?>
 	<main>
 		<div id="demo" class="carousel slide" data-ride="carousel">
-
 			<!-- Indicators -->
 			<ul class="carousel-indicators">
 				<li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -38,42 +37,58 @@
 				<span class="carousel-control-next-icon"></span>
 			</a>
 		</div>
-		<form class="container buscar_vuelos" action="resultado_busqueda.php" method="post">
-			<label>Fecha de Partida</label>
-			<input type="date" name="fecha_ida">			
+		
+		<form class="buscar_vuelos form-inline col-sm-8" action="resultado_busqueda.php" method="post">
+			<!--<label class="mr-sm-2">Fecha de partida</label>-->
+			<div class="input-group">
+				<div class="input-group-prepend">
+      				<span class="input-group-text"><img src="public/img/calendar.png"></span>
+    			</div>
+				<input type="date" name="fecha_ida" class="form-control mr-sm-2">
+			</div>			
 
-			<label>Partida</label>
-			<input name="partida" list="partida">
-			<datalist id="partida">
-				<option value="Buenos Aires"></option>
-				<option value="Ankara"></option>
-				<option value="Estación Espacial Internacional"></option>
-				<option value="Orbital Hotel"></option>
-				<option value="Luna"></option>
-				<option value="Marte"></option>
-				<option value="Ganimedes"></option>
-				<option value="Europa"></option>
-				<option value="Io"></option>
-				<option value="Encedalo"></option>
-				<option value="Titán"></option>
-			</datalist>
+			<!--<label class="mr-sm-2">Origen</label>-->
+			<div class="input-group">
+				<div class="input-group-prepend">
+      				<span class="input-group-text"><img src="public/img/circle.png"></span>
+    			</div>
+				<input name="origen" list="origen" class="custom-select mr-sm-2" placeholder="Origen">
+				<datalist id="origen">
+					<option value="Buenos Aires"></option>
+					<option value="Ankara"></option>
+					<option value="Estación Espacial Internacional"></option>
+					<option value="Orbital Hotel"></option>
+					<option value="Luna"></option>
+					<option value="Marte"></option>
+					<option value="Ganimedes"></option>
+					<option value="Europa"></option>
+					<option value="Io"></option>
+					<option value="Encedalo"></option>
+					<option value="Titán"></option>
+				</datalist>
+			</div>
 
-			<label>Destino</label>
-			<input name="destino" list="destino">
-			<datalist id="destino">
-				<option value="Buenos Aires"></option>
-				<option value="Ankara"></option>
-				<option value="Estación Espacial Internacional"></option>
-				<option value="Orbital Hotel"></option>
-				<option value="Luna"></option>
-				<option value="Marte"></option>
-				<option value="Ganimedes"></option>
-				<option value="Europa"></option>
-				<option value="Io"></option>
-				<option value="Encedalo"></option>
-				<option value="Titán"></option>
-			</datalist>
-			<button name="buscar">Buscar</button>			
+			<!--<label class="mr-sm-2">Destino</label>-->			
+			<div class="input-group">
+				<div class="input-group-prepend">
+      				<span class="input-group-text"><img src="public/img/pin.png"></span>
+    			</div>
+				<input name="destino" list="destino" class="custom-select mr-sm-2" placeholder="Destino">
+				<datalist id="destino">
+					<option value="Buenos Aires"></option>
+					<option value="Ankara"></option>
+					<option value="Estación Espacial Internacional"></option>
+					<option value="Orbital Hotel"></option>
+					<option value="Luna"></option>
+					<option value="Marte"></option>
+					<option value="Ganimedes"></option>
+					<option value="Europa"></option>
+					<option value="Io"></option>
+					<option value="Encedalo"></option>
+					<option value="Titán"></option>
+				</datalist>
+			</div>
+			<button class="btn btn-info mr-sm-2" name="buscar">Buscar</button>			
 		</form>			
 	</main>	
 	<?php include("footer.php") ?>

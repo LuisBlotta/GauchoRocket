@@ -12,4 +12,5 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 	<!-- Propios -->
-	<link rel="stylesheet" type="text/css" href="public/estilos.css">
+	<link rel="stylesheet" type="text/css" href="public/css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
