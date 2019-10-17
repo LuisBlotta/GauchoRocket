@@ -1,4 +1,5 @@
-.buscar_vuelos{
+.cont_buscar_vuelos{
+	width: 90%;
 	margin: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;	
@@ -7,4 +8,39 @@
 .input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child){
 	border-top-right-radius: 0.25rem;
 	border-bottom-right-radius: 0.25rem;
+}
+
+.input-group{
+	margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 48em){
+	.cont_buscar_vuelos{
+		width: 70%;
+	}
+	.buscar_vuelos{		
+		display: flex;
+		flex-direction: row;
+	}
+
+	.input-group{
+		margin-bottom: 0px;
+	}
+
+	.cont_vuelos{
+		width: 70%;
+		margin: auto;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap; 
+		justify-content: center;
+	}
+
+	.cont_vuelos .card{
+		margin:20px;
+	}
+}
+
+@media only screen and (min-width: 64em){
+
 }
