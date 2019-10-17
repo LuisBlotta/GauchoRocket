@@ -1,0 +1,118 @@
+/*------HEADER------*/
+header{
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+}
+
+main{
+	margin-top: 60px;
+}
+
+header .navbar{
+	justify-content: inherit;
+	padding: 10px 20px;
+} 
+
+header .navbar-nav{
+	text-align: center;
+}
+
+header .navbar-dark .navbar-toggler{
+	border-color:rgba(255,255,255,.0);
+}
+
+header .navbar-brand:hover{
+	opacity: 0.7;
+}
+
+header .form-inline{
+	width: 55%;
+	flex-direction: row;
+	flex-wrap: nowrap;	
+}
+
+header .form-control{
+	display: flex;
+	width: 60%;
+}
+
+header .btn{
+	padding: 2px 10px 6px 10px; 
+}
+
+header .navbar-toggler {
+    position: absolute;
+    right: 0px;
+    top: 13px;
+}
+
+.logo{
+	display: block;
+	position: absolute;
+	left: 10px;
+	top: 7px;
+}
+
+.buscador{	
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.form-buscador{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+@media only screen and (min-width: 48em){
+	header .navbar-nav{
+		position: absolute;
+		right: 15px;		
+	}
+
+	header .form-inline{
+		justify-content: center;
+		margin: auto;
+	}	
+}
+@media only screen and (min-width: 64em){
+	header{
+		position: static;
+	}
+
+	main{
+		margin-top: 0px;
+	}
+
+	header .form-control{
+		width: 100%
+	}
+}
+
+
+/*------FOOTER------*/
+footer .navbar-nav{
+	display: none;
+}
+.grupo{
+	padding-left: 0; 
+	list-style: none;
+	color: #fff;
+}
+
+.redes{
+	display: flex;
+	flex-direction: row;
+	width: 100px;
+	justify-content: space-between;
+}
+@media only screen and (min-width: 48em){
+	footer .navbar-nav{
+		display: flex;		
+		align-items: center;
+	}
+}
+
