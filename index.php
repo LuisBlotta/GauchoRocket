@@ -38,58 +38,71 @@
 			</a>
 		</div>
 		
-		<form class="buscar_vuelos form-inline col-sm-8" action="resultado_busqueda.php" method="post">
-			<!--<label class="mr-sm-2">Fecha de partida</label>-->
-			<div class="input-group">
-				<div class="input-group-prepend">
-      				<span class="input-group-text"><img src="public/img/calendar.png"></span>
-    			</div>
-				<input type="date" name="fecha_ida" class="form-control mr-sm-2">
-			</div>			
+		<section class="cont_buscar_vuelos">
+			<form class="buscar_vuelos" action="resultado_busqueda.php" method="post">
+				<!--<label class="mr-sm-2">Fecha de partida</label>-->
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><img src="public/img/calendar.png"></span>
+					</div>
+					<input type="date" name="fecha_ida" class="form-control mr-sm-2">
+				</div>			
 
-			<!--<label class="mr-sm-2">Origen</label>-->
-			<div class="input-group">
-				<div class="input-group-prepend">
-      				<span class="input-group-text"><img src="public/img/circle.png"></span>
-    			</div>
-				<input name="origen" list="origen" class="custom-select mr-sm-2" placeholder="Origen">
-				<datalist id="origen">
-					<option value="Buenos Aires"></option>
-					<option value="Ankara"></option>
-					<option value="Estación Espacial Internacional"></option>
-					<option value="Orbital Hotel"></option>
-					<option value="Luna"></option>
-					<option value="Marte"></option>
-					<option value="Ganimedes"></option>
-					<option value="Europa"></option>
-					<option value="Io"></option>
-					<option value="Encedalo"></option>
-					<option value="Titán"></option>
-				</datalist>
-			</div>
+				<!--<label class="mr-sm-2">Origen</label>-->
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><img src="public/img/circle.png"></span>
+					</div>
+					<input name="origen" list="origen" class="custom-select mr-sm-2" placeholder="Origen">
+					<datalist id="origen">
+						<option value="Buenos Aires"></option>
+						<option value="Ankara"></option>
+						<option value="Estación Espacial Internacional"></option>
+						<option value="Orbital Hotel"></option>
+						<option value="Luna"></option>
+						<option value="Marte"></option>
+						<option value="Ganimedes"></option>
+						<option value="Europa"></option>
+						<option value="Io"></option>
+						<option value="Encelado"></option>
+						<option value="Titán"></option>
+					</datalist>
+				</div>
 
-			<!--<label class="mr-sm-2">Destino</label>-->			
-			<div class="input-group">
-				<div class="input-group-prepend">
-      				<span class="input-group-text"><img src="public/img/pin.png"></span>
-    			</div>
-				<input name="destino" list="destino" class="custom-select mr-sm-2" placeholder="Destino">
-				<datalist id="destino">
-					<option value="Buenos Aires"></option>
-					<option value="Ankara"></option>
-					<option value="Estación Espacial Internacional"></option>
-					<option value="Orbital Hotel"></option>
-					<option value="Luna"></option>
-					<option value="Marte"></option>
-					<option value="Ganimedes"></option>
-					<option value="Europa"></option>
-					<option value="Io"></option>
-					<option value="Encedalo"></option>
-					<option value="Titán"></option>
-				</datalist>
+				<!--<label class="mr-sm-2">Destino</label>-->			
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"><img src="public/img/pin.png"></span>
+					</div>
+					<input name="destino" list="destino" class="custom-select mr-sm-2" placeholder="Destino">
+					<datalist id="destino">
+						<option value="Buenos Aires"></option>
+						<option value="Ankara"></option>
+						<option value="Estación Espacial Internacional"></option>
+						<option value="Orbital Hotel"></option>
+						<option value="Luna"></option>
+						<option value="Marte"></option>
+						<option value="Ganimedes"></option>
+						<option value="Europa"></option>
+						<option value="Io"></option>
+						<option value="Encelado"></option>
+						<option value="Titán"></option>
+					</datalist>
+				</div>
+				<button class="btn btn-info mr-sm-2" name="buscar">Buscar</button>			
+			</form>	
+		</section>	
+
+		<!--<section class="cont_vuelos">
+			<div class="card" style="width:400px">
+    			<img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
+				<div class="card-body">
+					<h4 class="card-title">John Doe</h4>
+					<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+					<a href="#" class="btn btn-primary stretched-link">See Profile</a>
+				</div>
 			</div>
-			<button class="btn btn-info mr-sm-2" name="buscar">Buscar</button>			
-		</form>			
+		</section>-->	
 	</main>	
 	<?php include("footer.php") ?>
 </body>

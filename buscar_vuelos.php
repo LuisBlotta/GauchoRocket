@@ -8,6 +8,8 @@ function getVuelos(){
     $origen=$_POST['origen'];
     $destino=$_POST['destino'];
 
+    $fechaSinGuiones=str_replace("-", "", $fecha_ida);
+
     switch ($origen) {
         case 'Buenos Aires':
             $origen='BA';
@@ -47,7 +49,7 @@ function getVuelos(){
     $sql="SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino FROM trayecto 
             JOIN destino d0 on trayecto.punto_llegada = d0.id
             JOIN destino d1 on trayecto.punto_partida = d1.id
-            WHERE d1.descripcion='$origen' AND d0.descripcion='$destino'";    
+            WHERE d1.descripcion='$origen' AND d0.descripcion='$destino' AND trayecto.dia_partida='$fecha_ida'";    
     $result = mysqli_query($conn, $sql);
 
     $vuelos = Array();
@@ -60,7 +62,7 @@ function getVuelos(){
             $vuelos[] = $vuelo;            
         }
     }else{           
-        echo "<p class='error-busqueda'>Vuelo no encontrado</p>"; 
+        //echo "<p class='error-busqueda'>Vuelo no encontrado</p>"; 
         $sql = "SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino FROM trayecto 
             JOIN destino d0 on trayecto.punto_llegada = d0.id
             JOIN destino d1 on trayecto.punto_partida = d1.id GROUP BY trayecto.dia_partida";

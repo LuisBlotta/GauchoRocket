@@ -66,7 +66,7 @@ INSERT INTO equipo (modelo, matricula) values   (1, "AA1"),(1, "AA5"), (1, "AA9"
                                                                      
 select * from cabina join modelo on cabina.id_modelo = modelo.id join nivel_pasajero on modelo.id = nivel_pasajero.id_modelo join equipo on equipo.modelo = modelo.id;
                                                                      
-INSERT INTO destino (id, descripcion) values (1, "BA"), (2, "AK"),(3,"EEI"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encedalo"), (11, "Titan");                                                                    
+INSERT INTO destino (id, descripcion) values (1, "BA"), (2, "AK"),(3,"EEI"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encelado"), (11, "Titan");                                                                    
 INSERT INTO tipo_viaje (id, descripcion) values (1, "Suborbital"), (2, "Tour"), (3,"Entre destinos");         
 
 INSERT INTO trayecto (id, equipo, tipo_viaje, punto_partida, punto_llegada, hora_partida, dia_partida, duracion) values (1, 3, 1, 1, 1, 12, '20191001', 8), /*orbitales*/
@@ -92,4 +92,3 @@ select trayecto.dia_partida, modelo.descripcion, equipo.matricula, d1.descripcio
 
 /*select * from trayecto join equipo on trayecto.equipo = equipo.id join modelo on modelo.id = equipo.modelo
 select * from equipo join modelo on modelo.id = equipo.modelo*/
-
