@@ -11,7 +11,6 @@
 		<section class="cont_vuelos">			
 			<?php
 				include("buscar_vuelos.php");
-
 				foreach ($vuelos as $vuelo){				
 					echo "
 					<div class='card' style='width:300px'>

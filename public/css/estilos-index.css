@@ -1,8 +1,15 @@
 .cont_buscar_vuelos{
-	width: 90%;
+	width: 80%;
+	
 	margin: auto;
 	margin-top: 20px;
-	margin-bottom: 20px;	
+	margin-bottom: 20px;
+
+	padding: 20px;
+	box-sizing: border-box;
+
+	border: solid 1px rgba(0,0,0,.125);
+	border-radius: .25rem;	
 }
 
 .input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child){
@@ -12,6 +19,23 @@
 
 .input-group{
 	margin-bottom: 10px;
+}
+
+.cont_vuelos{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cont_vuelos .card{
+	margin-bottom: 20px;	
+}
+
+.cont_vuelos .card:hover{
+	cursor: default;
+	-webkit-box-shadow: 8px 10px 11px -7px rgba(0,0,0,0.2);
+	-moz-box-shadow: 8px 10px 11px -7px rgba(0,0,0,0.2);
+	box-shadow: 8px 10px 11px -7px rgba(0,0,0,0.2);
 }
 
 @media only screen and (min-width: 48em){
@@ -29,8 +53,7 @@
 
 	.cont_vuelos{
 		width: 70%;
-		margin: auto;
-		display: flex;
+		margin: auto;		
 		flex-direction: row;
 		flex-wrap: wrap; 
 		justify-content: center;

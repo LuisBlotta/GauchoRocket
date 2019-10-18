@@ -5,7 +5,7 @@ function getVuelos(){
 
     $conn = getConexion();
 
-    $sql = "SELECT trayecto.dia_partida fecha_ida, d1.descripcion partida, d0.descripcion destino FROM trayecto 
+    $sql = "SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino FROM trayecto 
             JOIN destino d0 on trayecto.punto_llegada = d0.id
             JOIN destino d1 on trayecto.punto_partida = d1.id GROUP BY trayecto.dia_partida";
     $result = mysqli_query($conn, $sql);
@@ -16,7 +16,7 @@ function getVuelos(){
         while($row = mysqli_fetch_assoc($result)) {
             $vuelo = Array();
             $vuelo['fecha_ida'] =  $row["fecha_ida"];
-            $vuelo['partida'] =  $row["partida"];
+            $vuelo['origen'] =  $row["origen"];
             $vuelo['destino'] =  $row["destino"];            
             $vuelos[] = $vuelo;            
         }

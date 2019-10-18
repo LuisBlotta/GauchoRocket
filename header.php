@@ -3,13 +3,13 @@
 			<!-- Logo -->
 			<a class="logo" href="index.php"><img src="public/img/logo-b.png"></a>
 
-			<!-- Search -->	
+			<!-- Search 	
 			<section class="buscador">		
 			<form class="form-buscador" action="#" method="get">
 				<input class="form-control mr-sm-2" type="text" placeholder="Buscar">
 				<button class="btn btn-info" type="submit"><img src="public/img/search.png"></button>
 			</form>	
-			</section>		
+			</section>-->		
 
 			<!-- Toggler/collapsibe Button -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
