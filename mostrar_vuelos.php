@@ -5,9 +5,11 @@ function getVuelos(){
 
     $conn = getConexion();
 
-    $sql = "SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino FROM trayecto 
+    $sql = "SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM trayecto 
             JOIN destino d0 on trayecto.punto_llegada = d0.id
-            JOIN destino d1 on trayecto.punto_partida = d1.id GROUP BY trayecto.dia_partida";
+            JOIN destino d1 on trayecto.punto_partida = d1.id
+            JOIN tipo_viaje on trayecto.tipo_viaje = tipo_viaje.id
+            GROUP BY trayecto.dia_partida";
     $result = mysqli_query($conn, $sql);
 
     $pokemons = Array();
@@ -17,8 +19,9 @@ function getVuelos(){
             $vuelo = Array();
             $vuelo['fecha_ida'] =  $row["fecha_ida"];
             $vuelo['origen'] =  $row["origen"];
-            $vuelo['destino'] =  $row["destino"];            
-            $vuelos[] = $vuelo;            
+            $vuelo['destino'] =  $row["destino"];
+            $vuelo['tipo_viaje'] =  $row["tipo_viaje"];
+            $vuelos[] = $vuelo;
         }
     }
     mysqli_close($conn);

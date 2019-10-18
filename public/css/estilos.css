@@ -79,6 +79,7 @@ header .navbar-toggler {
 		margin: auto;
 	}	
 }
+
 @media only screen and (min-width: 64em){
 	header{
 		position: static;
@@ -92,7 +93,10 @@ header .navbar-toggler {
 		width: 100%
 	}
 }
-
+.error-busqueda{
+	color: red;
+	text-align: center;
+}
 
 /*------FOOTER------*/
 footer .navbar-nav{

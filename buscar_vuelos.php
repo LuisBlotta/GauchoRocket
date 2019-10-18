@@ -46,9 +46,10 @@ function getVuelos(){
             break;
     }
 
-    $sql="SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino FROM trayecto 
+    $sql="SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM trayecto 
             JOIN destino d0 on trayecto.punto_llegada = d0.id
             JOIN destino d1 on trayecto.punto_partida = d1.id
+            JOIN tipo_viaje on trayecto.tipo_viaje = tipo_viaje.id
             WHERE d1.descripcion='$origen' AND d0.descripcion='$destino' AND trayecto.dia_partida='$fecha_ida'";    
     $result = mysqli_query($conn, $sql);
 
@@ -58,25 +59,29 @@ function getVuelos(){
             $vuelo = Array();
             $vuelo['fecha_ida'] =  $row["fecha_ida"];
             $vuelo['origen'] =  $row["origen"];
-            $vuelo['destino'] =  $row["destino"];            
+            $vuelo['destino'] =  $row["destino"];
+            $vuelo['tipo_viaje'] =  $row["tipo_viaje"];
             $vuelos[] = $vuelo;            
         }
     }else{           
-        //echo "<p class='error-busqueda'>Vuelo no encontrado</p>"; 
-        $sql = "SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino FROM trayecto 
+        echo "<h2 class='error-busqueda col-sm-12' >Vuelo no encontrado</h2>";
+        $sql = "SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM trayecto 
             JOIN destino d0 on trayecto.punto_llegada = d0.id
-            JOIN destino d1 on trayecto.punto_partida = d1.id GROUP BY trayecto.dia_partida";
+            JOIN destino d1 on trayecto.punto_partida = d1.id 
+            JOIN tipo_viaje on trayecto.tipo_viaje = tipo_viaje.id
+            GROUP BY trayecto.dia_partida";
         $result = mysqli_query($conn, $sql);
 
-        $pokemons = Array();
+
         $vuelos = Array();
         if (mysqli_num_rows($result) > 0) {        
             while($row = mysqli_fetch_assoc($result)) {
             $vuelo = Array();
             $vuelo['fecha_ida'] =  $row["fecha_ida"];
             $vuelo['origen'] =  $row["origen"];
-            $vuelo['destino'] =  $row["destino"];            
-            $vuelos[] = $vuelo;            
+            $vuelo['destino'] =  $row["destino"];
+            $vuelo['tipo_viaje'] =  $row["tipo_viaje"];
+            $vuelos[] = $vuelo;
             }
         }       
     }
