@@ -46,7 +46,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><img src="public/img/calendar.png"></span>
 					</div>
-					<input type="date" name="fecha_ida" class="form-control mr-sm-2">
+					<input type="date" name="fecha_ida" class="form-control mr-sm-2" required>
 				</div>			
 
 				<!--<label class="mr-sm-2">Origen</label>-->
@@ -54,7 +54,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><img src="public/img/circle.png"></span>
 					</div>
-					<input name="origen" list="origen" class="custom-select mr-sm-2" placeholder="Origen">
+					<input name="origen" list="origen" class="custom-select mr-sm-2" placeholder="Origen" required>
 					<datalist id="origen">
 						<option value="Buenos Aires"></option>
 						<option value="Ankara"></option>
@@ -75,7 +75,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><img src="public/img/pin.png"></span>
 					</div>
-					<input name="destino" list="destino" class="custom-select mr-sm-2" placeholder="Destino">
+					<input name="destino" list="destino" class="custom-select mr-sm-2" placeholder="Destino" required>
 					<datalist id="destino">
 						<option value="Buenos Aires"></option>
 						<option value="Ankara"></option>
