@@ -39,6 +39,7 @@
 		</div>
 		
 		<section class="cont_buscar_vuelos">
+			<h3>Vuelos</h3>
 			<form class="buscar_vuelos" action="resultado_busqueda.php" method="post">
 				<!--<label class="mr-sm-2">Fecha de partida</label>-->
 				<div class="input-group">
@@ -93,16 +94,24 @@
 			</form>	
 		</section>	
 
-		<!--<section class="cont_vuelos">
-			<div class="card" style="width:400px">
-    			<img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-				<div class="card-body">
-					<h4 class="card-title">John Doe</h4>
-					<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-					<a href="#" class="btn btn-primary stretched-link">See Profile</a>
-				</div>
-			</div>
-		</section>-->	
+		<section class="cont_vuelos">
+			<?php
+				include("mostrar_vuelos.php");
+				foreach ($vuelos as $vuelo){				
+					echo "
+					<div class='card' style='width:300px'>
+    					<img class='card-img-top' src='public/img/".$vuelo['destino'].".jpg' alt='Card image' style='width:100%''>
+						<div class='card-body'>
+							<h4>" . $vuelo['destino'] . "</h4>										
+							<p class='card-text'>Origen: " . $vuelo['origen'] . "</p>
+							<p class='card-text'><img src='public/img/calendar.png'> " . $vuelo['fecha_ida'] . "</p>				
+						</div>
+							<a href='#' class='btn btn-info stretched-link'>Reservar</a>							
+					</div>";
+				}
+			?>
+		</section>
+
 	</main>	
 	<?php include("footer.php") ?>
 </body>
