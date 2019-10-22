@@ -46,11 +46,11 @@ function getVuelos(){
             break;
     }
 
-    $sql="SELECT trayecto.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM trayecto 
+    $sql="SELECT vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM vuelo JOIN trayecto ON vuelo.trayecto = trayecto.id 
             JOIN destino d0 on trayecto.punto_llegada = d0.id
             JOIN destino d1 on trayecto.punto_partida = d1.id
-            JOIN tipo_viaje on trayecto.tipo_viaje = tipo_viaje.id
-            WHERE d1.descripcion='$origen' AND d0.descripcion='$destino' AND trayecto.dia_partida='$fecha_ida'";    
+            JOIN tipo_viaje on vuelo.tipo_viaje = tipo_viaje.id
+            WHERE d1.descripcion='$origen' AND d0.descripcion='$destino' AND vuelo.dia_partida='$fecha_ida'";
     $result = mysqli_query($conn, $sql);
 
     $vuelos = Array();
