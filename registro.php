@@ -33,7 +33,7 @@ include("head.php");
  			//	exit();
  				if ($conn->query($query) === TRUE) {
 					//traigo el ID del usuario creado
-					$queryConsulta ="SELECT id FROM login WHERE nick='$nick'";
+					$queryConsulta ="SELECT id_login FROM login WHERE nick='$nick'";
 
 					$result = mysqli_query($conn, $queryConsulta);
 					$dato=mysqli_fetch_row($result);
@@ -41,7 +41,7 @@ include("head.php");
 					//exit();
 
 					//Segunda parte del guardado (en tabla usuario)
-					$sqlGuardado = "insert into usuario (nombre, mail, rol, loginID) values ('$nombre','$email',1,'$dato[0]' )";
+					$sqlGuardado = "insert into usuario (nombre, mail, rol, fk_login) values ('$nombre','$email',1,'$dato[0]' )";
 					$result = mysqli_query($conn, $sqlGuardado);
 
 					echo "<h2>" . "Bienvenido: " . $nombre . "</h2>" . "\n\n";

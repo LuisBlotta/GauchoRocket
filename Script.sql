@@ -1,4 +1,4 @@
-﻿drop database gauchoRocket;
+drop database gauchoRocket;
 create database gauchoRocket;
 use gauchoRocket;
 create table login (id_login int primary key auto_increment,
@@ -47,7 +47,7 @@ INSERT INTO cabina (fk_id_modelo, descripcion, capacidad) values (1, "G", 200), 
                                                               (8, "G", 0), (8, "F", 0), (8, "S", 100),	
                                                               (9, "G", 150), (9, "F", 25), (9, "S", 25),	
                                                               (10, "G", 50), (10, "F", 50), (10, "S", 0);	
-INSERT INTO nivel_pasajero (fk_id_modelo, numero) values (1,2), (1,3),
+INSERT INTO nivel_pasajero (fk_id_modelo,id_numero) values (1,2), (1,3),
 													  (2,2), (2,3),
 													  (3,1), (3,2), (3,3),
 													  (4,2), (4,3),
@@ -68,7 +68,6 @@ INSERT INTO equipo (fk_modelo, matricula) values   (1, "AA1"),(1, "AA5"), (1, "A
 												(9, "AA3"), (9, "AA7"), (9, "AA11"), (9, "AA15"), (9, "AA19"), 
                                                 (10, "BA1"), (10, "BA2"), (10, "BA3");
                                                                      
-select * from cabina join modelo on cabina.id_modelo = modelo.id join nivel_pasajero on modelo.id = nivel_pasajero.id_modelo join equipo on equipo.modelo = modelo.id;
                                                                      
 INSERT INTO destino (id_destino, descripcion) values (1, "BA"), (2, "AK"),(3,"EEI"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encelado"), (11, "Titan");                                                                    
 INSERT INTO tipo_viaje (id_tipo_viaje, descripcion) values (1, "Suborbital"), (2, "Tour"), (3,"Entre destinos");         
@@ -88,7 +87,7 @@ INSERT INTO trayecto (fk_punto_partida, fk_punto_llegada, duracion) values (1, 1
 																		 (7, 10, 118);/*C2 entre destinos AA de ganimedes a encedalo*/
 
 
-INSERT INTO vuelo (fk_equipo, fk_trayecto, fk_tipo_viaje, hora_partida, dia_partida, precio) values 	(3, 1, 1, 12, '20191001', 800), /*orbitales*/
+INSERT INTO vuelo (fk_equipo,  fk_tipo_viaje,fk_trayecto, hora_partida, dia_partida, precio) values 	(3, 1, 1, 12, '20191001', 800), /*orbitales*/
 																							(24, 1, 2, 15, '20191001', 800),
 																							(11, 1, 3, 17, '20191002', 800),
 																							(25, 1, 4, 18, '20191002', 800),
@@ -102,14 +101,3 @@ INSERT INTO vuelo (fk_equipo, fk_trayecto, fk_tipo_viaje, hora_partida, dia_part
 																							(39, 3, 12, 20, '20201002', 2150),/*C2 entre destinos AA*/
 																							(40, 3, 13, 20, '20191009', 1180);/*C2 entre destinos AA de ganimedes a encedalo*/
 
-
-
-
-select trayecto.dia_partida, modelo.descripcion, equipo.matricula, d1.descripcion partida, d0.descripcion llegada from trayecto join tipo_viaje on trayecto.tipo_viaje = tipo_viaje.id
-						join destino d0 on trayecto.punto_llegada = d0.id
-						join destino d1 on trayecto.punto_partida = d1.id
-						join equipo on equipo.id = trayecto.equipo
-						join modelo on modelo.id = equipo.modelo;
-
-/*select * from trayecto join equipo on trayecto.equipo = equipo.id join modelo on modelo.id = equipo.modelo
-select * from equipo join modelo on modelo.id = equipo.modelo*/
