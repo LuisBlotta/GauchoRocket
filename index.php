@@ -46,28 +46,27 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><img src="public/img/calendar.png"></span>
 					</div>
-					<input type="date" name="fecha_ida" class="form-control mr-sm-2" required>
+					<input type="date" name="fecha_ida" class="form-control mr-sm-2" >
 				</div>			
+
+
+
 
 				<!--<label class="mr-sm-2">Origen</label>-->
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"><img src="public/img/circle.png"></span>
-					</div>
-					<input name="origen" list="origen" class="custom-select mr-sm-2" placeholder="Origen" required>
-					<datalist id="origen">
-						<option value="Buenos Aires"></option>
-						<option value="Ankara"></option>
-						<option value="Estación Espacial Internacional"></option>
-						<option value="Orbital Hotel"></option>
-						<option value="Luna"></option>
-						<option value="Marte"></option>
-						<option value="Ganimedes"></option>
-						<option value="Europa"></option>
-						<option value="Io"></option>
-						<option value="Encelado"></option>
-						<option value="Titán"></option>
-					</datalist>
+					</div>					
+					<select name="origen" class="custom-select mr-sm-2">
+						<option value="">Todos</option>
+						<?php
+						include("traer_destinos.php");
+						foreach ($destinos as $destino){	
+							echo"<option value=".$destino['id_destino'].">".$destino['descripcion']."</option> ";
+						}
+						?>
+
+					</select>
 				</div>
 
 				<!--<label class="mr-sm-2">Destino</label>-->			
@@ -75,20 +74,14 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><img src="public/img/pin.png"></span>
 					</div>
-					<input name="destino" list="destino" class="custom-select mr-sm-2" placeholder="Destino" required>
-					<datalist id="destino">
-						<option value="Buenos Aires"></option>
-						<option value="Ankara"></option>
-						<option value="Estación Espacial Internacional"></option>
-						<option value="Orbital Hotel"></option>
-						<option value="Luna"></option>
-						<option value="Marte"></option>
-						<option value="Ganimedes"></option>
-						<option value="Europa"></option>
-						<option value="Io"></option>
-						<option value="Encelado"></option>
-						<option value="Titán"></option>
-					</datalist>
+					<select name="destino" class="custom-select mr-sm-2">
+						<option value="">Todos</option>
+						<?php
+							foreach ($destinos as $destino){	
+							echo"<option value=".$destino['id_destino'].">".$destino['descripcion']."</option> ";
+						}
+						?>
+					</select>
 				</div>
 				<button class="btn btn-info mr-sm-2" name="buscar">Buscar</button>			
 			</form>	
@@ -110,9 +103,14 @@
 							<a href='#' class='btn btn-info stretched-link'>Reservar</a>							
 					</div>";
 				}
-			?>
-		</section>
 
+			?>
+
+
+
+
+		</section>
+			
 	</main>	
 	<?php include("footer.php") ?>
 </body>
