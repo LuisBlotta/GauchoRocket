@@ -26,7 +26,7 @@ create table nivel_pasajero (fk_id_modelo int, id_numero int not null, primary k
 create table equipo (id_equipo int primary key auto_increment, fk_modelo int not null, matricula varchar(10) not null, foreign key(fk_modelo)references modelo(id_modelo));
 
 
-create table destino (id_destino int primary key, descripcion varchar(20) not null);
+create table destino (id_destino int primary key, descripcion varchar(50) not null);
 create table tipo_viaje (id_tipo_viaje int primary key, descripcion varchar(20));
 create table trayecto (id_trayecto int primary key auto_increment, fk_punto_partida int not null, fk_punto_llegada int not null, duracion int not null, foreign key(fk_punto_partida) references destino(id_destino), foreign key(fk_punto_llegada) references destino(id_destino));
 create table vuelo (id_vuelo int primary key auto_increment, fk_equipo int not null, fk_trayecto int not null, fk_tipo_viaje int not null, hora_partida int not null, dia_partida date not null, precio int not null, foreign key(fk_tipo_viaje) references tipo_viaje(id_tipo_viaje) ,foreign key(fk_equipo) references equipo(id_equipo),foreign key(fk_trayecto) references trayecto(id_trayecto));
@@ -69,7 +69,7 @@ INSERT INTO equipo (fk_modelo, matricula) values   (1, "AA1"),(1, "AA5"), (1, "A
                                                 (10, "BA1"), (10, "BA2"), (10, "BA3");
                                                                      
                                                                      
-INSERT INTO destino (id_destino, descripcion) values (1, "BA"), (2, "AK"),(3,"EEI"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encelado"), (11, "Titan");                                                                    
+INSERT INTO destino (id_destino, descripcion) values (1, "Buenos Aires"), (2, "Ankara"),(3,"Estacion Espacial Internacional"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encelado"), (11, "Titan");                                                                    
 INSERT INTO tipo_viaje (id_tipo_viaje, descripcion) values (1, "Suborbital"), (2, "Tour"), (3,"Entre destinos");         
 
 INSERT INTO trayecto (fk_punto_partida, fk_punto_llegada, duracion) values (1, 1, 8), /*orbitales*/
@@ -101,3 +101,4 @@ INSERT INTO vuelo (fk_equipo,  fk_tipo_viaje,fk_trayecto, hora_partida, dia_part
 																							(39, 3, 12, 20, '20201002', 2150),/*C2 entre destinos AA*/
 																							(40, 3, 13, 20, '20191009', 1180);/*C2 entre destinos AA de ganimedes a encedalo*/
 
+SELECT descripcion FROM destino
