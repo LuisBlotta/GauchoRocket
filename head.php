@@ -11,6 +11,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-	<!-- Propios -->
+	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="public/css/estilos.css">
 	<link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
+    <link rel="stylesheet" type="text/css" href="public/css/estilos-info_vuelo.css.css">

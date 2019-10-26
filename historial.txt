@@ -7,3 +7,4 @@ El usuario pepe ingresó correctamente
 El usuario admin ingresó correctamente
 El usuario admin ingresó correctamente
 El usuario Ricky ingresó correctamente
+El usuario admin ingresó correctamente
