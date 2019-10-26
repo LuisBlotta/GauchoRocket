@@ -32,11 +32,6 @@ create table tipo_viaje (id_tipo_viaje int primary key, descripcion varchar(20))
 create table trayecto (id_trayecto int primary key auto_increment, fk_punto_partida int not null, fk_punto_llegada int not null, duracion int not null, foreign key(fk_punto_partida) references destino(id_destino), foreign key(fk_punto_llegada) references destino(id_destino));
 create table vuelo (id_vuelo int primary key auto_increment, fk_equipo int not null, fk_trayecto int not null, fk_tipo_viaje int not null, hora_partida int not null, dia_partida date not null, precio int not null, foreign key(fk_tipo_viaje) references tipo_viaje(id_tipo_viaje) ,foreign key(fk_equipo) references equipo(id_equipo),foreign key(fk_trayecto) references trayecto(id_trayecto));
 
-/*select * from vuelo join equipo on vuelo.fk_equipo = equipo.id_equipo join modelo on equipo.fk_modelo = modelo. id_modelo join cabina on cabina.fk_id_modelo = modelo.id_modelo  where equipo.id_equipo = 3;*/
-
-/*UPDATE vuelo join equipo on vuelo.fk_equipo = equipo.id_equipo join modelo on equipo.fk_modelo = modelo. id_modelo join cabina on cabina.fk_id_modelo = modelo.id_modelo
-SET cabina.capacidad = 20
-    WHERE vuelo.id_vuelo = 1 AND cabina.fk_id_modelo= 1 AND cabina.descripcion = "F";*/
     
 /*Tablas reserva*/
 create table reserva (id_reserva int primary key auto_increment,nro_reserva int not null, fk_vuelo int not null, fk_usuario int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_vuelo) references vuelo(id_vuelo), foreign key(fk_usuario) references usuario(id_usuario) );
@@ -112,3 +107,21 @@ INSERT INTO vuelo (fk_equipo,  fk_tipo_viaje,fk_trayecto, hora_partida, dia_part
 
 
 
+select * from reserva;	
+
+
+
+
+SELECT cabina.capacidad FROM vuelo join
+                                        equipo on vuelo.fk_equipo = equipo.id_equipo join
+                                        modelo on modelo.id_modelo = equipo.fk_modelo join 
+                                        cabina on cabina.fk_id_modelo = modelo.id_modelo 
+                                        WHERE vuelo.id_vuelo = 4 AND cabina.descripcion = 'F';
+                                        
+
+select reserva.cantidad_lugares cantidad_lugares   from reserva join vuelo on reserva.fk_vuelo = vuelo.id_vuelo join equipo on equipo.id_equipo = vuelo.fk_equipo join modelo on equipo.fk_modelo = modelo.id_modelo  where reserva.tipo_cabina = "F" AND reserva.fk_vuelo = 1;                           
+
+select * from reserva;
+
+
+                                        
