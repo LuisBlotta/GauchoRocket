@@ -1,3 +1,4 @@
+<?php include("sesion.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
                 foreach ($vuelos as $vuelo) {
                     echo "
                     <article class='info'>
-                        <div href='info_vuelo.php?id_vuelo=".$vuelo['id_vuelo']."' class='card' style='width:300px'>
+                        <div  class='card' style='width:300px'>
     					    <img class='card-img-top' src='public/img/".$vuelo['destino'].".jpg' alt='Card image' style='width:100%''>
 						    <div class='card-body'>
 							    <h2>" . $vuelo['destino'] . "</h2>	
@@ -22,7 +23,7 @@
 							    <p class='card-text'>Origen: " . $vuelo['origen'] . "</p>
 							    <p class='card-text'><img src='public/img/calendar.png'> " . $vuelo['fecha_ida'] . "</p>				
 						    </div>
-							<a href='reservar-form.php' class='btn btn-info stretched-link'>Reservar</a>
+							<a href='reservar-form.php?id_vuelo=".$vuelo['id_vuelo']."' class='btn btn-info stretched-link'>Reservar</a>
 					    </div>
 					</article>";
                 }
