@@ -22,12 +22,10 @@
 							    <p class='card-text'>Origen: " . $vuelo['origen'] . "</p>
 							    <p class='card-text'><img src='public/img/calendar.png'> " . $vuelo['fecha_ida'] . "</p>				
 						    </div>
-							<a href='reservar-form.php' class='btn btn-info stretched-link'>Reservar</a>						
+							<a href='reservar-form.php' class='btn btn-info stretched-link'>Reservar</a>
 					    </div>
 					</article>";
                 }
-
-
             ?>
         </section>
     </main>
