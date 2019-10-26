@@ -1,4 +1,4 @@
-drop database gauchoRocket;
+drop database if exists gauchoRocket;
 create database gauchoRocket;
 use gauchoRocket;
 create table login (id_login int primary key auto_increment,
@@ -106,6 +106,12 @@ INSERT INTO vuelo (fk_equipo,  fk_tipo_viaje,fk_trayecto, hora_partida, dia_part
 																							(40, 3, 13, 20, '20191009', 1180);/*C2 entre destinos AA de ganimedes a encedalo*/
 
 
+CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null, turnos int not null); 
+
+INSERT INTO medico (nombre, direccion, turnos)
+			values ("Centro Medico Buenos Aires", "Av Rivadavia 11506", 300),
+					("Centro Medico Shanghai", "Boedo 1150", 210),
+                    ("Centro Medico Ankara","Marcos Paz 569", 200);
 
 select * from reserva;	
 
