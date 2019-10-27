@@ -7,6 +7,7 @@ function registrar_usuarios_extra(){
     $hoy = getdate();
     $hashConfirmacion =hash('ripemd160', $hoy['seconds'].$hoy['minutes'].$hoy['hours']);
     $nick = $_POST["nick"];
+    $mail = $_POST['mail'];
     $password = md5($_POST["password"]);
     $passwordConfirmada = md5($_POST["passwordConfirmada"]);
     $conn = getConexion();
@@ -39,11 +40,13 @@ if ($count == 1) {
     $dato=mysqli_fetch_row($result);
 
 
+    $sqlAddUser ="INSERT INTO usuario (nombre, mail, rol, fk_login) values ('$nick', '$mail',1,'$dato[0]')";
+    $result1 = mysqli_query($conn, $sqlAddUser);
 
-    $sql = "insert INTO reserva (nro_reserva, fk_vuelo, fk_login) values ($nro_reserva,$id_vuelo,'$dato[0]')";
+    $sqlAddReserva = "insert INTO reserva (nro_reserva, fk_vuelo, fk_login) values ($nro_reserva,$id_vuelo,'$dato[0]')";
 
 
-    $result = mysqli_query($conn, $sql);
+    $result2 = mysqli_query($conn, $sqlAddReserva);
 }
     header("location:registrar_usuarios_extra.php?cantidadLugares=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva");
 }

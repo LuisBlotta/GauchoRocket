@@ -18,6 +18,10 @@ for ($i=0; $i<$cantidadPasajeros; $i++){
                 <label for='user_name'>Nick</label>
                 <input class='form-control mr-sm-2' type='text' name='nick' placeholder='Nick' required>
                 </div>
+                <div class='form-group'>
+					<label for='mail'>E-mail</label>
+					<input class='form-control mr-sm-2' type='text' name='mail' placeholder='E-mail' required>
+				</div>
 				
 				<div class='form-group'>
 					<label for='user_name'>Contraseña</label>

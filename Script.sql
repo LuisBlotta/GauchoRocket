@@ -130,6 +130,10 @@ select reserva.cantidad_lugares cantidad_lugares   from reserva join vuelo on re
 select * from reserva join login on reserva.fk_login = login.id_login;
 
 
-         select * from login           ;                    
+         select * from usuario;      
+         select * from login;      
+         
          select * from reserva
          insert INTO reserva (nro_reserva, fk_vuelo, fk_usuario) values (1752539895,12,'11')*/
+         
+         INSERT INTO usuario (nombre, mail, rol, fk_login) values ('$nick', '$mail',1,'6')
