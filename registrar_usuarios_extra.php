@@ -13,7 +13,7 @@ if (empty($_SESSION['usuario'])) {
 }
 
 if($cantidadPasajeros==0){
-    header("location:reserva-medico.php");
+    header("location:centro-medico.php");
     exit();
 }
 
