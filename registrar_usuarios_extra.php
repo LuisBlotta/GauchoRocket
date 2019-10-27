@@ -8,11 +8,15 @@ $cantidadPasajeros = $_GET['cantidadLugares'];
 $id_vuelo = $_GET['id_vuelo'];
 $nro_reserva = $_GET['nro_reserva'];
 
+if($cantidadPasajeros==0){
+    header("location:reserva-medico.php");
+    exit();
+}
 
 $i=0;
 echo "<h2>Ingrese el nombre de los demás pasajeros</h2>";
-for ($i=0; $i<$cantidadPasajeros; $i++){
-    echo "  <form action='registro_usuarios_extra.php?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva' method='post' STYLE='width: 50%;'>
+for ($i=0; $i<$cantidadPasajeros; $i++){    
+    echo "<form action='registro_usuarios_extra.php?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva' method='post' STYLE='width: 50%;'>
                
 				<div class='form-group'>
                 <label for='user_name'>Nick</label>
@@ -33,14 +37,12 @@ for ($i=0; $i<$cantidadPasajeros; $i++){
                 </div>
                                                 
 				<button class='btn btn-info'>Agregar</button>
-			</form>			
-    
-  ";
+			</form>";
 
     if(isset($_GET["falloPass"]) && $_GET["falloPass"] == 'true'){
         echo "<div style='color:red'>Las contraseñas no coinciden</div>";
     }
-        };
+};
 
 
 ?>

@@ -3,15 +3,15 @@ getConexion();
 
 function getConexion(){
     
-   /*$servername = "localhost:3307";
+   $servername = "localhost:3307";
     $username = "root";
     $dbname = "gauchoRocket";
-    $password = "";*/
+    $password = "";
 
-    $servername = "127.0.0.1";
+    /*$servername = "127.0.0.1";
     $username = "root";
     $dbname = "gauchoRocket";
-    $password = "unlam";
+    $password = "unlam";*/
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 

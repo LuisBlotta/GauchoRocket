@@ -48,6 +48,7 @@ if ($count == 1) {
 
     $result2 = mysqli_query($conn, $sqlAddReserva);
 }
+    $cantidadPasajeros=$cantidadPasajeros-1;
     header("location:registrar_usuarios_extra.php?cantidadLugares=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva");
 }
 else{

@@ -8,14 +8,8 @@ function getVuelos(){
     $sql = "SELECT vuelo.id_vuelo id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM vuelo JOIN trayecto ON vuelo.fk_trayecto = trayecto.id_trayecto 
             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
             JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
-            JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje";
-
-    //Para info_vuelo.php
-    if(isset($_GET['id_vuelo'])){
-        $id_vuelo=$_GET['id_vuelo'];
-        $sql.=" WHERE vuelo.id_vuelo ='$id_vuelo'";
-    }
-    //-------------------
+            JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje";    
+    
     $result = mysqli_query($conn, $sql);
 
     $vuelos = Array();

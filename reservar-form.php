@@ -34,10 +34,6 @@
                                 <option value="G">General</option>
                                 <option value="S">Suite</option>
                             </select>
-
-
-
-
                         </div>
 
                    <button class="btn btn-info">Reservar</button>

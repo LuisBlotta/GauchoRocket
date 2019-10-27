@@ -32,3 +32,4 @@ El usuario admin ingresó correctamente
 El usuario jorge1 ingresó correctamente
 El usuario jorge1 quiso ingresar y no pudo 
 El usuario admin ingresó correctamente
+El usuario admin ingresó correctamente
