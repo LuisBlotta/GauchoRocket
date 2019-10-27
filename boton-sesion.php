@@ -1,4 +1,4 @@
-<?php	
+<?php
 	if (!empty($_SESSION['usuario'])){
 		echo "<a type='button' class='btn btn-info' href= 'logout.php'>Cerrar Sesión</a>"; 		
 	}else{	
