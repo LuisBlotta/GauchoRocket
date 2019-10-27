@@ -1,12 +1,17 @@
-<?php include("sesion.php");?>
+<?php 
+    include("sesion.php");    
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Reserva de pasaje</title>
     <?php include("head.php");
-    $id_vuelo=$_GET['id_vuelo'];
-
-   ?>
+        $id_vuelo=$_GET['id_vuelo'];
+       
+        if (empty($_SESSION['usuario'])) {
+            header('location:info_vuelo.php?id_vuelo='.$id_vuelo);
+        }
+    ?>
 
 </head>
 <?php include("header.php") ?>
@@ -16,7 +21,7 @@
         <section class="wrapper" style="margin-top: 20px; margin-bottom: 20px;">
                 <?php echo"<form method='post' action='modelo-reserva.php?id_vuelo=$id_vuelo'> "?>
                     <label for="pasajeros">Cantidad de pasajeros</label>
-                    <input type="text" class="form-control mr-sm-4" name="cant_pasajeros" id="cant_pasajeros" required placeholder="N° de pasajeros" style="width: 10%; margin-bottom: 10px;">
+                    <input type="number" class="form-control mr-sm-4" name="cant_pasajeros" id="cant_pasajeros" required placeholder="N° de pasajeros" style="width: 10%; margin-bottom: 10px;" value="1">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="nombre">Nombre</label>

@@ -2,8 +2,8 @@
 getConexion();
 
 function getConexion(){
-    
-   $servername = "localhost:3307";
+
+    $servername = "localhost:3307";
     $username = "root";
     $dbname = "gauchoRocket";
     $password = "";

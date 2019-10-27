@@ -8,6 +8,10 @@ $cantidadPasajeros = $_GET['cantidadLugares'];
 $id_vuelo = $_GET['id_vuelo'];
 $nro_reserva = $_GET['nro_reserva'];
 
+if (empty($_SESSION['usuario'])) {
+    header('location:index.php');
+}
+
 if($cantidadPasajeros==0){
     header("location:reserva-medico.php");
     exit();
