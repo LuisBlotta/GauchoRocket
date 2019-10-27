@@ -1,4 +1,3 @@
-<?php include("sesion.php");?>
 <?php
 include_once("conexion.php");
 

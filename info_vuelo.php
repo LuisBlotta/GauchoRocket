@@ -1,3 +1,4 @@
+<?php include("sesion.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,11 +6,11 @@
     <?php include("head.php") ?>
 </head>
 <body>
-    <?php include("header.php"); ?>
+
+    <?php include("header.php");?>
     <main>
         <section>
             <?php
-
                 include("mostrar-info-vuelo.php");
                 foreach ($vuelos as $vuelo) {
                     echo "
