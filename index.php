@@ -47,10 +47,7 @@
 						<span class="input-group-text"><img src="public/img/calendar.png"></span>
 					</div>
 					<input type="date" name="fecha_ida" class="form-control mr-sm-2" >
-				</div>			
-
-
-
+				</div>
 
 				<!--<label class="mr-sm-2">Origen</label>-->
 				<div class="input-group">
@@ -100,15 +97,10 @@
 							<p class='card-text'>Origen: " . $vuelo['origen'] . "</p>
 							<p class='card-text'><img src='public/img/calendar.png'> " . $vuelo['fecha_ida'] . "</p>				
 						</div>
-							<!--<a href='info_vuelo.php' class='btn btn-info stretched-link'>Reservar</a>-->							
+							<!--<a href='info_vuelo.php' class='btn btn-info stretched-link'>Reservar</a>-->					
 					</a>";
 				}
-
 			?>
-
-
-
-
 		</section>
 			
 	</main>	
