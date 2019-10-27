@@ -14,6 +14,7 @@
 <body>
     <?php include("header.php") ?>
     <main>
+
         <section class="medico">
             <?php
             include("mostrar-info-medico.php");
@@ -33,6 +34,7 @@
                 <button class="btn btn-info">Reservar</button>
             </form>
         </section>
+
     </main>
 </body>
 </html>
