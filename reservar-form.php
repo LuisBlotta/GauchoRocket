@@ -5,6 +5,7 @@
     <title>Reserva de pasaje</title>
     <?php include("head.php");
     $id_vuelo=$_GET['id_vuelo'];
+
    ?>
 
 </head>
@@ -28,13 +29,25 @@
                         </div>
                         <div class="form-group">
                             <label for="cabina">Cabina</label>
-                            <input type="text" class="form-control" name="cabina" id="cabina" placeholder="Cabina">
+                            <select name="cabina" class="custom-select mr-sm-2">
+                                <option value="F">Familiar</option>
+                                <option value="G">General</option>
+                                <option value="S">Suite</option>
+                            </select>
+
+
+
+
                         </div>
 
                    <button class="btn btn-info">Reservar</button>
                 </form>
         </section>
-
+        <?php
+        if(isset($_GET["falloLugares"]) && $_GET["falloLugares"] == 'true'){
+            echo "<div style='color:red'>No hay lugares suficientes</div>";
+        }
+        ?>
 
     </main>
     <?php include("footer.php") ?>

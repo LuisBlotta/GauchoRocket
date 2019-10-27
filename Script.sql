@@ -34,7 +34,7 @@ create table vuelo (id_vuelo int primary key auto_increment, fk_equipo int not n
 
     
 /*Tablas reserva*/
-create table reserva (id_reserva int primary key auto_increment,nro_reserva int not null, fk_vuelo int not null, fk_usuario int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_vuelo) references vuelo(id_vuelo), foreign key(fk_usuario) references usuario(id_usuario) );
+create table reserva (id_reserva int primary key auto_increment,nro_reserva int not null, fk_vuelo int not null, fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_vuelo) references vuelo(id_vuelo), foreign key(fk_login) references login(id_login) );
 
 
 
@@ -113,7 +113,7 @@ INSERT INTO medico (nombre, direccion, turnos)
 					("Centro Medico Shanghai", "Boedo 1150", 210),
                     ("Centro Medico Ankara","Marcos Paz 569", 200);
 
-select * from reserva;	
+/*select * from reserva;	
 
 
 
@@ -127,7 +127,9 @@ SELECT cabina.capacidad FROM vuelo join
 
 select reserva.cantidad_lugares cantidad_lugares   from reserva join vuelo on reserva.fk_vuelo = vuelo.id_vuelo join equipo on equipo.id_equipo = vuelo.fk_equipo join modelo on equipo.fk_modelo = modelo.id_modelo  where reserva.tipo_cabina = "F" AND reserva.fk_vuelo = 1;                           
 
-select * from reserva;
+select * from reserva join login on reserva.fk_login = login.id_login;
 
 
-                                        
+         select * from login           ;                    
+         select * from reserva
+         insert INTO reserva (nro_reserva, fk_vuelo, fk_usuario) values (1752539895,12,'11')*/

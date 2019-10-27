@@ -66,15 +66,22 @@ function reserva(){
 
 
 
-    $sql = "insert INTO reserva (nro_reserva, fk_vuelo, fk_usuario, tipo_cabina, cantidad_lugares) values ($nro_reserva,$id_vuelo,'$dato[0]','$cabina',$cant_pasajeros)";
+    $sql = "insert INTO reserva (nro_reserva, fk_vuelo, fk_login, tipo_cabina, cantidad_lugares) values ($nro_reserva,$id_vuelo,'$dato[0]','$cabina',$cant_pasajeros)";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
-
+            if ($cant_pasajeros == 1){
     echo "hola".$nombre;
     }
     else{
-        echo "Chupala";
+        $cant_pasajeros -= 1;
+        header("location:registrar_usuarios_extra.php?cantidadLugares=$cant_pasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&nick=$nick");
+
+    }
+    }
+    else{
+        header("location:reservar-form.php?falloLugares=true&id_vuelo=$id_vuelo");
+
     }
 }
 
