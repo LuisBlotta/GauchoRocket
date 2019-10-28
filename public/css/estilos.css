@@ -2,7 +2,7 @@
 header{
 	width: 100%;	
 	position: fixed;
-	z-index: 1;
+	z-index: 30;
 	top: 0;
 }
 
@@ -11,7 +11,7 @@ main{
 }
 
 header .navbar{
-	height: 58px;
+	min-height: 58px;
 	justify-content: inherit;
 	padding: 10px 20px;
 } 

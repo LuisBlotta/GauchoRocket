@@ -1,7 +1,39 @@
-.info{
-    display: flex;
+.card.cont-info{
+	border-style: none;
+}
+.cont-info{	
+    width: 300px;
+    margin: auto;
+    margin-top: 80px;    
 }
 
-.info .card{
-    flex-direction: row;
+.num-nivel{
+	margin-left: 10px;
+	padding: 5px 10px 5px 10px;
+
+	border: solid 1px rgba(0,0,0,.125);
+	border-radius: .25rem;
+}
+
+@media only screen and (min-width: 48em){
+	.cont-info{	
+		width: 650px;	
+		flex-direction: row;
+		align-items: center;
+		margin-top: 110px;
+	}
+	.card.cont-info{
+		border-style: none;
+	}
+	.cont-info .card-img-top{
+		width: 400px;
+		height: 300px;
+	}
+
+	
+}
+@media only screen and (min-width: 64em){
+	.cont-info{	
+		margin-top: 50px;
+	}
 }
