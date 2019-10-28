@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Reserva de pasaje</title>
+    <link rel="stylesheet" type="text/css" href="public/css/estilos-form_reserva.css">
     <?php include("head.php");
         $id_vuelo=$_GET['id_vuelo'];
        
