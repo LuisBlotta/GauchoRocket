@@ -17,32 +17,36 @@
 </head>
 <?php include("header.php") ?>
 <body>
-    <main>
-        <h3>Reserva de pasaje</h3>
-        <section class="wrapper" style="margin-top: 20px; margin-bottom: 20px;">
+    <main>        
+        <section class="cont-form_reserva">
+            <h3>Reserva de pasaje</h3>            
                 <?php echo"<form method='post' action='modelo-reserva.php?id_vuelo=$id_vuelo'> "?>
-                    <label for="pasajeros">Cantidad de pasajeros</label>
-                    <input type="number" class="form-control mr-sm-4" name="cant_pasajeros" id="cant_pasajeros" required placeholder="N° de pasajeros" style="width: 10%; margin-bottom: 10px;" value="1">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="mail">E-mail</label>
-                                <input type="text" class="form-control" name="mail" id="mail" placeholder="E-mail">
-                            </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pasajeros">Cantidad de pasajeros</label>
+                            <input type="number" class="form-control" name="cant_pasajeros" id="cant_pasajeros" required placeholder="N° de pasajeros" value="1">
                         </div>
+                        
                         <div class="form-group">
                             <label for="cabina">Cabina</label>
-                            <select name="cabina" class="custom-select mr-sm-2">
+                            <select name="cabina" class="custom-select">
                                 <option value="F">Familiar</option>
                                 <option value="G">General</option>
                                 <option value="S">Suite</option>
                             </select>
                         </div>
-
-                   <button class="btn btn-info">Reservar</button>
+                    </div>                       
+                            
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                            
+                            
+                    <label for="mail">E-mail</label>
+                    <input type="text" class="form-control" name="mail" id="mail" placeholder="E-mail">
+                            
+                    <br>
+                    <button class="btn btn-info">Reservar</button>
                 </form>
         </section>
         <?php

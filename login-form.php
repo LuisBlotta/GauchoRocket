@@ -6,8 +6,9 @@
 	<?php include("head.php")?>
 </head>
 <body>
-	<main>
-		<section>
+	<main class="main-login">
+		<section class="cont-form_login col-sm-6">
+			<h2 class="titulo">Iniciar Sesión</h2>
 		<?php
 			//----borrar si se hace con mail		
 			if (isset($_GET["hash"])) {
@@ -33,7 +34,7 @@
 					}					
 				?>
 
-				<button class="btn btn-info">Entrar</button>
+				<button class="btn b-login btn-info">Entrar</button>
 			</form>
 			<p>¿No tienes cuenta?<a href="registro-form.php">Regístrate</a></p>
 			<p><a href="index.php">Volver al Inicio</a></p>
