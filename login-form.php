@@ -4,10 +4,11 @@
 <head>
 	<title>Iniciar Sesión</title>
 	<?php include("head.php")?>
+	<link rel="stylesheet" type="text/css" href="public/css/estilos-login-registro.css">
 </head>
 <body>
-	<main class="main-login">
-		<section class="cont-form_login col-sm-6">
+	<main>
+		<section class="cont-form_login-registro col-sm-6">
 			<h2 class="titulo">Iniciar Sesión</h2>
 		<?php
 			//----borrar si se hace con mail		
@@ -34,7 +35,7 @@
 					}					
 				?>
 
-				<button class="btn b-login btn-info">Entrar</button>
+				<button class="btn btn-info">Entrar</button><br><br>
 			</form>
 			<p>¿No tienes cuenta?<a href="registro-form.php">Regístrate</a></p>
 			<p><a href="index.php">Volver al Inicio</a></p>
