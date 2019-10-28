@@ -4,10 +4,12 @@
 <head>
 	<title>Iniciar Sesión</title>
 	<?php include("head.php")?>
+	<link rel="stylesheet" type="text/css" href="public/css/estilos-login-registro.css">
 </head>
 <body>
 	<main>
-		<section>
+		<section class="cont-form_login-registro col-sm-6">
+			<h2 class="titulo">Iniciar Sesión</h2>
 		<?php
 			//----borrar si se hace con mail		
 			if (isset($_GET["hash"])) {
@@ -33,7 +35,7 @@
 					}					
 				?>
 
-				<button class="btn btn-info">Entrar</button>
+				<button class="btn btn-info">Entrar</button><br><br>
 			</form>
 			<p>¿No tienes cuenta?<a href="registro-form.php">Regístrate</a></p>
 			<p><a href="index.php">Volver al Inicio</a></p>

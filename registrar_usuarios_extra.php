@@ -1,7 +1,7 @@
 <?php
+include("sesion.php");
 include("head.php");
 include("header.php");
-include("sesion.php");
 include_once("conexion.php");
 
 $cantidadPasajeros = $_GET['cantidadLugares'];
@@ -18,35 +18,34 @@ if($cantidadPasajeros==0){
 }
 
 $i=0;
-echo "<h2>Ingrese el nombre de los demás pasajeros</h2>";
+echo "<link rel='stylesheet' type='text/css' href='public/css/estilos-usuarios_extra.css'>";
+echo "<section class='cont-form_usuarios_extra'>
+        <h2>Ingrese el nombre de los demás pasajeros</h2>
+        <article class='form_usuarios_extra'>";
 for ($i=0; $i<$cantidadPasajeros; $i++){    
-    echo "<form action='registro_usuarios_extra.php?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva' method='post' STYLE='width: 50%;'>
-               
-				<div class='form-group'>
+    echo "    
+            <form action='registro_usuarios_extra.php?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva' method='post'>               
+				
                 <label for='user_name'>Nick</label>
                 <input class='form-control mr-sm-2' type='text' name='nick' placeholder='Nick' required>
-                </div>
-                <div class='form-group'>
-					<label for='mail'>E-mail</label>
-					<input class='form-control mr-sm-2' type='text' name='mail' placeholder='E-mail' required>
-				</div>
+               
+				<label for='mail'>E-mail</label>
+				<input class='form-control mr-sm-2' type='text' name='mail' placeholder='E-mail' required>		
 				
-				<div class='form-group'>
-					<label for='user_name'>Contraseña</label>
-					<input class='form-control mr-sm-2' type='password' name='password' placeholder='Contraseña' required>
-				</div>
-                <div class='form-group'>
-                    <label for='user_name'>Confirmar Contraseña</label>
-                    <input class='form-control mr-sm-2' type='password' name='passwordConfirmada' placeholder='Contraseña' required>
-                </div>
-                                                
+				<label for='user_name'>Contraseña</label>
+				<input class='form-control mr-sm-2' type='password' name='password' placeholder='Contraseña' required>				
+                
+                <label for='user_name'>Confirmar Contraseña</label>
+                <input class='form-control mr-sm-2' type='password' name='passwordConfirmada' placeholder='Contraseña' required>                
+                <br>                                
 				<button class='btn btn-info'>Agregar</button>
-			</form>";
+            </form>";
 
     if(isset($_GET["falloPass"]) && $_GET["falloPass"] == 'true'){
         echo "<div style='color:red'>Las contraseñas no coinciden</div>";
     }
 };
-
-
+echo "  </article>
+    </section>";
+include("footer.php");
 ?>

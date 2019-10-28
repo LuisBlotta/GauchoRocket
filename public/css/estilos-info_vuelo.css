@@ -1,10 +1,17 @@
-.card.cont-info{
-	border-style: none;
-}
 .cont-info{	
-    width: 300px;
-    margin: auto;
-    margin-top: 80px;    
+    width: 100%;
+    margin: auto;         
+}
+.cont-info .card{	
+	border-style: none;
+
+	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3);
+}
+.cont-info .card-img-top{
+	width: 100%;	
+	border-radius: unset;
 }
 
 .num-nivel{
@@ -16,24 +23,32 @@
 }
 
 @media only screen and (min-width: 48em){
-	.cont-info{	
-		width: 650px;	
-		flex-direction: row;
-		align-items: center;
+	.cont-info{		
+		margin: auto;		 							
 		margin-top: 110px;
-	}
-	.card.cont-info{
-		border-style: none;
+		display: flex;
+		justify-content: center;
+	}	
+
+	.cont-info .card{		
+		flex-direction: row;
+		align-items: flex-start;
+		padding: 20px;
+		box-sizing: border-box;
 	}
 	.cont-info .card-img-top{
-		width: 400px;
-		height: 300px;
+		width: 500px;
+		height: 333px;
 	}
 
+	.cont-info .card-body{
+		padding-top: 0px;
+		margin-left: 20px;
+	}
 	
 }
 @media only screen and (min-width: 64em){
-	.cont-info{	
+	.cont-info{					
 		margin-top: 50px;
 	}
 }

@@ -28,7 +28,7 @@
 					<li class="nav-item">
                         <a class="nav-link" href="centro-medico.php">Sacar turno</a>
 					</li>
-					<li class="nav-item">						
+					<li class="nav-item item-sesion">						
 						<?php include("boton-sesion.php") ?>
 					</li>
 				</ul>				

@@ -3,10 +3,12 @@
 <head>
 	<title>Registro</title>
 	<?php include("head.php")?>
+	<link rel="stylesheet" type="text/css" href="public/css/estilos-login-registro.css">
 </head>
 <body>
 	<main>
-		<section>
+		<section class="cont-form_login-registro col-sm-6">
+			<h2 class="titulo">Registrarse</h2>
 			<form action="registro.php" method="post">
 				<div class="form-group">
 					<label for="user_name">Nombre de Usuario</label>
@@ -34,10 +36,11 @@
                     echo "<div style='color:red'>Las contraseñas no coinciden</div>";
                 }
                 ?>
-				<button class="btn btn-info">Registrarse</button>
-			</form>			
+				<button class="btn btn-info">Registrarse</button><br><br>
+				<p><a href="index.php">Volver al Inicio</a></p>
+			</form>						
 		</section>
-		<p><a href="index.php">Volver al Inicio</a></p>
+		
 	</main>
 </body>
 </html>

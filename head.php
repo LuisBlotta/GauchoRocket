@@ -12,7 +12,4 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="public/css/estilos.css">
-	<link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
-    <link rel="stylesheet" type="text/css" href="public/css/estilos-info_vuelo.css">
-    <link rel="stylesheet" type="text/css" href="public/css/estilos-form_reserva.css">
+	<link rel="stylesheet" type="text/css" href="public/css/estilos.css">    
