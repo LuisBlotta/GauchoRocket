@@ -14,6 +14,7 @@ function registrar_usuarios_extra(){
     $cantidadPasajeros = $_GET['cantidadPasajeros'];
     $id_vuelo = $_GET['id_vuelo'];
     $nro_reserva = $_GET['nro_reserva'];
+    $cantidadPasajerosInicial = $_GET['cantidadPasajerosInicial'];
 
 //Confirma igualdad de passwords
     if ($password == $passwordConfirmada){
@@ -49,10 +50,10 @@ function registrar_usuarios_extra(){
             $result2 = mysqli_query($conn, $sqlAddReserva);
         }
         $cantidadPasajeros=$cantidadPasajeros-1;
-        header("location:registrar_usuarios_extra.php?cantidadLugares=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva");
+        header("location:registrar_usuarios_extra.php?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva");
     }
     else{
-        header("location:registrar_usuarios_extra.php?falloPass=true&cantidadLugares=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva");
+        header("location:registrar_usuarios_extra.php?falloPass=true&cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva");
     }
 
 }

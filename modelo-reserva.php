@@ -74,7 +74,7 @@ function reserva(){
             header("location:centro-medico.php");
         }else{
             $cant_pasajeros -= 1;
-            header("location:registrar_usuarios_extra.php?cantidadLugares=$cant_pasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&nick=$nick");
+            header("location:registrar_usuarios_extra.php?cantidadPasajeros=$cant_pasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&nick=$nick");
         }
     }else{
         header("location:reservar-form.php?falloLugares=true&id_vuelo=$id_vuelo");

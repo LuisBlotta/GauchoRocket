@@ -4,7 +4,7 @@ include("head.php");
 include("header.php");
 include_once("conexion.php");
 
-$cantidadPasajeros = $_GET['cantidadLugares'];
+$cantidadPasajeros = $_GET['cantidadPasajeros'];
 $id_vuelo = $_GET['id_vuelo'];
 $nro_reserva = $_GET['nro_reserva'];
 
@@ -21,8 +21,9 @@ $i=0;
 echo "<link rel='stylesheet' type='text/css' href='public/css/estilos-usuarios_extra.css'>";
 echo "<section class='cont-form_usuarios_extra'>
         <h2>Ingrese el nombre de los demás pasajeros</h2>
+        <p>Pasajeros restantes $cantidadPasajeros</p>
         <article class='form_usuarios_extra'>";
-for ($i=0; $i<$cantidadPasajeros; $i++){    
+if ($cantidadPasajeros > 0){
     echo "    
             <form action='registro_usuarios_extra.php?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva' method='post'>               
 				
