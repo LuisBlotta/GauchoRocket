@@ -5,7 +5,9 @@ function getVuelos(){
 
     $conn = getConexion();
 
-    $sql = "SELECT vuelo.id_vuelo id_vuelo, trayecto.id_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo FROM vuelo JOIN trayecto ON vuelo.id_vuelo = trayecto.fk_id_vuelo 
+    $sql = "SELECT vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
+            FROM  vuelo_trayecto JOIN vuelo on  vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
+            JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto 
             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
             JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
             JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje
