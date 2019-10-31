@@ -295,9 +295,20 @@ select * from reserva join login on reserva.fk_login = login.id_login;
          
          
   */
-   select reserva.nro_reserva,reserva.cantidad_lugares ,vuelo.id_vuelo, d1.descripcion partida, d0.descripcion llegada from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
+   select sum(reserva.cantidad_lugares)from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
 											join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
                                             join trayecto on trayecto.id_trayecto = vuelo_trayecto.fk_trayecto
                                              JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
 												JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
                                             where vuelo.id_vuelo = 8 AND d0.descripcion = 'luna'
+                                            
+                                            
+                                            SELECT vuelo_trayecto.id_vuelo_trayecto id_vuelo_trayecto ,vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen, d1.id_destino id_origen, d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
+            FROM  vuelo_trayecto JOIN vuelo on  vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
+            JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto 
+            JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
+            JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
+            JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje
+            JOIN equipo on vuelo.fk_equipo = equipo.id_equipo
+            JOIN modelo on equipo.fk_modelo = modelo.id_modelo
+            JOIN tipo_vuelo on modelo.fk_tipo_vuelo = tipo_vuelo.id_tipo_vuelo

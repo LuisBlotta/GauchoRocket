@@ -26,6 +26,21 @@ function reserva(){
                                         modelo on modelo.id_modelo = equipo.fk_modelo join 
                                         cabina on cabina.fk_id_modelo = modelo.id_modelo 
                                         WHERE vuelo.id_vuelo = $id_vuelo AND cabina.descripcion = '$cabina'";
+
+    if ($id_destino > $id_origen){
+        $numerito = $id_destino;
+        while ($numerito < 11){
+
+            $queryTraeEspacioEnEquipo .= "AND d1.$id_destino";
+            $numerito++;
+        }
+
+    }
+    echo $numerito;
+    exit();
+
+
+
     $result1 = mysqli_query($conn, $queryTraeEspacioEnEquipo);
     $cantidadDeEspacio=mysqli_fetch_row($result1);
     // echo $cantidadDeEspacio[0];
