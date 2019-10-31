@@ -44,7 +44,7 @@ function getVuelos(){
         }
     }
     elseif (!empty($destino)) {
-        $sql.=" WHERE d1.id_destino='$destino'";
+        $sql.=" WHERE d0.id_destino='$destino'";
     }
 
 
