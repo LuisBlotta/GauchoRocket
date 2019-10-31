@@ -21,7 +21,7 @@
 							<p class='card-text'>Origen: " . $vuelo['origen'] . "</p>
 							<p class='card-text'><img src='public/img/calendar.png'> " . $vuelo['fecha_ida'] . "</p>				
 						</div>
-							<a href='index.php?pag=reservar-form&id_vuelo=".$vuelo['id_vuelo']."&id_trayecto=".$vuelo['id_trayecto']."&id_destino=".$vuelo['id_destino']."&id_vuelo_trayecto=".$vuelo['id_vuelo_trayecto']."' class='btn btn-info stretched-link'>Reservar</a>							
+							<a href='index.php?pag=reservar-form&id_vuelo=".$vuelo['id_vuelo']."&id_trayecto=".$vuelo['id_trayecto']."&id_destino=".$vuelo['id_destino']."&id_vuelo_trayecto=".$vuelo['id_vuelo_trayecto']."&id_origen=".$vuelo['id_origen']."' class='btn btn-info stretched-link'>Reservar</a>							
 					</div>";
         }
         ?>

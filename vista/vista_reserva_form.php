@@ -10,6 +10,8 @@
     $id_trayecto=$_GET['id_trayecto'];
     $id_destino = $_GET['id_destino'];
     $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
+    $id_origen = $_GET['id_origen'];
+
 
     if (empty($_SESSION['usuario'])) {
         header('location:index.php?pag=info_vuelo&id_vuelo='.$id_vuelo."&id_trayecto=".$id_trayecto);
@@ -21,7 +23,7 @@
 <main>
     <section class="cont-form_reserva">
         <h3>Reserva de pasaje</h3>
-        <?php echo"<form method='post' action='index.php?pag=reserva&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto'> "?>
+        <?php echo"<form method='post' action='index.php?pag=reserva&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto&id_origen=$id_origen'> "?>
 
         <div class="form-row">
             <div class="form-group">

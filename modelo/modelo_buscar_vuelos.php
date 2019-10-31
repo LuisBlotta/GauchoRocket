@@ -15,7 +15,7 @@ function getVuelos(){
 
 
 
-    $sql="SELECT vuelo_trayecto.id_vuelo_trayecto id_vuelo_trayecto ,vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
+    $sql="SELECT vuelo_trayecto.id_vuelo_trayecto id_vuelo_trayecto ,vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen, d1.id_destino id_origen, d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
             FROM  vuelo_trayecto JOIN vuelo on  vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
             JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto 
             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
@@ -60,12 +60,15 @@ function getVuelos(){
             $vuelo['id_trayecto'] =  $row["id_trayecto"];
             $vuelo['id_vuelo'] =  $row["id_vuelo"];
             $vuelo['fecha_ida'] =  $row["fecha_ida"];
+            $vuelo['id_origen'] =  $row["id_origen"];
             $vuelo['origen'] =  $row["origen"];
             $vuelo['destino'] =  $row["destino"];
             $vuelo['tipo_viaje'] =  $row["tipo_viaje"];
             $vuelo['tipo_vuelo'] =  $row["tipo_vuelo"];
             $vuelos[] = $vuelo;
         }
+
+
     }else{
         echo "<h2 class='error-busqueda col-sm-12' >Vuelo no encontrado</h2>";
 

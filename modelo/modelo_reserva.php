@@ -13,11 +13,12 @@ function reserva(){
     $nro_reserva =  rand();
     $id_trayecto=$_GET['id_trayecto'];
     $id_destino = $_GET['id_destino'];
+    $id_origen = $_GET['id_origen'];
     $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
 
 
     $conn = getConexion();
-/*
+
     //traer cantidad de lugar en cabina de equipo
 
     $queryTraeEspacioEnEquipo = "SELECT cabina.capacidad FROM vuelo join
@@ -31,21 +32,15 @@ function reserva(){
     //exit();
 
 
-    //traigo destino anterior
-    if ($id_destino >1){
-    $id_destino-= 1;
-    }
-    // traer total de lugares vendidos
-    $queryTraeLugaresOcupados = "SELECT reserva.cantidad_lugares cantidad_lugares from reserva join
-                                    vuelo on reserva.fk_vuelo = vuelo.id_vuelo join 
-                                    trayecto vuelo.id_vuelo = trayecto.fk_id_vuelo join 
-                                    destino on trayecto.fk_punto_llegada = destino.id_destino join
-                                    equipo on equipo.id_equipo = vuelo.fk_equipo join 
-                                    modelo on equipo.fk_modelo = modelo.id_modelo
-                                    where reserva.tipo_cabina = '$cabina' AND vuelo.id_vuelo = $id_vuelo; AND trayecto.id_trayecto = $id_trayecto AND destino.descripcion = '$id_destino'";
 
-    if ($id_destino >=1){
-    $id_destino+= 1;}
+    // traer total de lugares vendidos
+    $queryTraeLugaresOcupados = "select reserva.cantidad_lugares cantidad_lugares from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
+											join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
+                                            join trayecto on trayecto.id_trayecto = vuelo_trayecto.fk_trayecto
+                                            JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
+											JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
+                                    where reserva.tipo_cabina = '$cabina' AND vuelo_trayecto.fk_vuelo = $id_vuelo; AND vuelo_trayecto.fk_trayecto = $id_trayecto AND destino.descripcion = '$id_destino'";
+
 
     $result2 = mysqli_query($conn, $queryTraeLugaresOcupados);
 
@@ -69,7 +64,7 @@ function reserva(){
     $resta= $cantidadDeEspacio[0] - $lugaresOcupados;
 
 
-    if ($resta >= 0){  */
+    if ($resta >= 0){
 
         //traigo el ID del usuario
         $queryConsulta ="SELECT id_login FROM login WHERE nick='$nick'";
@@ -90,8 +85,8 @@ function reserva(){
         }else{
             $cant_pasajeros -= 1;
             header("location:index.php?pag=registrar_usuarios_extra&cantidadPasajeros=$cant_pasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&nick=$nick&id_trayecto=$id_trayecto&destino=$id_destino");
-        }/*
+        }
     }else{
         header("location:index.php?pag=reservar-form&falloLugares=true&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino");
-    }*/
+    }
 }
