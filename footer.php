@@ -14,7 +14,7 @@
 					<a class="nav-link" href="#">Link</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="centro-medico.php">Sacar Turno</a>
+					<a class="nav-link" href="index.php?pag=centro-medico">Sacar Turno</a>
 				</li>
 				<li class="nav-item btn-sesion">					
 					<?php include("boton-sesion.php") ?>
