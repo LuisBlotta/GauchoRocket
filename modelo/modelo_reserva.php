@@ -15,6 +15,7 @@ function reserva(){
     $id_destino = $_GET['id_destino'];
     $id_origen = $_GET['id_origen'];
     $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
+    $fecha_ida = $_GET['fecha_ida'];
 
 
     $conn = getConexion();
@@ -27,24 +28,14 @@ function reserva(){
                                         cabina on cabina.fk_id_modelo = modelo.id_modelo 
                                         WHERE vuelo.id_vuelo = $id_vuelo AND cabina.descripcion = '$cabina'";
 
-    if ($id_destino > $id_origen){
-        $numerito = $id_destino;
-        while ($numerito < 11){
 
-            $queryTraeEspacioEnEquipo .= "AND d1.$id_destino";
-            $numerito++;
-        }
-
-    }
-    echo $numerito;
-    exit();
 
 
 
     $result1 = mysqli_query($conn, $queryTraeEspacioEnEquipo);
     $cantidadDeEspacio=mysqli_fetch_row($result1);
-    // echo $cantidadDeEspacio[0];
-    //exit();
+    /*echo $cantidadDeEspacio[0];
+    exit();*/
 
 
 
@@ -54,7 +45,204 @@ function reserva(){
                                             join trayecto on trayecto.id_trayecto = vuelo_trayecto.fk_trayecto
                                             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
 											JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
-                                    where reserva.tipo_cabina = '$cabina' AND vuelo_trayecto.fk_vuelo = $id_vuelo; AND vuelo_trayecto.fk_trayecto = $id_trayecto AND destino.descripcion = '$id_destino'";
+                                    where reserva.tipo_cabina = '$cabina' AND vuelo_trayecto.fk_vuelo = $id_vuelo  AND vuelo.dia_partida='$fecha_ida'";
+
+    if ($id_destino > $id_origen){
+        $numerito = $id_origen;
+        $numerito2 = $id_origen;
+
+
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=" AND d0.id_destino IN  ($numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+        if($numerito <= 11){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito += 1;
+        }
+            $queryTraeLugaresOcupados .=")";
+
+
+
+
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    if($numerito2 >= 1){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 -= 1;
+    }
+    $queryTraeLugaresOcupados .=")";
+}
+
+    if ($id_destino < $id_origen){
+        $numerito = $id_origen;
+        $numerito2 = $id_origen;
+
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=" AND d0.id_destino IN  ($numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        if($numerito >= 1){
+            $queryTraeLugaresOcupados .=", $numerito";
+            $numerito -= 1;
+        }
+        $queryTraeLugaresOcupados .=")";
+
+
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+    if($numerito2 <= 11){
+        $queryTraeLugaresOcupados .=", $numerito2";
+        $numerito2 += 1;
+    }
+        if($numerito2 <= 11){
+            $queryTraeLugaresOcupados .=", $numerito2";
+            $numerito2 += 1;
+        }
+        if($numerito2 <= 11){
+            $queryTraeLugaresOcupados .=", $numerito2";
+            $numerito2 += 1;
+        }
+    $queryTraeLugaresOcupados .=")";
+    }
+
+
+
+    if ($id_destino == $id_origen){
+        $queryTraeLugaresOcupados .=" AND  d0.id_destino= $id_origen";
+    }
 
 
     $result2 = mysqli_query($conn, $queryTraeLugaresOcupados);
@@ -69,15 +257,17 @@ function reserva(){
             $lugares[] = $lugar;
         }
     }
+
     $lugaresOcupados=0;
     foreach ($lugares as $lugar){
         $lugaresOcupados += $lugar['cantidad_lugares'];
     }
 
     $lugaresOcupados += $cant_pasajeros;
+
+
     //Resta de  total de espacio por lugares ocupados
     $resta= $cantidadDeEspacio[0] - $lugaresOcupados;
-
 
     if ($resta >= 0){
 
@@ -99,9 +289,9 @@ function reserva(){
             header("location:index.php?pag=centro-medico");
         }else{
             $cant_pasajeros -= 1;
-            header("location:index.php?pag=registrar_usuarios_extra&cantidadPasajeros=$cant_pasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&nick=$nick&id_trayecto=$id_trayecto&destino=$id_destino");
+            header("location:index.php?pag=registrar_usuarios_extra&cantidadPasajeros=$cant_pasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&nick=$nick&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto");
         }
     }else{
-        header("location:index.php?pag=reservar-form&falloLugares=true&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino");
+        header("location:index.php?pag=reservar-form&falloLugares=true&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto&id_origen=$id_origen&fecha_ida=$fecha_ida");
     }
 }

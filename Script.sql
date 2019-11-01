@@ -37,6 +37,10 @@ create table vuelo_trayecto (id_vuelo_trayecto int not null primary key auto_inc
 create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null,  fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login) );
 
 
+/*Tabla medico*/
+CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null, turnos int not null); 
+
+
 INSERT INTO tipo_vuelo (id_tipo_vuelo, descripcion) values (1,"Orbital"),(2,"Baja aceleración"),(3,"Alta aceleración");
 INSERT INTO modelo (id_modelo, descripcion, fk_tipo_vuelo) values (1, "Aguila",3), (2, "Aguilucho",2), (3, "Calandria",1), (4, "Canario",2), (5, "Carancho",2), (6, "Colibri",1), (7, "Condor",3), (8, "Guanaco",3), (9, "Halcon",3), (10, "Zorzal",2);
 
@@ -243,7 +247,7 @@ INSERT INTO trayecto (fk_punto_partida, fk_punto_llegada, duracion, precio) valu
 																								
 																								
 						
-insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values 	
+insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values 	(1,1), (2,2), (6,6),
 															(8,7),(8,8),(8,9),(8,10),(8,11),(8,12), /*C1 BA*/
                                                             (8,13),(8,14),(8,15),(8,16),(8,17),(8,18), /*C1 BA al revez*/
 														    (9,19),(9,20),(9,21),(9,22),(9,23),(9,24), /*C1 AA*/
@@ -253,6 +257,8 @@ insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values
                                                             (11,73),(11,74),(11,75),(11,76),(11,77),(11,78),(11,79),(11,80),(11,81),(11,82),(11,83),(11,84),(11,85),(11,86),(11,87),(11,88),(11,89),(11,90),(11,91),(11,92),(11,93), /*C2 AA*/
                                                             (11,94),(11,95),(11,96),(11,97),(11,98),(11,99),(11,100),(11,101),(11,102),(11,103),(11,104),(11,105),(11,106),(11,107),(11,108),(11,109),(11,110),(11,111),(11,112),(11,113),(11,114); /*C2 AA al revez*/
                                                             
+
+
 
 
 CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null); 
@@ -283,8 +289,6 @@ SELECT turno.fecha fecha, turno.fk_login usuario, medico.nombre centro_medico
             FROM turno JOIN medico ON medico.id_medico = turno.fk_medico
             WHERE medico.id_medico = 1 AND turno.fecha = '20191031';
 
-
-
 /*
 SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM vuelo JOIN trayecto ON vuelo.id_vuelo = trayecto.fk_id_vuelo 
             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
@@ -302,7 +306,7 @@ SELECT cabina.capacidad FROM vuelo join
                                         equipo on vuelo.fk_equipo = equipo.id_equipo join
                                         modelo on modelo.id_modelo = equipo.fk_modelo join 
                                         cabina on cabina.fk_id_modelo = modelo.id_modelo 
-                                        WHERE vuelo.id_vuelo = 4 AND cabina.descripcion = 'F';
+                                        WHERE vuelo.id_vuelo = 9 AND cabina.descripcion = 'f';
                                         
 
 select reserva.cantidad_lugares cantidad_lugares   from reserva join vuelo on reserva.fk_vuelo = vuelo.id_vuelo join equipo on equipo.id_equipo = vuelo.fk_equipo join modelo on equipo.fk_modelo = modelo.id_modelo  where reserva.tipo_cabina = "F" AND reserva.fk_vuelo = 1;                           
@@ -314,24 +318,20 @@ select * from reserva join login on reserva.fk_login = login.id_login;
          select * from login;      
          select * from trayecto;
          select * from vuelo join trayecto on trayecto.fk_id_vuelo = vuelo.id_vuelo
-         select * from reserva join vuelo_reserva on reserva.fk_id_vuelo_reserva = vuelo_reserva.id_vuelo_reserva
+         select * from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto   JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto  JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
+            JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
          
          
-  */
-   /*select sum(reserva.cantidad_lugares)from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
+
+                                            
+                                            
+        select reserva.cantidad_lugares cantidad_lugares from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
 											join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
                                             join trayecto on trayecto.id_trayecto = vuelo_trayecto.fk_trayecto
-                                             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
-												JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
-                                            where vuelo.id_vuelo = 8 AND d0.descripcion = 'luna'
-                                            
-                                            
-                                            SELECT vuelo_trayecto.id_vuelo_trayecto id_vuelo_trayecto ,vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen, d1.id_destino id_origen, d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
-            FROM  vuelo_trayecto JOIN vuelo on  vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
-            JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto 
-            JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
-            JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
-            JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje
-            JOIN equipo on vuelo.fk_equipo = equipo.id_equipo
-            JOIN modelo on equipo.fk_modelo = modelo.id_modelo
-            JOIN tipo_vuelo on modelo.fk_tipo_vuelo = tipo_vuelo.id_tipo_vuelo
+                                            JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
+											JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
+                              where reserva.tipo_cabina = 'S' AND vuelo_trayecto.fk_vuelo = 1 AND vuelo_trayecto.fk_trayecto = 1 AND  d0.id_destino= 1 or  d0.id_destino= 2 or  d0.id_destino= 3 or  d0.id_destino= 4 or  d0.id_destino= 5
+                                
+                                        */
+                                
+select reserva.cantidad_lugares cantidad_lugares from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo join trayecto on trayecto.id_trayecto = vuelo_trayecto.fk_trayecto JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino where reserva.tipo_cabina = 'F' AND vuelo_trayecto.fk_vuelo = 10 AND vuelo.dia_partida='2019-08-02' AND d0.id_destino IN (9,10, 11) AND d1.id_destino IN (10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
