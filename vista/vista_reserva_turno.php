@@ -10,10 +10,9 @@ include("condicional_sesion.php"); ?>
 </head>
 <body>
     <main>
-        <?php
-        echo ("ya reservaste");
 
-        ?>
+        <h3>Reserva exitosa</h3>
+
 
     </main>
 </body>
