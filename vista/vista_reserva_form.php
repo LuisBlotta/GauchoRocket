@@ -11,6 +11,7 @@
     $id_destino = $_GET['id_destino'];
     $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
     $id_origen = $_GET['id_origen'];
+    $fecha_ida= $_GET['fecha_ida'];
 
 
     if (empty($_SESSION['usuario'])) {
@@ -23,7 +24,7 @@
 <main>
     <section class="cont-form_reserva">
         <h3>Reserva de pasaje</h3>
-        <?php echo"<form method='post' action='index.php?pag=reserva&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto&id_origen=$id_origen'> "?>
+        <?php echo"<form method='post' action='index.php?pag=reserva&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto&id_origen=$id_origen&fecha_ida=$fecha_ida'> "?>
 
         <div class="form-row">
             <div class="form-group">
