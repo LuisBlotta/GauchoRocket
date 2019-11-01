@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
 </head>
 <body>
-
     <main>
         <h3 style="margin-top: 20px;">Reserva turno en nuestros centros médicos</h3>
 
@@ -16,22 +15,17 @@
 
             foreach ($medicos as $medico){
                 echo "
-					<a href='index.php?pag=reserva_medico&id_medico=".$medico['id_medico']."' class='card' style='width:300px; color:#3F3F3F;'>
-    					<img class='card-img-top' src='public/img/".$medico['nombre'].".jpg' alt='Card image' style='width:100%''>
-						<div class='card-body'>
-							<h2>" . $medico['nombre'] . "</h2>	
-							<h4>" . $medico['turnos'] . " Turnos diarios</h4>														
-						</div>
-							<!--<a href='info_vuelo.php' class='btn btn-info stretched-link'>Reservar</a>-->							
-					</a>";
+                        <a href='index.php?pag=reserva_medico&id_medico=".$medico['id_medico']."' class='card' style='width:300px; color:#3F3F3F;'>
+                            <img class='card-img-top' src='public/img/".$medico['nombre'].".jpg' alt='Card image' style='width:100%''>
+                            <div class='card-body'>
+                                <h2>" . $medico['nombre'] . "</h2>														
+                            </div>							
+                        </a>";
             }
 
             ?>
         </section>
 
     </main>
-
-
-
 </body>
-<?php
+</html>
