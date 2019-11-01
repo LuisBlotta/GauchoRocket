@@ -1,9 +1,11 @@
 <?php
 include_once("conexion.php");
+
 function getMedicos(){
+
     $id_medico=$_GET['id_medico'];
     $conn = getConexion();
-    $sql = "SELECT id_medico, nombre, direccion, turnos
+    $sql = "SELECT id_medico, nombre, direccion
             FROM medico
             WHERE id_medico = '$id_medico'";
     $result = mysqli_query($conn, $sql);
