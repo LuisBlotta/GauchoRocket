@@ -253,14 +253,36 @@ insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values
                                                             (11,73),(11,74),(11,75),(11,76),(11,77),(11,78),(11,79),(11,80),(11,81),(11,82),(11,83),(11,84),(11,85),(11,86),(11,87),(11,88),(11,89),(11,90),(11,91),(11,92),(11,93), /*C2 AA*/
                                                             (11,94),(11,95),(11,96),(11,97),(11,98),(11,99),(11,100),(11,101),(11,102),(11,103),(11,104),(11,105),(11,106),(11,107),(11,108),(11,109),(11,110),(11,111),(11,112),(11,113),(11,114); /*C2 AA al revez*/
                                                             
+                    
+ CREATE TABLE turno (id_turno int primary key auto_increment not null, fecha date ); 
 
+CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null); 
 
-CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null, turnos int not null); 
+CREATE TABLE turno_ocupado( id_turno_ocupado int primary key auto_increment not null, fk_turno int not null, fk_medico int not null, fk_login int not null,
+				foreign key(fk_turno) references turno(id_turno), foreign key(fk_medico) references medico(id_medico), foreign key(fk_login) references login(id_login));
 
-INSERT INTO medico (nombre, direccion, turnos)
-			values ("Centro Medico Buenos Aires", "Av Rivadavia 11506", 300),
-					("Centro Medico Shanghai", "Boedo 1150", 210),
-                    ("Centro Medico Ankara","Marcos Paz 569", 200);
+INSERT INTO medico (nombre, direccion)
+			values ("Centro Medico Buenos Aires", "Av Rivadavia 11506"),
+					("Centro Medico Shanghai", "Boedo 1150"),
+                    ("Centro Medico Ankara","Marcos Paz 569");
+                    
+INSERT INTO turno (fecha)
+			values ('20191030'),
+					('20191101'),
+                    ('20191029'),
+                    ('20191030'),
+                    ('20191029');
+
+INSERT INTO turno_ocupado (fk_turno, fk_medico, fk_login)
+				values (1, 2, 1),
+						(2, 1, 1),
+                        (3, 3, 1),
+						(4, 2, 1),
+                        (5, 1, 1); 
+  
+  
+  
+  
 
 /*
 SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM vuelo JOIN trayecto ON vuelo.id_vuelo = trayecto.fk_id_vuelo 
@@ -295,7 +317,7 @@ select * from reserva join login on reserva.fk_login = login.id_login;
          
          
   */
-   select sum(reserva.cantidad_lugares)from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
+   /*select sum(reserva.cantidad_lugares)from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
 											join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
                                             join trayecto on trayecto.id_trayecto = vuelo_trayecto.fk_trayecto
                                              JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
