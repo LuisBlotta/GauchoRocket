@@ -37,9 +37,6 @@ create table vuelo_trayecto (id_vuelo_trayecto int not null primary key auto_inc
 create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null,  fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login) );
 
 
-/*Tabla medico*/
-CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null, turnos int not null); 
-
 
 INSERT INTO tipo_vuelo (id_tipo_vuelo, descripcion) values (1,"Orbital"),(2,"Baja aceleración"),(3,"Alta aceleración");
 INSERT INTO modelo (id_modelo, descripcion, fk_tipo_vuelo) values (1, "Aguila",3), (2, "Aguilucho",2), (3, "Calandria",1), (4, "Canario",2), (5, "Carancho",2), (6, "Colibri",1), (7, "Condor",3), (8, "Guanaco",3), (9, "Halcon",3), (10, "Zorzal",2);
@@ -245,17 +242,17 @@ INSERT INTO trayecto (fk_punto_partida, fk_punto_llegada, duracion, precio) valu
 																								(5, 3, 13, 4000);
 																								
 																								
-																								
+															
 						
 insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values 	(1,1), (2,2), (6,6),
 															(8,7),(8,8),(8,9),(8,10),(8,11),(8,12), /*C1 BA*/
-                                                            (8,13),(8,14),(8,15),(8,16),(8,17),(8,18), /*C1 BA al revez*/
-														    (9,19),(9,20),(9,21),(9,22),(9,23),(9,24), /*C1 AA*/
-															(9,25),(9,26),(9,27),(9,28),(9,29),(9,30), /*C1 AA al revez*/
-                                                            (10,31),(10,32),(10,33),(10,34),(10,35),(10,36),(10,37),(10,38),(10,39),(10,40),(10,41),(10,42),(10,43),(10,44),(10,45),(10,46),(10,47),(10,48),(10,49),(10,50),(10,51), /*C2 BA*/
-                                                            (10,52),(10,53),(10,54),(10,55),(10,56),(10,57),(10,58),(10,59),(10,60),(10,61),(10,62),(10,63),(10,64),(10,65),(10,66),(10,67),(10,68),(10,69),(10,70),(10,71),(10,72), /*C2 BA al revez*/
-                                                            (11,73),(11,74),(11,75),(11,76),(11,77),(11,78),(11,79),(11,80),(11,81),(11,82),(11,83),(11,84),(11,85),(11,86),(11,87),(11,88),(11,89),(11,90),(11,91),(11,92),(11,93), /*C2 AA*/
-                                                            (11,94),(11,95),(11,96),(11,97),(11,98),(11,99),(11,100),(11,101),(11,102),(11,103),(11,104),(11,105),(11,106),(11,107),(11,108),(11,109),(11,110),(11,111),(11,112),(11,113),(11,114); /*C2 AA al revez*/
+                                                            (9,13),(9,14),(9,15),(9,16),(9,17),(9,18), /*C1 BA al revez*/
+														    (10,19),(10,20),(10,21),(10,22),(10,23),(10,24), /*C1 AA*/
+															(11,25),(11,26),(11,27),(11,28),(11,29),(11,30), /*C1 AA al revez*/
+                                                            (12,31),(12,32),(12,33),(12,34),(12,35),(12,36),(12,37),(12,38),(12,39),(12,40),(12,41),(12,42),(12,43),(12,44),(12,45),(12,46),(12,47),(12,48),(12,49),(12,50),(12,51), /*C2 BA*/
+                                                            (13,52),(13,53),(13,54),(13,55),(13,56),(13,57),(13,58),(13,59),(13,60),(13,61),(13,62),(13,63),(13,64),(13,65),(13,66),(13,67),(13,68),(13,69),(13,70),(13,71),(13,72), /*C2 BA al revez*/
+                                                            (14,73),(14,74),(14,75),(14,76),(14,77),(14,78),(14,79),(14,80),(14,81),(14,82),(14,83),(14,84),(14,85),(14,86),(14,87),(14,88),(14,89),(14,90),(14,91),(14,92),(14,93), /*C2 AA*/
+                                                            (15,94),(15,95),(15,96),(15,97),(15,98),(15,99),(15,100),(15,101),(15,102),(15,103),(15,104),(15,105),(15,106),(15,107),(15,108),(15,109),(15,110),(15,111),(15,112),(15,113),(15,114); /*C2 AA al revez*/
                                                             
 
 
@@ -306,7 +303,7 @@ SELECT cabina.capacidad FROM vuelo join
                                         equipo on vuelo.fk_equipo = equipo.id_equipo join
                                         modelo on modelo.id_modelo = equipo.fk_modelo join 
                                         cabina on cabina.fk_id_modelo = modelo.id_modelo 
-                                        WHERE vuelo.id_vuelo = 9 AND cabina.descripcion = 'f';
+                                        WHERE vuelo.id_vuelo = 13 AND cabina.descripcion = 'f';
                                         
 
 select reserva.cantidad_lugares cantidad_lugares   from reserva join vuelo on reserva.fk_vuelo = vuelo.id_vuelo join equipo on equipo.id_equipo = vuelo.fk_equipo join modelo on equipo.fk_modelo = modelo.id_modelo  where reserva.tipo_cabina = "F" AND reserva.fk_vuelo = 1;                           
@@ -334,4 +331,3 @@ select * from reserva join login on reserva.fk_login = login.id_login;
                                 
                                         */
                                 
-select reserva.cantidad_lugares cantidad_lugares from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo join trayecto on trayecto.id_trayecto = vuelo_trayecto.fk_trayecto JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino where reserva.tipo_cabina = 'F' AND vuelo_trayecto.fk_vuelo = 10 AND vuelo.dia_partida='2019-08-02' AND d0.id_destino IN (9,10, 11) AND d1.id_destino IN (10, 9, 8, 7, 6, 5, 4, 3, 2, 1)

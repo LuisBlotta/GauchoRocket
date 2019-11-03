@@ -49,11 +49,11 @@ function reserva(){
 
     if ($id_destino > $id_origen){
         $numerito = $id_origen;
-        $numerito2 = $id_origen;
+        $numerito2 = 1;
 
 
         if($numerito <= 11){
-            $queryTraeLugaresOcupados .=" AND d0.id_destino IN  ($numerito";
+            $queryTraeLugaresOcupados .=" AND( d0.id_destino IN  ($numerito";
             $numerito += 1;
         }
         if($numerito <= 11){
@@ -97,55 +97,51 @@ function reserva(){
 
 
 
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)) {
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
+    if($numerito2 <= ($id_destino -1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
+        $numerito2 += 1;
     }
-    if($numerito2 >= 1){
-        $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 -= 1;
-    }
-    $queryTraeLugaresOcupados .=")";
+    $queryTraeLugaresOcupados .="))";
 }
 
     if ($id_destino < $id_origen){
         $numerito = $id_origen;
-        $numerito2 = $id_origen;
+        $numerito2 = 11;
 
         if($numerito >= 1){
-            $queryTraeLugaresOcupados .=" AND d0.id_destino IN  ($numerito";
+            $queryTraeLugaresOcupados .=" AND (d0.id_destino IN  ($numerito";
             $numerito -= 1;
         }
         if($numerito >= 1){
@@ -191,54 +187,59 @@ function reserva(){
         $queryTraeLugaresOcupados .=")";
 
 
-    if($numerito2 <= 11){
+    if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-    if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
         $queryTraeLugaresOcupados .=", $numerito2";
-        $numerito2 += 1;
+        $numerito2 -= 1;
     }
-        if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
             $queryTraeLugaresOcupados .=", $numerito2";
-            $numerito2 += 1;
+            $numerito2 -= 1;
         }
-        if($numerito2 <= 11){
+        if($numerito2 >= ($id_destino +1)){
             $queryTraeLugaresOcupados .=", $numerito2";
-            $numerito2 += 1;
+            $numerito2 -= 1;
         }
-    $queryTraeLugaresOcupados .=")";
+        if($numerito2 >= ($id_destino +1)){
+            $queryTraeLugaresOcupados .=", $numerito2";
+            $numerito2 -= 1;
+        }
+    $queryTraeLugaresOcupados .="))";
     }
 
-
+/*echo $queryTraeLugaresOcupados;
+exit();*/
 
     if ($id_destino == $id_origen){
         $queryTraeLugaresOcupados .=" AND  d0.id_destino= $id_origen";
