@@ -24,27 +24,26 @@ function getTurnos()
                 Shanghai N° 2 - 210 turnos x dia
                 Ankara N° 3 - 200 turnos x dia           */
 
-    if ($id_medico === 1) {
+    if ($id_medico == 1) {
         if (mysqli_num_rows($result) < 3) {
             $sqlInsert = "INSERT INTO turno (fecha, fk_medico, fk_login)
                             values ('$fecha_turno', '$id_medico', 1)";
 
             $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
-            echo $sqlInsert;
-            exit();
+
 
         } else
             echo("Los turnos para el día seleccionado están llenos");
-    } elseif ($id_medico === 2) {
+    } elseif ($id_medico == 2) {
+
         if (mysqli_num_rows($result) < 2) {
             $sqlInsert = "INSERT INTO turno (fecha, fk_medico, fk_login)
                             values ('$fecha_turno', '$id_medico', 1)";
 
             $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
-            echo $sqlInsert;
-            exit();
+
 
         } else
             echo("Los turnos para el día seleccionado están llenos");
@@ -55,8 +54,7 @@ function getTurnos()
 
             $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
-            echo $sqlInsert;
-            exit();
+
 
         } else
             echo("Los turnos para el día seleccionado están llenos");
