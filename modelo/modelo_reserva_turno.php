@@ -32,15 +32,18 @@ function getTurnos()
             $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
 
+
         } else
             echo("Los turnos para el día seleccionado están llenos");
     } elseif ($id_medico == 2) {
+
         if (mysqli_num_rows($result) < 2) {
             $sqlInsert = "INSERT INTO turno (fecha, fk_medico, fk_login)
                             values ('$fecha_turno', '$id_medico', 1)";
 
             $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
+
 
         } else
             echo("Los turnos para el día seleccionado están llenos");
