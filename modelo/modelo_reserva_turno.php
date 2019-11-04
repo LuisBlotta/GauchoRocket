@@ -8,7 +8,7 @@ function getTurnos()
     $id_medico = $_GET['id_medico'];
     $nombre = $_POST['nombre'];
     $fecha_turno = $_POST['fecha_turno'];
-    $nick = $_COOKIE["login"];
+    //$nick = $_COOKIE["login"];
 
     $conn = getConexion();
 
@@ -24,34 +24,40 @@ function getTurnos()
                 Shanghai N° 2 - 210 turnos x dia
                 Ankara N° 3 - 200 turnos x dia           */
 
-    if ($id_medico == 1) {
+    if ($id_medico === 1) {
         if (mysqli_num_rows($result) < 3) {
             $sqlInsert = "INSERT INTO turno (fecha, fk_medico, fk_login)
-                            values ('$fecha_turno', '$id_medico', '$nick')";
+                            values ('$fecha_turno', '$id_medico', 1)";
 
-            $result = mysqli_query($conn, $sql);
+            $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
-            header("location:index.php?pag=reserva_turno");
+            echo $sqlInsert;
+            exit();
+
         } else
             echo("Los turnos para el día seleccionado están llenos");
-    } elseif ($id_medico == 1) {
+    } elseif ($id_medico === 2) {
         if (mysqli_num_rows($result) < 2) {
             $sqlInsert = "INSERT INTO turno (fecha, fk_medico, fk_login)
-                            values ('$fecha_turno', '$id_medico', '$nick')";
+                            values ('$fecha_turno', '$id_medico', 1)";
 
-            $result = mysqli_query($conn, $sql);
+            $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
-            header("location:index.php?pag=reserva_turno");
+            echo $sqlInsert;
+            exit();
+
         } else
             echo("Los turnos para el día seleccionado están llenos");
     } else
         if (mysqli_num_rows($result) < 2) {
             $sqlInsert = "INSERT INTO turno (fecha, fk_medico, fk_login)
-                            values ('$fecha_turno', '$id_medico', '$nick')";
+                            values ('$fecha_turno', '$id_medico', 1)";
 
-            $result = mysqli_query($conn, $sql);
+            $resultado = mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
-            header("location:index.php?pag=reserva_turno");
+            echo $sqlInsert;
+            exit();
+
         } else
             echo("Los turnos para el día seleccionado están llenos");
 
