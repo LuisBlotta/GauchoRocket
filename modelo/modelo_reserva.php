@@ -278,9 +278,10 @@ exit();*/
         $result = mysqli_query($conn, $queryConsulta);
         $dato=mysqli_fetch_row($result);
 
+        $estado_reserva_default=2;
 
 
-        $sql = "insert INTO reserva (nro_reserva, fk_id_vuelo_trayecto, fk_login, tipo_cabina, cantidad_lugares) values ($nro_reserva,$id_vuelo_trayecto,'$dato[0]','$cabina',$cant_pasajeros)";
+        $sql = "insert INTO reserva (nro_reserva, fk_id_vuelo_trayecto, fk_login, tipo_cabina, cantidad_lugares, fk_estado_reserva) values ($nro_reserva,$id_vuelo_trayecto,'$dato[0]','$cabina',$cant_pasajeros,$estado_reserva_default)";
 
 
 
