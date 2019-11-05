@@ -39,9 +39,13 @@ function getReservas(){
             $reserva['estado_reserva'] =  $row["estado_reserva"];
             $reservas[] = $reserva;
         }
+    }else{
+          $reservas[0] = 1;
+
     }
     
 
     mysqli_close($conn);
     return $reservas;
+
 }
