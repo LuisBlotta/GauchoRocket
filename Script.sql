@@ -262,7 +262,7 @@ insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values 	(1,1), (2,2), (6,6),
 
 CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null); 
                     
-CREATE TABLE turno (id_turno int primary key auto_increment not null, fecha date, fk_medico int not null, fk_login int not null,
+CREATE TABLE turno (id_turno int primary key auto_increment not null, fecha date, nick varchar(50) not null, fk_medico int not null, fk_login int not null,
 				foreign key(fk_medico) references medico(id_medico), foreign key(fk_login) references login(id_login)); 
 
 
@@ -271,23 +271,12 @@ INSERT INTO medico (nombre, direccion)
 					("Centro Medico Shanghai", "Boedo 1150"),
                     ("Centro Medico Ankara","Marcos Paz 569");
                     
-INSERT INTO turno (fecha, fk_medico, fk_login)
-			values ('20191031', 1, 1),
-					('20191031', 1, 1),
-                    ('20191031', 1, 1),
-                    ('20191022', 2, 1),
-                    ('20191022', 1, 1),
-                    ('20191030', 3, 1);
 
-SELECT fecha, medico.nombre centro_medico, login.nick usuario
-FROM turno 
-JOIN medico ON turno.fk_medico = medico.id_medico
-JOIN login ON turno.fk_login = login.id_login;
 
-SELECT turno.fecha fecha, turno.fk_login usuario, medico.nombre centro_medico
-            FROM turno JOIN medico ON medico.id_medico = turno.fk_medico
-            WHERE medico.id_medico = 1 AND turno.fecha = '20191031';
-
+/*INSERT INTO turno (fecha, nick, fk_medico)
+                            values ('20191104',"admin" , 2);*/
+                            
+SELECT * FROM turno; 
 /*
 SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM vuelo JOIN trayecto ON vuelo.id_vuelo = trayecto.fk_id_vuelo 
             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
