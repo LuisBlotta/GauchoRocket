@@ -23,7 +23,7 @@ function getTurnos()
     $dato=mysqli_fetch_row($resultlogin);
 
     /* ---------- id_medico ----------
-                Buenos Aires N° - 1 300 turnos x dia
+                Buenos Aires N° 1 - 300 turnos x dia
                 Shanghai N° 2 - 210 turnos x dia
                 Ankara N° 3 - 200 turnos x dia           */
 
@@ -39,6 +39,7 @@ function getTurnos()
             exit();*/
         } else
             echo("Los turnos para el día seleccionado están llenos");
+
     } elseif ($id_medico == 2) {
 
         if (mysqli_num_rows($result) < 2) {
@@ -50,10 +51,10 @@ function getTurnos()
             echo ("Reserva exitosa!");
             /*echo $sqlInsert;
             exit();*/
-
         } else
             echo("Los turnos para el día seleccionado están llenos");
     } else
+
         if (mysqli_num_rows($result) < 2) {
             $sqlInsert = "INSERT INTO turno (fecha, nick, fk_medico, fk_login)
                             values ('$fecha_turno', '$nombre', '$id_medico', $dato[0])";
