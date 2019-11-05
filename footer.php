@@ -11,7 +11,7 @@
 					<a class="nav-link" href="index.php">Inicio</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
+					<a class="nav-link" href="index.php?pag=consultar_reservas">Reservas</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="index.php?pag=centro-medico">Sacar Turno</a>

@@ -29,18 +29,11 @@ if ($cantidadPasajeros > 0){
 				<label for='mail'>E-mail</label>
 				<input class='form-control mr-sm-2' type='text' name='mail' placeholder='E-mail' required>		
 				
-				<label for='user_name'>Contraseña</label>
-				<input class='form-control mr-sm-2' type='password' name='password' placeholder='Contraseña' required>				
-                
-                <label for='user_name'>Confirmar Contraseña</label>
-                <input class='form-control mr-sm-2' type='password' name='passwordConfirmada' placeholder='Contraseña' required>                
-                <br>                                
+				<br>                                
 				<button class='btn btn-info'>Agregar</button>
             </form>";
 
-    if(isset($_GET["falloPass"]) && $_GET["falloPass"] == 'true'){
-        echo "<div style='color:red'>Las contraseñas no coinciden</div>";
-    }
+    
 };
 echo "  </article>
     </section>";

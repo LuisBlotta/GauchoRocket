@@ -13,7 +13,7 @@
         foreach ($vuelos as $vuelo){
             echo "
 					<div class='card' style='width:300px'>
-    					<img class='card-img-top' src='public/img/".$vuelo['origen'].".jpg' alt='Card image' style='width:100%''>
+    					<img class='card-img-top' src='public/img/".$vuelo['destino'].".jpg' alt='Card image' style='width:100%''>
 						<div class='card-body'>
 							<h2>" . $vuelo['destino'] . "</h2>		
 							<h4>" . $vuelo['tipo_viaje'] . "</h4>	

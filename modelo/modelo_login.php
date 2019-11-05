@@ -35,7 +35,7 @@ function login(){
     }
     //-------------------------------------------------------------
     if (mysqli_num_rows($resultado)>0) {
-        setcookie("login", $nick, time() + 1000);
+        setcookie("login", $nick, time() + 10000);
         session_start();
         $_SESSION['usuario'] = true;
         header('location:index.php');
