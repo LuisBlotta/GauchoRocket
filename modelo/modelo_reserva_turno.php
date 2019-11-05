@@ -7,6 +7,7 @@ function getTurnos()
 
     $id_medico = $_GET['id_medico'];
     $nombre = $_POST['nombre'];
+    $nick = $_COOKIE["login"];
     $fecha_turno = $_POST['fecha_turno'];
 
     $conn = getConexion();
@@ -17,7 +18,7 @@ function getTurnos()
 
     $result = mysqli_query($conn, $sql);
 
-    $queryConsulta ="SELECT id_login FROM login WHERE nick='$nombre'";
+    $queryConsulta ="SELECT id_login FROM login WHERE nick='$nick'";
 
     $resultlogin = mysqli_query($conn, $queryConsulta);
     $dato=mysqli_fetch_row($resultlogin);
@@ -30,7 +31,7 @@ function getTurnos()
     if ($id_medico == 1) {
         if (mysqli_num_rows($result) < 3) {
             $sqlInsert = "INSERT INTO turno (fecha, nick, fk_medico, fk_login)
-                            values ('$fecha_turno', '$nombre', '$id_medico', $dato[0])";
+                            values ('$fecha_turno', '$nick', '$id_medico', $dato[0])";
 
             mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
@@ -44,7 +45,7 @@ function getTurnos()
 
         if (mysqli_num_rows($result) < 2) {
             $sqlInsert = "INSERT INTO turno (fecha, nick, fk_medico, fk_login)
-                            values ('$fecha_turno', '$nombre', '$id_medico', $dato[0])";
+                            values ('$fecha_turno', '$nick', '$id_medico', $dato[0])";
 
             mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
@@ -57,7 +58,7 @@ function getTurnos()
 
         if (mysqli_num_rows($result) < 2) {
             $sqlInsert = "INSERT INTO turno (fecha, nick, fk_medico, fk_login)
-                            values ('$fecha_turno', '$nombre', '$id_medico', $dato[0])";
+                            values ('$fecha_turno', '$nick', '$id_medico', $dato[0])";
 
             mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);

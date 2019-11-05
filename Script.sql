@@ -38,7 +38,7 @@ create table estado_reserva(id_estado_reserva int primary key, descripcion varch
 create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null, fk_estado_reserva int not null, fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_estado_reserva) references estado_reserva(id_estado_reserva), foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login) );
 
 
-INSERT INTO estado_reserva(id_estado_reserva, descripcion) values (1, "Ok"), (2,"Pendiente"), (3,"Cancelada");
+INSERT INTO estado_reserva(id_estado_reserva, descripcion) values (1, "Confirmada"), (2,"Pendiente"), (3,"Abonada y Pendiente"), (4,"Cancelada");
 
 INSERT INTO tipo_vuelo (id_tipo_vuelo, descripcion) values (1,"Orbital"),(2,"Baja aceleración"),(3,"Alta aceleración");
 INSERT INTO modelo (id_modelo, descripcion, fk_tipo_vuelo) values (1, "Aguila",3), (2, "Aguilucho",2), (3, "Calandria",1), (4, "Canario",2), (5, "Carancho",2), (6, "Colibri",1), (7, "Condor",3), (8, "Guanaco",3), (9, "Halcon",3), (10, "Zorzal",2);
@@ -276,7 +276,7 @@ INSERT INTO medico (nombre, direccion)
 /*INSERT INTO turno (fecha, nick, fk_medico)
                             values ('20191104',"admin" , 2);*/
                             
-SELECT * FROM turno; 
+ 
 /*
 SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje FROM vuelo JOIN trayecto ON vuelo.id_vuelo = trayecto.fk_id_vuelo 
             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
@@ -284,7 +284,7 @@ SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.de
             JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje
             where d1.descripcion='Europa' or d0.descripcion='Encelado';
             
-            
+SELECT * FROM turno;            
 select * from vuelo;	
 
 
