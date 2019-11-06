@@ -14,7 +14,7 @@
         <?php
 
         if($reservas[0] == 1){
-            echo "<h2 style='color:#17a2b8; text-align:center;'>No posee estilos-reservas</h2>";
+            echo "<h2 style='color:#17a2b8; text-align:center;'>No posee reservas</h2>";
         }else{
         
             foreach ($reservas as $reserva) {

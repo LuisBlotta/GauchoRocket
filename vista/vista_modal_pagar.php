@@ -24,16 +24,63 @@
 
 
             <!--5018 0000 0009-->
-              <label>Número<input class="form-control" name="numero_tarjeta"></label>
-                <p class="log"></p>
+              <label>Número</label>
+              <input class="form-control numero_tarjera" name="numero_tarjeta" id="numero_tarjeta">
+              <p>  
+                <span class="tipo_tarjeta"></span>
+                <span class="validez"></span>
+              </p> 
+              
+              <label>CVV</label>
+              <input class="form-control cvv" name="numero_tarjeta">
+
+              <label>Fecha de Vencimiento</label>
+                <span class="fecha_vencimiento">
+                  <select class="custom-select">
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero </option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Augosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Novimbre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                  <select class="custom-select">
+                    <option value="16"> 2019</option>
+                    <option value="17"> 2020</option>
+                    <option value="18"> 2021</option>
+                    <option value="19"> 2022</option>
+                    <option value="20"> 2023</option>
+                    <option value="21"> 2025</option>
+                    <option value="21"> 2026</option>
+                    <option value="21"> 2027</option>
+                    <option value="21"> 2028</option>
+                    <option value="21"> 2029</option>
+                    <option value="21"> 2030</option>
+                    <option value="21"> 2031</option>
+                    <option value="21"> 2032</option>
+                    <option value="21"> 2033</option>
+                    <option value="21"> 2034</option>
+                  </select>
+                </span> 
+                <br>
+                <br>
+
+                <label>Nombre y Apellido</label>
+                <input class="form-control" name="nombre"><br>
 
               <script>
                 $(function() {
-                  $('input').validateCreditCard(function(result) {
-                    $('.log').html('<input style="border-style: none;" value=' + (result.card_type == null ? '-' : result.card_type.name)+' readonly><br>'
-                      + '<input name="validez" style="border-style: none;" value=' + result.valid+' readonly>'
-                      + '<br>Length valid: ' + result.length_valid
-                      + '<br>Luhn valid: ' + result.luhn_valid);
+                  $('#numero_tarjeta').validateCreditCard(function(result) {
+                    $('.tipo_tarjeta').html('<input style="margin-top: 5px; border-style: none;" value=' + (result.card_type == null ? '-' : result.card_type.name)+' readonly>');
+                    $('.validez').html('<input name="validez" style="border-style: none;" value=' + result.valid+' readonly>');
+                    $('.tamaño_valido').html('Length valid: ' + result.length_valid);
+                    $('.luhn_valido').html('Luhn valid: ' + result.luhn_valid);
                   });
                 });
               </script>

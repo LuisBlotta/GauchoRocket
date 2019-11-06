@@ -287,7 +287,12 @@ SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.de
 SELECT * FROM turno;            
 select * from vuelo;	
 
+SELECT count(turno.id_turno) cantidad_turnos_dados
+            FROM turno JOIN medico ON medico.id_medico = turno.fk_medico
+            WHERE medico.id_medico = 3 AND turno.fecha = '20191126'
 
+
+SELECT count(turno.id_turno) cantidad_turnos_dados FROM turno JOIN medico ON medico.id_medico = turno.fk_medico WHERE medico.id_medico = '1' AND turno.fecha = '2019-11-01'
 
 
 SELECT cabina.capacidad FROM vuelo join
