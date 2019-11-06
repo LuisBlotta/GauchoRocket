@@ -1,5 +1,13 @@
 <?php
-include("condicional_sesion.php"); ?>
+include("condicional_sesion.php"); 
+$resultado= $_GET['resultado'];
+
+if ($resultado==true) {
+	$mensaje = "Turno Reservado";
+}else{
+	$mensaje = "No hay turnos disponibles.";
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +19,7 @@ include("condicional_sesion.php"); ?>
 <body>
     <main>
 
-        <h3>Reserva exitosa</h3>
+        <h3> <?php echo $mensaje; ?></h3>
 
 
     </main>

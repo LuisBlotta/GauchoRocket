@@ -36,12 +36,14 @@ include("condicional_sesion.php"); ?>
                                                                 
                                 <!--<a class='btn-reservar btn btn-info' href='index.php?pag=reservar-form'>Pagar</a>-->
 
-                                <a mp-mode='dftl' href='https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=285177117-56fb8c1d-ce9d-4a1c-ab4a-3f32bf105a35' name='MP-payButton' class='blue-ar-l-rn-none'>Pagar</a>
-                                
+                                <!--<a mp-mode='dftl' href='https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=285177117-56fb8c1d-ce9d-4a1c-ab4a-3f32bf105a35' name='MP-payButton' class='blue-ar-l-rn-none'>Pagar</a>-->
+                                <button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal'>Pagar</button>";                         
 
+                                include('vista_modal_pagar.php');
 
-                            </div>                            
-                        </article>";           
+                        echo"</div>                            
+                        </article>"; 
+
         }
         ?>
     </section>
