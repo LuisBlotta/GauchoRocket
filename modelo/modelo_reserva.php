@@ -106,8 +106,8 @@ function reserva(){
     $queryTraeLugaresOcupados .="))";
     }
 
-echo $queryTraeLugaresOcupados;
-exit();
+/*echo $queryTraeLugaresOcupados;
+exit();*/
 
     if ($id_destino == $id_origen){
         $queryTraeLugaresOcupados .=" AND  d0.id_destino= $id_origen";
