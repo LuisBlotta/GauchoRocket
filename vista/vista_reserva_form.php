@@ -15,7 +15,7 @@
 
 
     if (empty($_SESSION['usuario'])) {
-        header('location:index.php?pag=info_vuelo&id_vuelo='.$id_vuelo."&id_trayecto=".$id_trayecto);
+        header('location:info_vuelo?id_vuelo='.$id_vuelo."&id_trayecto=".$id_trayecto);
     }
     ?>
 
@@ -24,7 +24,7 @@
 <main>
     <section class="cont-form_reserva">
         <h3>Reserva de pasaje</h3>
-        <?php echo"<form method='post' action='index.php?pag=reserva&id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto&id_origen=$id_origen&fecha_ida=$fecha_ida'> "?>
+        <?php echo"<form method='post' action='reserva?id_vuelo=$id_vuelo&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto&id_origen=$id_origen&fecha_ida=$fecha_ida'> "?>
 
         <div class="form-row">
             <div class="form-group">

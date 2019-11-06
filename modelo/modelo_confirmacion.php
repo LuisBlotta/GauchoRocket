@@ -13,6 +13,6 @@ function confirmar(){
         $queryUpdate = "UPDATE login SET userConfirmado = true WHERE hashConfirmacion ='$hashConfirmacion'";
         $result = mysqli_query($conn, $queryUpdate);
         mysqli_close($conn);
-        header('location:index.php');
+        header('location:gauchorocket');
     }
 }

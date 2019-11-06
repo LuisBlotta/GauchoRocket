@@ -28,7 +28,7 @@
             echo"       </p>
                                 <br>
                                                                 
-                                <a href='index.php?pag=reservar-form&id_vuelo=".$vuelo['id_vuelo']."&id_trayecto=".$vuelo['id_trayecto']."&id_destino=".$vuelo['id_destino']."&id_vuelo_trayecto=".$vuelo['id_vuelo_trayecto']."&id_origen=".$vuelo['id_origen']."&fecha_ida=". $vuelo['fecha_ida'] ."' class='btn-reservar btn btn-info'>Reservar</a>
+                                <a href='reservar_form?id_vuelo=".$vuelo['id_vuelo']."&id_trayecto=".$vuelo['id_trayecto']."&id_destino=".$vuelo['id_destino']."&id_vuelo_trayecto=".$vuelo['id_vuelo_trayecto']."&id_origen=".$vuelo['id_origen']."&fecha_ida=". $vuelo['fecha_ida'] ."' class='btn-reservar btn btn-info'>Reservar</a>
                             </div>                            
                         </article>";
             break;

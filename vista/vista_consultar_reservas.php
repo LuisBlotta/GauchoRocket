@@ -33,7 +33,7 @@
 
 
                         if ($reserva['estado_reserva']==2) {
-                            echo"<a href='index.php?pag=pago&nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Pagar</a>";
+                            echo"<a href='pago?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Pagar</a>";
                         }elseif ($reserva['estado_reserva']!=4) {
                            echo"<a href='#' class='btn-reservar btn btn-danger'>Cancelar</a>";
                         }else{

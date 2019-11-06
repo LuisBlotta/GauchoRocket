@@ -25,12 +25,12 @@ function login(){
         //----borrar si se hace con mail
         if (isset($_GET["hash"])) {
             $hashConfirmacion=$_GET["hash"];
-            echo "<br><a type='button' class='btn btn-info' href='index.php?hash=".$hashConfirmacion."'>Volver al inicio</a>";
+            echo "<br><a type='button' class='btn btn-info' href='gauchorocket?hash=".$hashConfirmacion."'>Volver al inicio</a>";
         }else{
             //------------------------------
-            echo "<br><a type='button' class='btn btn-info' href='index.php'>Volver al inicio</a>";
+            echo "<br><a type='button' class='btn btn-info' href='gauchorocket'>Volver al inicio</a>";
         }
-        echo "<br><br><a type='button' class='btn btn-info' href='index.php?pag=pantalla-confirmacion&hash=".$hashConfirmacion."'>Confirmar</a>";
+        echo "<br><br><a type='button' class='btn btn-info' href='pantalla-confirmacion?hash=".$hashConfirmacion."'>Confirmar</a>";
         die();
     }
     //-------------------------------------------------------------
@@ -38,12 +38,12 @@ function login(){
         setcookie("login", $nick, time() + 10000);
         session_start();
         $_SESSION['usuario'] = true;
-        header('location:index.php');
+        header('location:gauchorocket');
         fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
         fclose($file);
     } else {
-        header('location:index.php?pag=login-form&fallo=true');
-        fwrite($file, "El usuario $nick quiso ingresar y no pudo ". PHP_EOL );
+        header('location:login-form?fallo=true');
+        fwrite($file, "El usuario $nick intentó ingresar y no pudo ". PHP_EOL );
         fclose($file);
     }
 }

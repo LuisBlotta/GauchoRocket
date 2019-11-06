@@ -21,7 +21,7 @@
                             </div>";
         }
         ?>
-        <form <?php echo"<form method='post' action='index.php?pag=reserva_turno&id_medico=$id_medico'> "?>
+        <form <?php echo"<form method='post' action='reserva_turno?id_medico=$id_medico'> "?>
         <input type="text" name="nombre" required placeholder="Nombre">
         <input type="text" name="email" required placeholder="E-mail">
         <input type="date" name="fecha_turno">

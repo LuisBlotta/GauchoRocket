@@ -23,9 +23,9 @@ function cobrar(){
 
         $result = mysqli_query($conn, $sql);
 
-        header('location:index.php?pag=gauchorocket');
+        header('location:gauchorocket');
     }else{
-         header('location:index.php?pag=pago&nro_reserva='.$nro_reserva);
+         header('location:pago?nro_reserva='.$nro_reserva);
     }        
     mysqli_close($conn);   
 }

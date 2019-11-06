@@ -14,10 +14,10 @@
         //----borrar si se hace con mail
         if (isset($_GET["hash"])) {
             $hashConfirmacion=$_GET["hash"];
-            echo "<form action='index.php?pag=login&hash=".$hashConfirmacion."' method='post'>";
+            echo "<form action='login?hash=".$hashConfirmacion."' method='post'>";
         }else{
             //------------------------------
-            echo "<form action='index.php?pag=login' method='post'>";
+            echo "<form action='login' method='post'>";
         }
         ?>
         <div class="form-group">
@@ -37,8 +37,8 @@
 
         <button class="btn btn-info">Entrar</button><br><br>
         </form>
-        <p>¿No tienes cuenta?<a href="index.php?pag=registro-form">Regístrate</a></p>
-        <p><a href="index.php">Volver al Inicio</a></p>
+        <p>¿No tienes cuenta?<a href="registro-form">Regístrate</a></p>
+        <p><a href="gauchorocket">Volver al Inicio</a></p>
     </section>
 </main>
 </body>

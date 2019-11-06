@@ -10,7 +10,7 @@
 <main>
     <section class="cont-form_login-registro col-sm-6">
         <h2 class="titulo">Registrarse</h2>
-        <form action="index.php?pag=registro" method="post">
+        <form action="registro" method="post">
             <div class="form-group">
                 <label for="user_name">Nombre de Usuario</label>
                 <input class="form-control mr-sm-2" type="text" name="nombre" placeholder="Nombre" required>
@@ -38,7 +38,7 @@
             }
             ?>
             <button class="btn btn-info">Registrarse</button><br><br>
-            <p><a href="index.php">Volver al Inicio</a></p>
+            <p><a href="gauchorocket">Volver al Inicio</a></p>
         </form>
     </section>
 

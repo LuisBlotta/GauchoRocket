@@ -1,41 +1,6 @@
 <?php
 include("sesion.php");
 include_once("header.php");
-/*
-    if( isset($_GET['pag']) && $_GET['pag'] == "canciones"){
-        include("controlador/controlador_canciones.php");
-    } else if( isset($_GET['pag']) && $_GET['pag'] == "centro-medico"){
-        include("controlador/controlador_centro-medico.php");
-    } else if( isset($_GET['pag']) && $_GET['pag'] == "resultado_busqueda"){
-        include("controlador/controlador_resultado_busqueda.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "info_vuelo"){
-        include("controlador/controlador_info_vuelo.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "login-form"){
-        include("controlador/controlador_login-form.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "login"){
-        include("controlador/controlador_login.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "logout"){
-        include("controlador/controlador_logout.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "registro-form"){
-        include("controlador/controlador_registro-form.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "registro"){
-        include("controlador/controlador_registro.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "pantalla-confirmacion"){
-        include("controlador/controlador_pantalla-confirmacion.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "confirmacion"){
-        include("controlador/controlador_confirmacion.php");
-    } else if( isset($_GET['pag']) && $_GET['pag'] == "reservar-form"){
-        include("controlador/controlador_reservar-form.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "reserva"){
-        include("controlador/controlador_reserva.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "registrar_usuarios_extra"){
-        include("controlador/controlador_registrar_usuarios_extra.php");
-    }else if( isset($_GET['pag']) && $_GET['pag'] == "registro_usuarios_extra"){
-        include("controlador/controlador_registro_usuarios_extra.php");
-    } else {
-       include("controlador/controlador_gauchorocket.php");
-    }*/
-
 
 $routes = parseRoutes();
 $moduleName = extractModuleName($routes);
@@ -43,20 +8,35 @@ $action = extractActionName($routes);
 $_GET = extractGetParams();
 
 
-
-if( isset($_GET['pag'])){
-    include("controlador/controlador_".$_GET['pag'].".php");
+$filename = "controlador/controlador_" . $moduleName . ".php";
+if( file_exists($filename) ){
+    include_once($filename);
+    call_user_func( $moduleName . '_' . $action);
 } else {
-    include("controlador/controlador_gauchorocket.php");
+    echo ' <div class="w3-container w3-content w3-center w3-padding-64" >La pagina solicitada no existe</div>';
 }
+
+/*
+ * echo "<br>";
+print_r( $_SERVER['REQUEST_URI']);
+echo "<br>";
+print_r(implode("/", $_GET));
+exit();*/
+
+
 include_once("footer.php");
+
+
+
+
 function parseRoutes(){
     $urlAndParams = explode('?', $_SERVER['REQUEST_URI']);
-    return explode('/', $urlAndParams[0]);
+    return explode('GauchoRocket/', $urlAndParams[0]);
+
 }
 
 function extractModuleName($routes){
-    return !empty($routes[1]) ? $routes[1] : "gauchorocket_mvc";
+    return !empty($routes[1]) ? $routes[1] : "gauchorocket";
 }
 
 function extractActionName($routes){
@@ -89,4 +69,5 @@ function extractGetParams() {
     }
     return $getParams;
 }
+
 ?>

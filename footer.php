@@ -8,13 +8,13 @@
 			
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="index.php">Inicio</a>
+					<a class="nav-link" href="gauchorocket">Inicio</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?pag=consultar_reservas">Reservas</a>
+					<a class="nav-link" href="consultar_reservas">Reservas</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?pag=centro-medico">Sacar Turno</a>
+					<a class="nav-link" href="centro_medico">Sacar Turno</a>
 				</li>
 				<li class="nav-item btn-sesion">					
 					<?php include("boton-sesion.php") ?>

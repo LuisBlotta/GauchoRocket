@@ -68,7 +68,7 @@ function registrar_usuarios_extra(){
         
         $cantidadPasajeros=$cantidadPasajeros-1;
         
-        header("location:index.php?pag=registrar_usuarios_extra&cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&id_vuelo_trayecto=$id_vuelo_trayecto&id_destino=$id_destino");
+        header("location:registrar_usuarios_extra?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&id_vuelo_trayecto=$id_vuelo_trayecto&id_destino=$id_destino");
     
     
 }

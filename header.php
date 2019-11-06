@@ -1,7 +1,7 @@
 	<header>
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 			<!-- Logo -->
-			<a class="logo" href="index.php"><img src="public/img/logo-b.png"></a>
+			<a class="logo" href="gauchorocket"><img src="public/img/logo-b.png"></a>
 
 			<!-- Search 	
 			<section class="buscador">		
@@ -20,13 +20,13 @@
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="index.php">Inicio</a>
+						<a class="nav-link" href="gauchorocket">Inicio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php?pag=consultar_reservas">Reservas</a>
+						<a class="nav-link" href="consultar_reservas">Reservas</a>
 					</li>
 					<li class="nav-item">
-                        <a class="nav-link" href="index.php?pag=centro-medico">Sacar turno</a>
+                        <a class="nav-link" href="centro_medico">Sacar turno</a>
 					</li>
 					<li class="nav-item item-sesion">						
 						<?php include("boton-sesion.php") ?>

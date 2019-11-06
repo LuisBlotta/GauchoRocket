@@ -26,7 +26,7 @@ include("condicional_sesion.php"); ?>
 
                                 <p>
                                     <span>
-                                        <img src='public/img/calendar.png'> ".$dato['fecha_ida']."
+                                    <img src='public/img/calendar.png'> ".$dato['fecha_ida']."
                                     </span>
                                     <span>
                                         Hora: " . $dato['hora_partida'] . ":00 AM

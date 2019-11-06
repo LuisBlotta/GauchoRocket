@@ -9,7 +9,7 @@ $id_destino = $_GET['id_destino'];
 $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
 
 if($cantidadPasajeros==0){
-    header("location:index.php?pag=centro-medico");
+    header("location:centro_medico");
     exit();
 }
 
@@ -21,7 +21,7 @@ echo "<section class='cont-form_usuarios_extra'>
         <article class='form_usuarios_extra'>";
 if ($cantidadPasajeros > 0){
     echo "    
-            <form action='index.php?pag=registro_usuarios_extra&cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto' method='post'>               
+            <form action='registro_usuarios_extra?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto' method='post'>               
 				
                 <label for='user_name'>Nick</label>
                 <input class='form-control mr-sm-2' type='text' name='nick' placeholder='Nick' required>

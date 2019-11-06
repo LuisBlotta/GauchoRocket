@@ -19,7 +19,7 @@
         <div class="modal-body">
           <div class="payment">
             <?php
-            echo "<form action='index.php?pag=cobrar&nro_reserva=".$dato['nro_reserva']."' method='post'>"
+            echo "<form action='cobrar?nro_reserva=".$dato['nro_reserva']."' method='post'>"
             ?>
 
 

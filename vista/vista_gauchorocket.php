@@ -40,7 +40,7 @@
 		
 		<section class="cont_buscar_vuelos">
 			<h3>Vuelos</h3>
-			<form class="buscar_vuelos" action="index.php?pag=resultado_busqueda" method="post">
+			<form class="buscar_vuelos" action="resultado_busqueda" method="post">
 				<!--<label class="mr-sm-2">Fecha de partida</label>-->
 				<div class="input-group">
 					<div class="input-group-prepend">
@@ -90,7 +90,7 @@
 
 				foreach ($vuelos as $vuelo){
 					echo "
-					<a href='index.php?pag=info_vuelo&id_vuelo=".$vuelo['id_vuelo']."&id_trayecto=".$vuelo['id_trayecto']."&destino=".$vuelo['destino']."&id_vuelo_trayecto=".$vuelo['id_vuelo_trayecto']."' class='card' style='width:300px'>
+					<a href='info_vuelo?id_vuelo=".$vuelo['id_vuelo']."&id_trayecto=".$vuelo['id_trayecto']."&destino=".$vuelo['destino']."&id_vuelo_trayecto=".$vuelo['id_vuelo_trayecto']."' class='card' style='width:300px'>
     					<img class='card-img-top' src='public/img/".$vuelo['destino'].".jpg' alt='Card image' style='width:100%''>
 						<div class='card-body'>
 							<h2>" . $vuelo['destino'] . "</h2>	

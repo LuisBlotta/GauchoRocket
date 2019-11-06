@@ -44,10 +44,10 @@ function getTurnos()
             mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);
 
-            header("location:index.php?pag=resultado_turno&resultado=true");
+            header("location:resultado_turno?resultado=true");
     
     } else
-            header("location:index.php?pag=resultado_turno&resultado=false");
+            header("location:resultado_turno?resultado=false");
 
 }
 

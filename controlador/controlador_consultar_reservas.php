@@ -1,6 +1,7 @@
 <?php
 include("modelo/modelo_consultar_reservas.php");
 
-$reservas = getReservas();
+function consultar_reservas_index(){}
 
+$reservas = getReservas();
 include("vista/vista_consultar_reservas.php");
