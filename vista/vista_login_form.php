@@ -37,7 +37,7 @@
 
         <button class="btn btn-info">Entrar</button><br><br>
         </form>
-        <p>¿No tienes cuenta?<a href="registro-form">Regístrate</a></p>
+        <p>¿No tienes cuenta?<a href="registro_form">Regístrate</a></p>
         <p><a href="gauchorocket">Volver al Inicio</a></p>
     </section>
 </main>
