@@ -7,13 +7,16 @@ create table login (id_login int primary key auto_increment,
 					nick varchar(50) not null,
                     password varchar(50) not null);
                     
+create table nivel_pasajero (id_nivel int primary key not null);
+                    
 create table usuario (id_usuario int primary key auto_increment, 
 						nombre varchar(50) not null,
                         mail varchar(50) not null,
                         rol int not null,
-                        nivel_vuelo int,
+                        fk_nivel int,
                         fk_login int not null,
-                        foreign key(fk_login) references login(id_login));
+                        foreign key(fk_login) references login(id_login),
+                        foreign key(fk_nivel) references nivel_pasajero(id_nivel));
 
 
 insert into  login (userConfirmado, hashConfirmacion, nick, password) values (true,"f50686d5dc72f5d073c5295937bc58ce","admin", "e67732763718fbafa22f23adb5679c2f");
@@ -22,9 +25,10 @@ insert into  usuario (nombre, mail, rol, fk_login) values ("admin", "admin@gauch
 create table tipo_vuelo (id_tipo_vuelo int primary key, descripcion varchar(20));                        
 create table modelo (id_modelo int primary key, descripcion varchar(20) , fk_tipo_vuelo int not null, foreign key(fk_tipo_vuelo) references tipo_vuelo(id_tipo_vuelo));
 create table cabina (fk_id_modelo int, descripcion varchar(20) not null, capacidad int not null, primary key (fk_id_modelo, descripcion), foreign key (fk_id_modelo) references modelo(id_modelo));
-create table nivel_pasajero (fk_id_modelo int, id_numero int not null, primary key (fk_id_modelo, id_numero), foreign key (fk_id_modelo) references modelo(id_modelo));
+
 create table equipo (id_equipo int primary key auto_increment, fk_modelo int not null, matricula varchar(10) not null, foreign key(fk_modelo)references modelo(id_modelo));
 
+create table nivel_modelo(id_nivel_modelo int primary key auto_increment , fk_nivel int not null, fk_modelo int not null, foreign key(fk_modelo)references modelo(id_modelo),foreign key(fk_nivel)references nivel_pasajero(id_nivel) );
 /*select equipo.matricula, modelo.descripcion, cabina.descripcion, cabina.capacidad from equipo join modelo on equipo.fk_modelo = modelo. id_modelo join cabina on cabina.fk_id_modelo = modelo.id_modelo order by equipo.id_equipo;*/
 
 create table destino (id_destino int primary key, descripcion varchar(50) not null);
@@ -53,7 +57,8 @@ INSERT INTO cabina (fk_id_modelo, descripcion, capacidad) values (1, "G", 200), 
                                                               (8, "G", 0), (8, "F", 0), (8, "S", 100),	
                                                               (9, "G", 150), (9, "F", 25), (9, "S", 25),	
                                                               (10, "G", 50), (10, "F", 50), (10, "S", 0);	
-INSERT INTO nivel_pasajero (fk_id_modelo,id_numero) values (1,2), (1,3),
+INSERT INTO nivel_pasajero(id_nivel) values (1),(2),(3);														
+INSERT INTO nivel_modelo (fk_modelo,fk_nivel) values (1,2), (1,3),
 													  (2,2), (2,3),
 													  (3,1), (3,2), (3,3),
 													  (4,2), (4,3),
@@ -262,7 +267,7 @@ insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values 	(1,1), (2,2), (6,6),
 
 CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null); 
                     
-CREATE TABLE turno (id_turno int primary key auto_increment not null, fecha date, nick varchar(50) not null, fk_medico int not null, fk_login int not null,
+CREATE TABLE turno (id_turno int primary key auto_increment not null, fecha date, nombre varchar(50) not null, fk_medico int not null, fk_login int not null,
 				foreign key(fk_medico) references medico(id_medico), foreign key(fk_login) references login(id_login)); 
 
 
@@ -287,12 +292,7 @@ SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.de
 SELECT * FROM turno;            
 select * from vuelo;	
 
-SELECT count(turno.id_turno) cantidad_turnos_dados
-            FROM turno JOIN medico ON medico.id_medico = turno.fk_medico
-            WHERE medico.id_medico = 3 AND turno.fecha = '20191126'
 
-
-SELECT count(turno.id_turno) cantidad_turnos_dados FROM turno JOIN medico ON medico.id_medico = turno.fk_medico WHERE medico.id_medico = '1' AND turno.fecha = '2019-11-01'
 
 
 SELECT cabina.capacidad FROM vuelo join
@@ -327,5 +327,9 @@ select * from reserva join login on reserva.fk_login = login.id_login;
 
 SELECT reserva.nro_reserva nro_reserva, reserva.tipo_cabina tipo_cabina, reserva.cantidad_lugares cantidad_lugares, vuelo.hora_partida hora_partida, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, trayecto.precio precio, nivel_pasajero.id_numero nivel_pasajero, tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo, estado_reserva.descripcion estado_reserva FROM reserva JOIN estado_reserva ON reserva.fk_estado_reserva = estado_reserva.id_estado_reserva JOIN login ON reserva.fk_login = login.id_login JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto JOIN vuelo on vuelo_trayecto.fk_vuelo = vuelo.id_vuelo JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje JOIN equipo on vuelo.fk_equipo = equipo.id_equipo JOIN modelo on equipo.fk_modelo = modelo.id_modelo JOIN nivel_pasajero on nivel_pasajero.fk_id_modelo = modelo.id_modelo JOIN tipo_vuelo on modelo.fk_tipo_vuelo = tipo_vuelo.id_tipo_vuelo WHERE login.nick ='admin'
 
-                                        */
+SELECT login.nick nick, usuario.nombre nombre FROM login JOIN usuario ON usuario.fk_login = login.id_login JOIN reserva ON reserva.fk_login = login.id_login WHERE reserva.nro_reserva = 1166377634 AND login.nick <> 'admin'
+
+
+*/
                                 
+
