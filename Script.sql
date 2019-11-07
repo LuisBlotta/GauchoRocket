@@ -22,7 +22,7 @@ insert into  usuario (nombre, mail, rol, fk_login) values ("admin", "admin@gauch
 create table tipo_vuelo (id_tipo_vuelo int primary key, descripcion varchar(20));                        
 create table modelo (id_modelo int primary key, descripcion varchar(20) , fk_tipo_vuelo int not null, foreign key(fk_tipo_vuelo) references tipo_vuelo(id_tipo_vuelo));
 create table cabina (fk_id_modelo int, descripcion varchar(20) not null, capacidad int not null, primary key (fk_id_modelo, descripcion), foreign key (fk_id_modelo) references modelo(id_modelo));
-create table nivel_pasajero (fk_id_modelo int, id_numero int not null, primary key (fk_id_modelo, id_numero), foreign key (fk_id_modelo) references modelo(id_modelo));
+create table nivel_pasajero (fk_id_modelo int, id_nivel int not null, primary key (fk_id_modelo, id_nivel), foreign key (fk_id_modelo) references modelo(id_modelo));
 create table equipo (id_equipo int primary key auto_increment, fk_modelo int not null, matricula varchar(10) not null, foreign key(fk_modelo)references modelo(id_modelo));
 
 /*select equipo.matricula, modelo.descripcion, cabina.descripcion, cabina.capacidad from equipo join modelo on equipo.fk_modelo = modelo. id_modelo join cabina on cabina.fk_id_modelo = modelo.id_modelo order by equipo.id_equipo;*/
@@ -53,7 +53,7 @@ INSERT INTO cabina (fk_id_modelo, descripcion, capacidad) values (1, "G", 200), 
                                                               (8, "G", 0), (8, "F", 0), (8, "S", 100),	
                                                               (9, "G", 150), (9, "F", 25), (9, "S", 25),	
                                                               (10, "G", 50), (10, "F", 50), (10, "S", 0);	
-INSERT INTO nivel_pasajero (fk_id_modelo,id_numero) values (1,2), (1,3),
+INSERT INTO nivel_pasajero (fk_id_modelo,id_nivel) values (1,2), (1,3),
 													  (2,2), (2,3),
 													  (3,1), (3,2), (3,3),
 													  (4,2), (4,3),

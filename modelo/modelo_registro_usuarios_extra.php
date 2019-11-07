@@ -17,58 +17,49 @@ function registrar_usuarios_extra(){
     $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
     $estado_reserva_default=2;
 
+    //Busca si hay usuarios con el mismo nombre
 
-//Confirma igualdad de passwords
-   
+    $buscarUsuario = "SELECT * FROM login
+    WHERE nick = '$nick' ";
+    $result = $conn->query($buscarUsuario);
+    $count = mysqli_num_rows($result);
 
-//Confirma si hay usuarios con el mismo nombre
-        $buscarUsuario = "SELECT * FROM login
-        WHERE nick = '$nick' ";
-        $result = $conn->query($buscarUsuario);
-        $count = mysqli_num_rows($result);
+    if ($count == 1) {
+        $queryConsulta ="SELECT id_login FROM login WHERE nick='$nick'";
 
-        if ($count == 1) {
-            $queryConsulta ="SELECT id_login FROM login WHERE nick='$nick'";
+        $result = mysqli_query($conn, $queryConsulta);
+        $dato=mysqli_fetch_row($result);
 
+        $sqlAddReserva = "INSERT INTO reserva (nro_reserva, fk_estado_reserva, fk_id_vuelo_trayecto, fk_login) 
+                          VALUES ($nro_reserva, $estado_reserva_default,$id_vuelo_trayecto,'$dato[0]')";
+        $result2 = mysqli_query($conn, $sqlAddReserva);
 
+        //Chequea numero de pasjerto
 
-            $result = mysqli_query($conn, $queryConsulta);
-            $dato=mysqli_fetch_row($result);
+    }else{
+        //Inserto datos en la tabla login
 
-            $sqlAddReserva = "insert INTO reserva (nro_reserva, fk_estado_reserva, fk_id_vuelo_trayecto, fk_login) values ($nro_reserva, $estado_reserva_default,$id_vuelo_trayecto,'$dato[0]')";
+        $query = "INSERT INTO login (userConfirmado, hashConfirmacion, nick, password)
+                  VALUES ('$userConfirmado','$hashConfirmacion','$nick','$password')";
+        $result = mysqli_query($conn, $query);
 
+        //Traigo el ID del usuario
+        $queryConsulta ="SELECT id_login FROM login WHERE nick='$nick'";
 
-            $result2 = mysqli_query($conn, $sqlAddReserva);
+        $result = mysqli_query($conn, $queryConsulta);
+        $dato=mysqli_fetch_row($result);
 
-            //crear reserva
-        }else{
-//Inserto datos en la tabla login
-            $query = "INSERT INTO login (userConfirmado, hashConfirmacion, nick, password)
-            VALUES ('$userConfirmado','$hashConfirmacion','$nick','$password')";
-            $result = mysqli_query($conn, $query);
+        $sqlAddUser ="INSERT INTO usuario (nombre, mail, rol, fk_login) values ('$nick', '$mail',1,'$dato[0]')";
+        $result1 = mysqli_query($conn, $sqlAddUser);
 
-//traigo el ID del usuario
-            $queryConsulta ="SELECT id_login FROM login WHERE nick='$nick'";
+        $sqlAddReserva = "INSERT INTO reserva (nro_reserva, fk_estado_reserva,fk_id_vuelo_trayecto, fk_login) 
+                          VALUES ($nro_reserva, $estado_reserva_default,$id_vuelo_trayecto,$dato[0])";
 
+        $result2 = mysqli_query($conn, $sqlAddReserva);
+    }
 
+    $cantidadPasajeros=$cantidadPasajeros-1;
 
+    header("location:registrar_usuarios_extra?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&id_vuelo_trayecto=$id_vuelo_trayecto&id_destino=$id_destino");
 
-            $result = mysqli_query($conn, $queryConsulta);
-            $dato=mysqli_fetch_row($result);
-
-
-            $sqlAddUser ="INSERT INTO usuario (nombre, mail, rol, fk_login) values ('$nick', '$mail',1,'$dato[0]')";
-            $result1 = mysqli_query($conn, $sqlAddUser);
-
-            $sqlAddReserva = "insert INTO reserva (nro_reserva, fk_estado_reserva,fk_id_vuelo_trayecto, fk_login) values ($nro_reserva, $estado_reserva_default,$id_vuelo_trayecto,$dato[0])";
-           
-            $result2 = mysqli_query($conn, $sqlAddReserva);
-       
-        }     
-        
-        $cantidadPasajeros=$cantidadPasajeros-1;
-        
-        header("location:registrar_usuarios_extra?cantidadPasajeros=$cantidadPasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&id_vuelo_trayecto=$id_vuelo_trayecto&id_destino=$id_destino");
-    
-    
 }

@@ -38,8 +38,8 @@ function getTurnos()
     $resultlogin = mysqli_query($conn, $queryConsulta);
     $dato=mysqli_fetch_row($resultlogin);
 
-    $sqlInsert = "INSERT INTO turno (fecha, nick, fk_medico, fk_login)
-                   values ('$fecha_turno', '$nick', '$id_medico', $dato[0])";
+    $sqlInsert = "INSERT INTO turno (fecha, nombre, fk_medico, fk_login)
+                   values ('$fecha_turno', '$nombre', '$id_medico', $dato[0])";
 
             mysqli_query($conn, $sqlInsert);
             mysqli_close($conn);

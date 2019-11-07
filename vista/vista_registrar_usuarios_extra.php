@@ -16,7 +16,7 @@ if($cantidadPasajeros==0){
 $i=0;
 echo "<link rel='stylesheet' type='text/css' href='public/css/estilos-usuarios_extra.css'>";
 echo "<section class='cont-form_usuarios_extra'>
-        <h2>Ingrese el nombre de los demás pasajeros</h2>
+        <h2>Ingrese a los demás pasajeros</h2>
         <p>Pasajeros restantes $cantidadPasajeros</p>
         <article class='form_usuarios_extra'>";
 if ($cantidadPasajeros > 0){

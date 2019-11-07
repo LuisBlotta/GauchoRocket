@@ -28,16 +28,10 @@ function reserva(){
                                         cabina on cabina.fk_id_modelo = modelo.id_modelo 
                                         WHERE vuelo.id_vuelo = $id_vuelo AND cabina.descripcion = '$cabina'";
 
-
-
-
-
     $result1 = mysqli_query($conn, $queryTraeEspacioEnEquipo);
     $cantidadDeEspacio=mysqli_fetch_row($result1);
     /*echo $cantidadDeEspacio[0];
     exit();*/
-
-
 
     // traer total de lugares vendidos
     $queryTraeLugaresOcupados = "select reserva.cantidad_lugares cantidad_lugares from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto

@@ -3,8 +3,10 @@
 <html>
 <head>
     <title>Reserva Centro Médico</title>
-    <?php include("head.php");
-    $id_medico=$_GET['id_medico'];?>
+    <?php
+        include("head.php");
+        $id_medico=$_GET['id_medico'];
+    ?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
 </head>
 <body>
@@ -21,10 +23,10 @@
                             </div>";
         }
         ?>
-        <form <?php echo"<form method='post' action='reserva_turno?id_medico=$id_medico'> "?>
-            <input type="text" name="nombre" required placeholder="Nombre">
-            <input type="text" name="email" required placeholder="E-mail">
-            <input type="date" name="fecha_turno">
+        <?php echo"<form method='post' action='reserva_turno?id_medico=$id_medico'>;"?>
+            <input class="form-control" type="text" name="nombre" required placeholder="Nombre y Apellido">
+            <input class="form-control" type="text" name="email" required placeholder="E-mail">
+            <input class="form-control" type="date" name="fecha_turno">
             <button class="btn btn-info">Reservar</button>
         </form>
     </section>
