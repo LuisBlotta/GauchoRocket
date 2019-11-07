@@ -25,9 +25,12 @@
 					<li class="nav-item">
 						<a class="nav-link" href="consultar_reservas">Reservas</a>
 					</li>
-					<li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="centro_medico">Sacar turno</a>
-					</li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="form_ingreso_check_in">Check In</a>
+                    </li>
 					<li class="nav-item item-sesion">						
 						<?php include("boton-sesion.php") ?>
 					</li>

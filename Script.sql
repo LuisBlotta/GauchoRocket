@@ -329,7 +329,20 @@ SELECT reserva.nro_reserva nro_reserva, reserva.tipo_cabina tipo_cabina, reserva
 
 SELECT login.nick nick, usuario.nombre nombre FROM login JOIN usuario ON usuario.fk_login = login.id_login JOIN reserva ON reserva.fk_login = login.id_login WHERE reserva.nro_reserva = 1166377634 AND login.nick <> 'admin'
 
+select cabina.capacidad from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto 
+						join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
+                        join equipo on equipo.id_equipo = vuelo.fk_equipo
+                        join modelo on modelo.id_modelo = equipo.fk_modelo
+                        join cabina on cabina.fk_id_modelo = modelo.id_modelo
+                        where reserva.nro_reserva = 1610062491 AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva  
+																							WHERE reserva.nro_reserva  =1610062491);
 
 */
                                 
 
+
+                                                                                            
+                                                                                            
+                                                                                            
+                                                                                            
+                                                                                            
