@@ -42,7 +42,7 @@ function login(){
         fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
         fclose($file);
     } else {
-        header('location:login-form?fallo=true');
+        header('location:login_form?fallo=true');
         fwrite($file, "El usuario $nick intentó ingresar y no pudo ". PHP_EOL );
         fclose($file);
     }
