@@ -7,7 +7,7 @@ function getVuelos(){
     $id_trayecto=$_GET['id_trayecto'];
     $conn = getConexion();
 
-    $sql = "SELECT vuelo_trayecto.id_vuelo_trayecto id_vuelo_trayecto, nivel_pasajero.id_nivel nivel_pasajero, trayecto.precio precio, vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen , d1.id_destino id_origen,  d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
+    $sql = "SELECT vuelo_trayecto.id_vuelo_trayecto id_vuelo_trayecto, nivel_modelo.fk_nivel nivel_pasajero, trayecto.precio precio, vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen , d1.id_destino id_origen,  d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
             FROM  vuelo_trayecto JOIN vuelo on  vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
             JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto 
             JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
@@ -15,7 +15,7 @@ function getVuelos(){
             JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje
             JOIN equipo on vuelo.fk_equipo = equipo.id_equipo
             JOIN modelo on equipo.fk_modelo = modelo.id_modelo
-            JOIN nivel_pasajero on nivel_pasajero.fk_id_modelo = modelo.id_modelo
+            JOIN nivel_modelo on nivel_modelo.fk_modelo = modelo.id_modelo
             JOIN tipo_vuelo on modelo.fk_tipo_vuelo = tipo_vuelo.id_tipo_vuelo
             WHERE vuelo_trayecto.fk_vuelo ='$id_vuelo' AND vuelo_trayecto.fk_trayecto = $id_trayecto";
 

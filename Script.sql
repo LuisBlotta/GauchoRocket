@@ -7,13 +7,16 @@ create table login (id_login int primary key auto_increment,
 					nick varchar(50) not null,
                     password varchar(50) not null);
                     
+create table nivel_pasajero (id_nivel int primary key not null);
+                    
 create table usuario (id_usuario int primary key auto_increment, 
 						nombre varchar(50) not null,
                         mail varchar(50) not null,
                         rol int not null,
-                        nivel_vuelo int,
+                        fk_nivel int,
                         fk_login int not null,
-                        foreign key(fk_login) references login(id_login));
+                        foreign key(fk_login) references login(id_login),
+                        foreign key(fk_nivel) references nivel_pasajero(id_nivel));
 
 
 insert into  login (userConfirmado, hashConfirmacion, nick, password) values (true,"f50686d5dc72f5d073c5295937bc58ce","admin", "e67732763718fbafa22f23adb5679c2f");
@@ -22,9 +25,10 @@ insert into  usuario (nombre, mail, rol, fk_login) values ("admin", "admin@gauch
 create table tipo_vuelo (id_tipo_vuelo int primary key, descripcion varchar(20));                        
 create table modelo (id_modelo int primary key, descripcion varchar(20) , fk_tipo_vuelo int not null, foreign key(fk_tipo_vuelo) references tipo_vuelo(id_tipo_vuelo));
 create table cabina (fk_id_modelo int, descripcion varchar(20) not null, capacidad int not null, primary key (fk_id_modelo, descripcion), foreign key (fk_id_modelo) references modelo(id_modelo));
-create table nivel_pasajero (fk_id_modelo int, id_nivel int not null, primary key (fk_id_modelo, id_nivel), foreign key (fk_id_modelo) references modelo(id_modelo));
+
 create table equipo (id_equipo int primary key auto_increment, fk_modelo int not null, matricula varchar(10) not null, foreign key(fk_modelo)references modelo(id_modelo));
 
+create table nivel_modelo(id_nivel_modelo int primary key auto_increment , fk_nivel int not null, fk_modelo int not null, foreign key(fk_modelo)references modelo(id_modelo),foreign key(fk_nivel)references nivel_pasajero(id_nivel) );
 /*select equipo.matricula, modelo.descripcion, cabina.descripcion, cabina.capacidad from equipo join modelo on equipo.fk_modelo = modelo. id_modelo join cabina on cabina.fk_id_modelo = modelo.id_modelo order by equipo.id_equipo;*/
 
 create table destino (id_destino int primary key, descripcion varchar(50) not null);
@@ -53,7 +57,8 @@ INSERT INTO cabina (fk_id_modelo, descripcion, capacidad) values (1, "G", 200), 
                                                               (8, "G", 0), (8, "F", 0), (8, "S", 100),	
                                                               (9, "G", 150), (9, "F", 25), (9, "S", 25),	
                                                               (10, "G", 50), (10, "F", 50), (10, "S", 0);	
-INSERT INTO nivel_pasajero (fk_id_modelo,id_nivel) values (1,2), (1,3),
+INSERT INTO nivel_pasajero(id_nivel) values (1),(2),(3);														
+INSERT INTO nivel_modelo (fk_modelo,fk_nivel) values (1,2), (1,3),
 													  (2,2), (2,3),
 													  (3,1), (3,2), (3,3),
 													  (4,2), (4,3),
@@ -327,3 +332,4 @@ SELECT login.nick nick, usuario.nombre nombre FROM login JOIN usuario ON usuario
 
 */
                                 
+
