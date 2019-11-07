@@ -1,5 +1,7 @@
 <?php include_once("conexion.php");
-include("condicional_sesion.php"); ?>
+include("condicional_sesion.php");
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +10,8 @@ include("condicional_sesion.php"); ?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-info_vuelo.css">
 
     <script type='text/javascript'>
-                                    (function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement('script');s.type = 'text/javascript';s.async = true;s.src = document.location.protocol+'//secure.mlstatic.com/mptools/render.js';var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
-                                </script>
+        (function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement('script');s.type = 'text/javascript';s.async = true;s.src = document.location.protocol+'//secure.mlstatic.com/mptools/render.js';var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
+    </script>
 </head>
 <body>
 
@@ -47,6 +49,11 @@ include("condicional_sesion.php"); ?>
         }
         ?>
     </section>
+    <?php
+        if (!empty($_GET['fallo_datos'])==1){
+            echo "<script>alert('Hubo un error en los datos ingresados, por favor intentelo nuevamente');</script>";
+        }
+    ?>
 </main>
 </body>
 </html>

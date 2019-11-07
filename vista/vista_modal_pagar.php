@@ -1,163 +1,87 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="public/js/jquery.creditCardValidator.js"></script>
+<link rel="stylesheet" type="text/css" href="public/css/estilos-modal_pagar.css">
 
 <div class="container">
 
   <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Pago</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Pago</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+
+
+                    <div class="payment">
+                    <?php
+                    echo "<form action='cobrar?nro_reserva=".$dato['nro_reserva']."' method='post' id='form-pago'>"
+                    ?>
+                        <div class="modal-body">
+                            <div class="form-group" id="card-number-field">
+                                <div class="cont-numero-cvv">
+
+                                    <div class="cont-number">
+                                        <label for="cardNumber">Número</label>
+                                        <div class="cont-card-number">
+                                            <div class="input-group-prepend">
+                                                <p id="visa">Visa</p>
+                                                <p id="mastercard">Mastercard</p>
+                                                <p id="amex">Amex</p>
+                                            </div>
+                                            <input type="text" class="form-control" id="cardNumber" name="numero_tarjeta">
+                                        </div>
+                                        <div id="validez-numero"></div>
+                                    </div>
+
+                                    <div class="cont-cvv">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" class="form-control" id="cvv" name="cvv">
+                                        <div id="validez-cvv"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group owner">
+                                <label for="owner">Nombre y Apellido</label>
+                                <input type="text" class="form-control" id="owner" name="nombre">
+                                <div id="validez-nombre"></div>
+                            </div>
+
+                            <div class="form-group" id="expiration-date">
+                                <label>Fecha de Vencimiento</label>
+                                    <div class="input-fecha">
+                                        <input type="text" class="form-control" id="expiry" name="vencimiento">
+                                        <div id="validez-fecha"></div>
+                                        <div id="mes"></div>
+                                        <div id="año"></div>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="credit_cards">
+                                <p id="visa">Visa</p>
+                                <p id="mastercard">Mastercard</p>
+                                <p id="amex">Amex</p>
+
+
+                                <!--<img src="public/img/visa.jpg" id="visa">
+                                <img src="public/img/mastercard.jpg" id="mastercard">
+                                <img src="public/img/amex.jpg" id="amex">-->
+                            </div>
+                        </div>
+                        <div class="modal-footer" id="pay-now">
+                            <button type="submit" class="btn btn-info" id="confirm-purchase">Confirmar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script src="public/js/jquery.payform.min.js" charset="utf-8"></script>
+                <script src="public/js/script_validacion_tarjeta.js"></script>
+            </div>
         </div>
-
-        <!-- Modal body -->  
-
-        <div class="modal-body">
-          <div class="payment">
-            <?php
-            echo "<form action='cobrar?nro_reserva=".$dato['nro_reserva']."' method='post'>"
-            ?>
-
-
-            <!--5018 0000 0009-->
-              <label>Número</label>
-              <input class="form-control numero_tarjera" name="numero_tarjeta" id="numero_tarjeta">
-              <p>  
-                <span class="tipo_tarjeta"></span>
-                <span class="validez"></span>
-              </p> 
-              
-              <label>CVV</label>
-              <input class="form-control cvv" name="numero_tarjeta">
-
-              <label>Fecha de Vencimiento</label>
-                <span class="fecha_vencimiento">
-                  <select class="custom-select">
-                    <option value="01">Enero</option>
-                    <option value="02">Febrero </option>
-                    <option value="03">Marzo</option>
-                    <option value="04">Abril</option>
-                    <option value="05">Mayo</option>
-                    <option value="06">Junio</option>
-                    <option value="07">Julio</option>
-                    <option value="08">Augosto</option>
-                    <option value="09">Septiembre</option>
-                    <option value="10">Octubre</option>
-                    <option value="11">Novimbre</option>
-                    <option value="12">Diciembre</option>
-                  </select>
-                  <select class="custom-select">
-                    <option value="16"> 2019</option>
-                    <option value="17"> 2020</option>
-                    <option value="18"> 2021</option>
-                    <option value="19"> 2022</option>
-                    <option value="20"> 2023</option>
-                    <option value="21"> 2025</option>
-                    <option value="21"> 2026</option>
-                    <option value="21"> 2027</option>
-                    <option value="21"> 2028</option>
-                    <option value="21"> 2029</option>
-                    <option value="21"> 2030</option>
-                    <option value="21"> 2031</option>
-                    <option value="21"> 2032</option>
-                    <option value="21"> 2033</option>
-                    <option value="21"> 2034</option>
-                  </select>
-                </span> 
-                <br>
-                <br>
-
-                <label>Nombre y Apellido</label>
-                <input class="form-control" name="nombre"><br>
-
-              <script>
-                $(function() {
-                  $('#numero_tarjeta').validateCreditCard(function(result) {
-                    $('.tipo_tarjeta').html('<input style="margin-top: 5px; border-style: none;" value=' + (result.card_type == null ? '-' : result.card_type.name)+' readonly>');
-                    $('.validez').html('<input name="validez" style="border-style: none;" value=' + result.valid+' readonly>');
-                    $('.tamaño_valido').html('Length valid: ' + result.length_valid);
-                    $('.luhn_valido').html('Luhn valid: ' + result.luhn_valid);
-                  });
-                });
-              </script>
-
-                <button class="btn btn-info">Confirmar</button> 
-            </form>
-            
-            
-            <!--<form>
-              <div class="form-group owner">
-                <label for="owner">Nombre y Apellido</label>
-                <input type="text" class="form-control" id="owner">
-              </div>            
-              <div class="form-group" id="card-number-field">
-                <label for="cardNumber">Número</label>
-                <input type="text" class="form-control" id="cardNumber">
-              </div>
-              <div class="form-group CVV">
-                <label for="cvv">CVV</label>
-                <input type="text" class="form-control" id="cvv">
-              </div>
-              <div class="form-group" id="expiration-date">
-                <label>Fecha de Vencimiento</label>
-                <span>
-                  <select class="custom-select">
-                    <option value="01">Enero</option>
-                    <option value="02">Febrero </option>
-                    <option value="03">Marzo</option>
-                    <option value="04">Abril</option>
-                    <option value="05">Mayo</option>
-                    <option value="06">Junio</option>
-                    <option value="07">Julio</option>
-                    <option value="08">Augosto</option>
-                    <option value="09">Septiembre</option>
-                    <option value="10">Octubre</option>
-                    <option value="11">Novimbre</option>
-                    <option value="12">Diciembre</option>
-                  </select>
-                  <select class="custom-select">
-                    <option value="16"> 2019</option>
-                    <option value="17"> 2020</option>
-                    <option value="18"> 2021</option>
-                    <option value="19"> 2022</option>
-                    <option value="20"> 2023</option>
-                    <option value="21"> 2025</option>
-                    <option value="21"> 2026</option>
-                    <option value="21"> 2027</option>
-                    <option value="21"> 2028</option>
-                    <option value="21"> 2029</option>
-                    <option value="21"> 2030</option>
-                    <option value="21"> 2031</option>
-                    <option value="21"> 2032</option>
-                    <option value="21"> 2033</option>
-                    <option value="21"> 2034</option>
-                  </select>
-                </span>
-              </div>
-              <div class="form-group" id="credit_cards">
-                <img src="assets/images/visa.jpg" id="visa">
-                <img src="assets/images/mastercard.jpg" id="mastercard">
-                <img src="assets/images/amex.jpg" id="amex">
-              </div>
-              <div class="form-group" id="pay-now">
-                <button class="btn btn-info" id="confirm-purchase">Confirm</button>
-              </div>
-            </form>-->
-          </div>
-
-          
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        </div>
-
-      </div>
     </div>
-  </div>  
 </div>
