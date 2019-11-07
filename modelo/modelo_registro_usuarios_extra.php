@@ -34,8 +34,6 @@ function registrar_usuarios_extra(){
                           VALUES ($nro_reserva, $estado_reserva_default,$id_vuelo_trayecto,'$dato[0]')";
         $result2 = mysqli_query($conn, $sqlAddReserva);
 
-        //Chequea numero de pasjerto
-
     }else{
         //Inserto datos en la tabla login
 
