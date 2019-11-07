@@ -15,7 +15,7 @@
 
             foreach ($medicos as $medico){
                 echo "
-                        <a href='reserva_medico?id_medico=".$medico['id_medico']."' class='card' style='width:300px; color:#3F3F3F;'>
+                        <a href='form_turno?id_medico=".$medico['id_medico']."' class='card' style='width:300px; color:#3F3F3F;'>
                             <img class='card-img-top' src='public/img/".$medico['nombre'].".jpg' alt='Card image' style='width:100%''>
                             <div class='card-body'>
                                 <h2>" . $medico['nombre'] . "</h2>														

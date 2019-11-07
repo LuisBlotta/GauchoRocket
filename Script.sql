@@ -262,7 +262,7 @@ insert into vuelo_trayecto (fk_vuelo, fk_trayecto) values 	(1,1), (2,2), (6,6),
 
 CREATE TABLE medico (id_medico int primary key auto_increment not null, nombre varchar(60) not null, direccion varchar(70) not null); 
                     
-CREATE TABLE turno (id_turno int primary key auto_increment not null, fecha date, nick varchar(50) not null, fk_medico int not null, fk_login int not null,
+CREATE TABLE turno (id_turno int primary key auto_increment not null, fecha date, nombre varchar(50) not null, fk_medico int not null, fk_login int not null,
 				foreign key(fk_medico) references medico(id_medico), foreign key(fk_login) references login(id_login)); 
 
 
@@ -287,12 +287,7 @@ SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.de
 SELECT * FROM turno;            
 select * from vuelo;	
 
-SELECT count(turno.id_turno) cantidad_turnos_dados
-            FROM turno JOIN medico ON medico.id_medico = turno.fk_medico
-            WHERE medico.id_medico = 3 AND turno.fecha = '20191126'
 
-
-SELECT count(turno.id_turno) cantidad_turnos_dados FROM turno JOIN medico ON medico.id_medico = turno.fk_medico WHERE medico.id_medico = '1' AND turno.fecha = '2019-11-01'
 
 
 SELECT cabina.capacidad FROM vuelo join
@@ -327,5 +322,8 @@ select * from reserva join login on reserva.fk_login = login.id_login;
 
 SELECT reserva.nro_reserva nro_reserva, reserva.tipo_cabina tipo_cabina, reserva.cantidad_lugares cantidad_lugares, vuelo.hora_partida hora_partida, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, trayecto.precio precio, nivel_pasajero.id_numero nivel_pasajero, tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo, estado_reserva.descripcion estado_reserva FROM reserva JOIN estado_reserva ON reserva.fk_estado_reserva = estado_reserva.id_estado_reserva JOIN login ON reserva.fk_login = login.id_login JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto JOIN vuelo on vuelo_trayecto.fk_vuelo = vuelo.id_vuelo JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino JOIN tipo_viaje on vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje JOIN equipo on vuelo.fk_equipo = equipo.id_equipo JOIN modelo on equipo.fk_modelo = modelo.id_modelo JOIN nivel_pasajero on nivel_pasajero.fk_id_modelo = modelo.id_modelo JOIN tipo_vuelo on modelo.fk_tipo_vuelo = tipo_vuelo.id_tipo_vuelo WHERE login.nick ='admin'
 
-                                        */
+SELECT login.nick nick, usuario.nombre nombre FROM login JOIN usuario ON usuario.fk_login = login.id_login JOIN reserva ON reserva.fk_login = login.id_login WHERE reserva.nro_reserva = 1166377634 AND login.nick <> 'admin'
+
+
+*/
                                 
