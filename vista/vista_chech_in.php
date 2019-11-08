@@ -4,8 +4,7 @@ include("head.php");?>
 <?php
     $numeros= array();
 foreach ($asientosReservados as $asiento_reservado){
-    $numeros = $asiento_reservado;
-
+    $numeros[] = $asiento_reservado['numero_asiento'];
 }
 
 $i=1;
