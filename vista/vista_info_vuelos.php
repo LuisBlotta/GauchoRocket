@@ -39,6 +39,11 @@
         }
         ?>
     </section>
+    <?php
+        if(!empty($_GET['fallo_vuelo'])==1){
+            echo "<script>alert('Lo sentimos, no tiene el nivel requerido para este vuelo')</script>";
+        }
+    ?>
 </main>
 </body>
 </html>
