@@ -11,10 +11,12 @@ $i=1;
 while ($i < $datos['capacidad']) {
 
     if (in_array($i, $numeros)){
-        echo "<img src='public/img/lugar_ocupado.png'> ";
+        echo "<label><img src='public/img/lugar_ocupado.png'> 
+        <input type='checkbox' id='$i' value='asiento'></label>";
 
     }else{
-        echo "<img src='public/img/lugar_libre.png'> ";
+        echo "<label> <img src='public/img/lugar_libre.png'>
+            <input type='checkbox' id='$i' value='asiento'> </label>";
 
     }
 

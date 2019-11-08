@@ -348,3 +348,4 @@ select cabina.capacidad from reserva join vuelo_trayecto on reserva.fk_id_vuelo_
 select * from reserva;
 insert into asientos_reservados (numero_asiento) values (1),(4),(6);
 insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);
+select asientos_reservados.numero_asiento from asientos_reserva join asientos_reservados on asientos_reserva.fk_asientos_reservados = asientos_reservados.id_asientos_reservados join reserva on asientos_reserva.fk_reserva = reserva.id_reserva Where reserva.nro_reserva =969601252
