@@ -58,17 +58,17 @@ function reserva(){
 
             $queryTraeLugaresOcupados .=")";
 
-    if($lugaresOcupadosEnOrigen <= ($id_destino -1)){
-        $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($lugaresOcupadosEnOrigen";
-        $lugaresOcupadosEnOrigen += 1;
-    }
-    while($lugaresOcupadosEnOrigen <= ($id_destino -1)) {
-        $queryTraeLugaresOcupados .=", $lugaresOcupadosEnOrigen";
-        $lugaresOcupadosEnOrigen += 1;
-    }
+        if($lugaresOcupadosEnOrigen <= ($id_destino -1)){
+            $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($lugaresOcupadosEnOrigen";
+            $lugaresOcupadosEnOrigen += 1;
+        }
+        while($lugaresOcupadosEnOrigen <= ($id_destino -1)) {
+            $queryTraeLugaresOcupados .=", $lugaresOcupadosEnOrigen";
+            $lugaresOcupadosEnOrigen += 1;
+        }
 
-    $queryTraeLugaresOcupados .="))";
-}
+        $queryTraeLugaresOcupados .="))";
+    }
 
     if ($id_destino < $id_origen){
         $lugaresOcupadosEnDestino = $id_origen;
@@ -88,28 +88,26 @@ function reserva(){
         $queryTraeLugaresOcupados .=")";
 
 
-    if($lugaresOcupadosEnOrigen >= ($id_destino +1)){
-        $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($lugaresOcupadosEnOrigen";
-        $lugaresOcupadosEnOrigen -= 1;
-    }
-        while($lugaresOcupadosEnOrigen >= ($id_destino +1)){
-        $queryTraeLugaresOcupados .=", $lugaresOcupadosEnOrigen";
-        $lugaresOcupadosEnOrigen -= 1;
+        if($lugaresOcupadosEnOrigen >= ($id_destino +1)){
+            $queryTraeLugaresOcupados .=" AND d1.id_destino IN  ($lugaresOcupadosEnOrigen";
+            $lugaresOcupadosEnOrigen -= 1;
+        }
+            while($lugaresOcupadosEnOrigen >= ($id_destino +1)){
+            $queryTraeLugaresOcupados .=", $lugaresOcupadosEnOrigen";
+            $lugaresOcupadosEnOrigen -= 1;
+        }
+
+        $queryTraeLugaresOcupados .="))";
     }
 
-    $queryTraeLugaresOcupados .="))";
-    }
-
-/*echo $queryTraeLugaresOcupados;
-exit();*/
+        //echo $queryTraeLugaresOcupados;
+        //exit();
 
     if ($id_destino == $id_origen){
         $queryTraeLugaresOcupados .=" AND  d0.id_destino= $id_origen";
     }
 
-
     $result2 = mysqli_query($conn, $queryTraeLugaresOcupados);
-
     $lugares = Array();
 
     if (mysqli_num_rows($result2) > 0) {
@@ -132,6 +130,8 @@ exit();*/
     //Resta de  total de espacio por lugares ocupados
     $resta= $cantidadDeEspacio[0] - $lugaresOcupados;
 
+    echo $resta;
+    exit();
     if ($resta >= 0){
 
         //traigo el ID del usuario
@@ -143,12 +143,12 @@ exit();*/
         $estado_reserva_default=2;
 
 
-        $sql = "insert INTO reserva (nro_reserva, fk_id_vuelo_trayecto, fk_login, tipo_cabina, cantidad_lugares, fk_estado_reserva) values ($nro_reserva,$id_vuelo_trayecto,'$dato[0]','$cabina',$cant_pasajeros,$estado_reserva_default)";
-
-
+        $sql = "INSERT INTO reserva (nro_reserva, fk_id_vuelo_trayecto, fk_login, tipo_cabina, cantidad_lugares, fk_estado_reserva) 
+                values ($nro_reserva,$id_vuelo_trayecto,'$dato[0]','$cabina',$cant_pasajeros,$estado_reserva_default)";
 
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
+
         if ($cant_pasajeros == 1){
             header("location:centro_medico");
         }else{

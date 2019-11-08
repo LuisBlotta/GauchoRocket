@@ -1,3 +1,7 @@
+.hora-modal{
+	margin-left: 30px;
+}
+
 @media only screen and (min-width: 48em){
 	.cont-info{
 		display: flex;
@@ -5,7 +9,7 @@
 		justify-content: center;
 	}
 	.cont-info .card{				
-		width: 800px;	
+		width: 900px;
 		margin: auto;
 		margin-bottom: 50px;
 	}		

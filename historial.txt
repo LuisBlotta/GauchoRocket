@@ -100,3 +100,5 @@ El usuario admin ingresó correctamente
 El usuario admin intentó ingresar y no pudo 
 El usuario admin ingresó correctamente
 El usuario admin ingresó correctamente
+El usuario admin ingresó correctamente
+El usuario admin ingresó correctamente

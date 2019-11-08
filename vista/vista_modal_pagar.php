@@ -3,22 +3,42 @@
 <div class="container">
 
   <!-- The Modal -->
-    <div class="modal" id="myModal">
+    <?php echo"<div class='modal' id='myModal". $reserva['nro_reserva'] ."'>" ?>
         <div class="modal-dialog">
             <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-              <h4 class="modal-title">Pago</h4>
+              <h4 class="modal-title">Resumen</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-
+            <div class="modal-body">
+                <?php echo "                
+                    <p>N° de reserva: " . $reserva['nro_reserva'] . "</p>
+                    <h2>" . $reserva['destino'] . "</h2>
+                    <p>Origen: " . $reserva['origen'] . "</p><br>
+    
+                    <p>
+                        <span>
+                        <img src='public/img/calendar.png'> ".$reserva['fecha_ida']."
+                        </span>
+                        <span class='hora-modal'>
+                            <img src='public/img/clock.png'> " . $reserva['hora_partida'] . ":00
+                        </span>
+                    </p><br>
+                    
+                    <p>Cantidad de pasajeros: " . $reserva['cantidad_lugares'] . "</p>   
+                    <p>Precio unitario: $".$reserva['precio'].".-</p>    
+                    <h3>Total: $" . $reserva['precio_total'] . ".-</h3><br>";
+                ?>
+            </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Pago</h4>
+                </div>
             <!-- Modal body -->
-
-
                     <div class="payment">
                     <?php
-                    echo "<form action='cobrar?nro_reserva=".$dato['nro_reserva']."' method='post' id='form-pago'>"
+                    echo "<form action='cobrar?nro_reserva=".$reserva['nro_reserva']."' method='post' id='form-pago'>"
                     ?>
                         <div class="modal-body">
                             <div class="form-group" id="card-number-field">

@@ -33,9 +33,10 @@ function getReservas(){
             $reserva['hora_partida'] =  $row["hora_partida"];           
             $reserva['origen'] =  $row["origen"];
             $reserva['destino'] =  $row["destino"];
-            $reserva['tipo_viaje'] =  $row["tipo_viaje"];            
+            $reserva['tipo_viaje'] =  $row["tipo_viaje"];
+            $reserva['cantidad_lugares'] =  $row["cantidad_lugares"];
             $reserva['precio'] =  $row["precio"];
-            $reserva['cantidad_lugares'] =  $row["cantidad_lugares"];                
+            $reserva['precio_total'] =$reserva['precio']*$reserva['cantidad_lugares'];
             $reserva['estado_reserva'] =  $row["estado_reserva"];
             
             /*---------------------
