@@ -8,7 +8,7 @@ foreach ($asientosReservados as $asiento_reservado){
 }
 
 $i=1;
-while ($i < $datos['capacidad']) {
+while ($i <= $datos['capacidad']) {
 
     if (in_array($i, $numeros)){
         echo "<label><img src='public/img/lugar_ocupado.png'> 

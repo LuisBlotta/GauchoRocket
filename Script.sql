@@ -39,7 +39,7 @@ create table vuelo_trayecto (id_vuelo_trayecto int not null primary key auto_inc
     
 /*Tablas reserva*/
 create table estado_reserva(id_estado_reserva int primary key, descripcion varchar(20));
-create table asientos_reservados (id_asientos_reservados int auto_increment primary key, numero_asiento int);
+create table asientos_reservados (id_asientos_reservados int auto_increment primary key, numero_asiento int not null, numero_reserva int not null);
 create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null, fk_estado_reserva int not null, fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_estado_reserva) references estado_reserva(id_estado_reserva), foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login));
 create table asientos_reserva (id_asientos_reserva int auto_increment primary key, fk_asientos_reservados int, fk_reserva int, foreign key(fk_asientos_reservados) references asientos_reservados(id_asientos_reservados), foreign key(fk_reserva) references reserva(id_reserva) );
 
@@ -339,13 +339,13 @@ select cabina.capacidad from reserva join vuelo_trayecto on reserva.fk_id_vuelo_
                         where reserva.nro_reserva = 1610062491 AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva  
 																							WHERE reserva.nro_reserva  =1610062491);
 
+
+select * from  cabina
+
+insert into asientos_reservados (numero_asiento, numero_reserva) values (1,652829274),(4,652829274),(6,652829274);
+insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);
 */
                                 
-
-
+                                           
                                                                                             
-                                                                                            
-select * from reserva;
-insert into asientos_reservados (numero_asiento) values (1),(4),(6);
-insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);
-select asientos_reservados.numero_asiento from asientos_reserva join asientos_reservados on asientos_reserva.fk_asientos_reservados = asientos_reservados.id_asientos_reservados join reserva on asientos_reserva.fk_reserva = reserva.id_reserva Where reserva.nro_reserva =969601252
+
