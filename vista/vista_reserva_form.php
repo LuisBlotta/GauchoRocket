@@ -12,11 +12,23 @@
     $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
     $id_origen = $_GET['id_origen'];
     $fecha_ida= $_GET['fecha_ida'];
-
+    $nick = $_COOKIE["login"];
 
     if (empty($_SESSION['usuario'])) {
         header('location:info_vuelo?id_vuelo='.$id_vuelo."&id_trayecto=".$id_trayecto);
     }
+
+    //Chequea nivel de pasajero
+ /*   $buscarNivel = "SELECT usuario.fk_nivel nivel_pasajero FROM usuario
+                        JOIN login ON usuario.fk_login = login.id_login
+                        WHERE nick ='$nick'";
+    $resultNivel = mysqli_query($conn, $buscarNivel);
+    $dato=mysqli_fetch_row($resultNivel);
+
+    if(!empty(dato[0])){
+
+    }*/
+
     ?>
 
 </head>
