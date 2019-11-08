@@ -39,7 +39,9 @@ create table vuelo_trayecto (id_vuelo_trayecto int not null primary key auto_inc
     
 /*Tablas reserva*/
 create table estado_reserva(id_estado_reserva int primary key, descripcion varchar(20));
-create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null, fk_estado_reserva int not null, fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_estado_reserva) references estado_reserva(id_estado_reserva), foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login) );
+create table asientos_reservados (id_asientos_reservados int auto_increment primary key, numero_asiento int);
+create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null, fk_estado_reserva int not null, fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_estado_reserva) references estado_reserva(id_estado_reserva), foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login));
+create table asientos_reserva (id_asientos_reserva int auto_increment primary key, fk_asientos_reservados int, fk_reserva int, foreign key(fk_asientos_reservados) references asientos_reservados(id_asientos_reservados), foreign key(fk_reserva) references reserva(id_reserva) );
 
 
 INSERT INTO estado_reserva(id_estado_reserva, descripcion) values (1, "Confirmada"), (2,"Pendiente"), (3,"Abonada y Pendiente"), (4,"Cancelada");
@@ -343,6 +345,6 @@ select cabina.capacidad from reserva join vuelo_trayecto on reserva.fk_id_vuelo_
 
                                                                                             
                                                                                             
-                                                                                            
-                                                                                            
-                                                                                            
+select * from reserva;
+insert into asientos_reservados (numero_asiento) values (1),(4),(6);
+insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);

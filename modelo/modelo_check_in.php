@@ -1,6 +1,6 @@
 <?php
 include("conexion.php");
-chech_in();
+
  function chech_in(){
      $conn = getConexion();
      $nro_reserva = $_GET['nro_reserva'];
@@ -17,13 +17,41 @@ chech_in();
 																							WHERE reserva.nro_reserva  =$nro_reserva);";
 
      $result = mysqli_query($conn, $sqlTraeCapacidad);
-     $dato=mysqli_fetch_assoc($result);
-     /*print_r($dato);
+     $datos=mysqli_fetch_assoc($result);
+     /*print_r($datos);
      exit();*/
 
+     mysqli_close($conn);
 
+     return $datos;
+}
+traerAsientosReservados();
+function traerAsientosReservados(){
+    $conn = getConexion();
+    $nro_reserva = $_GET['nro_reserva'];
+
+        $sqlTraerAsientosReservados = "select asientos_reservados.numero_asiento numero_asiento from asientos_reserva 
+                                        join asientos_reservados on asientos_reserva.fk_asientos_reservados  = asientos_reservados.id_asientos_reservados
+                                        join reserva on asientos_reserva.fk_reserva = reserva.id_reserva Where reserva.nro_reserva =$nro_reserva";
+
+    $result2 = mysqli_query($conn, $sqlTraerAsientosReservados);
+
+    $asientosReservados = Array();
+    if (mysqli_num_rows($result2) > 0) {
+        while($row = mysqli_fetch_assoc($result2)) {
+            $asiento_reservado = Array();
+            $asiento_reservado['numero_asiento'] =  $row["numero_asiento"];
+            $asientosReservados[] = $asiento_reservado;
+        }
+    }
+
+  return $asientosReservados;
 }
 
 
 
-?>
+
+
+ ?>
+
+
