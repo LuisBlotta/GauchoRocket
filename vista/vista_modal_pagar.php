@@ -3,7 +3,7 @@
 <div class="container">
 
   <!-- The Modal -->
-    <?php echo"<div class='modal' id='myModal".$reserva['nro_reserva']."'>" ?>
+    <?php echo"<div class='modal' id='myModal". $reserva['nro_reserva'] ."'>" ?>
         <div class="modal-dialog">
             <div class="modal-content">
 
