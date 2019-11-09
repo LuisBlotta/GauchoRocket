@@ -130,8 +130,6 @@ function reserva(){
     //Resta de  total de espacio por lugares ocupados
     $resta= $cantidadDeEspacio[0] - $lugaresOcupados;
 
-    echo $resta;
-    exit();
     if ($resta >= 0){
 
         //traigo el ID del usuario

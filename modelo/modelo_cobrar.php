@@ -4,7 +4,7 @@ include("head.php");
 cobrar();
 function cobrar(){ 
     
-    $nick=$_COOKIE["login"];
+
     $nro_reserva=$_GET['nro_reserva'];
 
     $validez_numero1=$_POST['validez_numero'];
@@ -17,9 +17,6 @@ function cobrar(){
 
     $mes=$_POST['mes'];
     $año=$_POST['año'];
-
-
-    //$cod_transaccion=hash('',);
 
     $conn = getConexion();
 
@@ -74,9 +71,10 @@ function cobrar(){
             WHERE nro_reserva = $nro_reserva";
 
         $result = mysqli_query($conn, $sql);
-
+        return $estado_pago=1;
         header('location:consultar_reservas?estado_pago=1');
     }else{
+        return $estado_pago=0;
         header('location:consultar_reservas?nro_reserva='.$nro_reserva.'&fallo_datos=1');
     }
 
