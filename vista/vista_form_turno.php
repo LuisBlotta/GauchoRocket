@@ -6,6 +6,7 @@
     <?php
         include("head.php");
         $id_medico=$_GET['id_medico'];
+        $nro_reserva = $_GET['nro_reserva']
     ?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
 </head>
@@ -23,13 +24,18 @@
                             </div>";
         }
         ?>
-        <?php echo"<form method='post' action='reserva_turno?id_medico=$id_medico'>"?>
+        <?php echo"<form method='post' action='reserva_turno?id_medico=$id_medico&nro_reserva=$nro_reserva'>"?>
             <input class="form-control" type="text" name="nombre" required placeholder="Nombre y Apellido">
             <input class="form-control" type="text" name="email" required placeholder="E-mail">
             <input class="form-control" type="date" name="fecha_turno">
             <button class="btn btn-info">Reservar</button>
         </form>
     </section>
+    <?php
+    if(isset($_GET["resultado"]) && $_GET["resultado"] == 'false'){
+        echo "<div style='color:red'>No hay turnos disponibles. Por favor elija otra fecha </div>";
+    }
+    ?>
 
 </main>
 </body>
