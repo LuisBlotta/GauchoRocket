@@ -21,14 +21,15 @@ function validarNivel(){
     $datoVuelo=mysqli_fetch_row($resultNivelVuelo);
 
     if(!empty($datoUsuario[0])){
-        $i=0;
-        while ($i< count($datoVuelo)){
-            if (in_array($datoUsuario[0], $datoVuelo[$i])){
-                $resultado=1;
-            }else{
-                $resultado=0;
-            }
-            $i++;
+
+        $numeros= array();
+        foreach ($datoVuelo as $vuelo){
+            $numeros[] = $vuelo;
+        }
+        if (in_array($datoUsuario[0], $numeros)){
+            $resultado=1;
+        }else{
+            $resultado=0;
         }
     }else{
         $resultado=2;
