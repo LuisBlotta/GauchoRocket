@@ -3,6 +3,7 @@
 include("conexion.php");
 include("head.php");
 getTurnos();
+
 function getTurnos()
 {
 
@@ -16,7 +17,9 @@ function getTurnos()
     $conn = getConexion();
 
     ## traigo id de pasajeros en base al nro de reserva ##
-$queryConsultalogins ="SELECT fk_login fk_login FROM reserva WHERE nro_reserva=$nro_reserva";
+$queryConsultalogins ="SELECT reserva.fk_login fk_login FROM reserva JOIN login on reserva.fk_login = login.id_login 
+                                                                JOIN usuario on usuario.fk_login = login.id_login
+                                                                WHERE nro_reserva=$nro_reserva AND usuario.fk_nivel IS NULL";
 
     $resultlogin = mysqli_query($conn, $queryConsultalogins);
     $logins = Array();
@@ -33,12 +36,10 @@ $queryConsultalogins ="SELECT fk_login fk_login FROM reserva WHERE nro_reserva=$
         $ids[] = $login['fk_login'];
     }
 
+    /* print_r($ids);
+   echo count($ids);
+    exit();*/
 
-    ## Cuadntos pasajeros tiene esa reserva ##
-    $sqlTraerCantidadDePasajerosPorReserva="SELECT count(reserva.id_reserva) FROM reserva WHERE nro_reserva=$nro_reserva";
-
-    $resultLugaresParaReservar = mysqli_query($conn, $sqlTraerCantidadDePasajerosPorReserva);
-    $cantidadPasajerosPorReserva=mysqli_fetch_row($resultLugaresParaReservar);
 
 
     ## Turnos ocupados por dia##
@@ -50,7 +51,6 @@ $queryConsultalogins ="SELECT fk_login fk_login FROM reserva WHERE nro_reserva=$
     $datoTurnosOcupados=mysqli_fetch_row($resultTraerTurnosOcupados);
 
 
-  echo $cantidadPasajerosPorReserva[0];
 
    /* echo "<br>";
     echo $datoTurnosOcupados[0];
@@ -58,10 +58,10 @@ $queryConsultalogins ="SELECT fk_login fk_login FROM reserva WHERE nro_reserva=$
     exit();*/
 
 
-  if (($datoTurnosOcupados[0] + $cantidadPasajerosPorReserva[0]) <= 10  ) {
+  if (($datoTurnosOcupados[0] + count($ids)) <= 10  ) {
 
       $i = 0;
-      while ($i < $cantidadPasajerosPorReserva[0]){
+      while ($i < count($ids)){
 
     $sqlInsert = "INSERT INTO turno (fecha, nombre, fk_medico, fk_login)
                    values ('$fecha_turno', '$nombre', '$id_medico', $ids[$i])";
@@ -71,8 +71,6 @@ $queryConsultalogins ="SELECT fk_login fk_login FROM reserva WHERE nro_reserva=$
       }
             mysqli_close($conn);
 
-            header("location:resultado_turno");
-    
     } else
             header("location:form_turno?resultado=false&id_medico=$id_medico&nro_reserva=$nro_reserva");
 

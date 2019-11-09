@@ -14,7 +14,7 @@ include("condicional_sesion.php");
     <main>
 
         <h3> Turno reservado correctamente </h3>
-
+        <?php echo $_POST['fecha_turno']; ?>
 
     </main>
 </body>
