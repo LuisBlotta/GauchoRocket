@@ -148,7 +148,7 @@ function reserva(){
         mysqli_close($conn);
 
         if ($cant_pasajeros == 1){
-            header("location:centro_medico");
+            header("location:centro_medico?nro_reserva=$nro_reserva");
         }else{
             $cant_pasajeros -= 1;
             header("location:registrar_usuarios_extra?cantidadPasajeros=$cant_pasajeros&id_vuelo=$id_vuelo&nro_reserva=$nro_reserva&nick=$nick&id_trayecto=$id_trayecto&id_destino=$id_destino&id_vuelo_trayecto=$id_vuelo_trayecto");

@@ -1,12 +1,6 @@
 <?php
 include("condicional_sesion.php"); 
-$resultado= $_GET['resultado'];
 
-if ($resultado==true) {
-	$mensaje = "Turno Reservado";
-}else{
-	$mensaje = "No hay turnos disponibles.";
-}
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +13,8 @@ if ($resultado==true) {
 <body>
     <main>
 
-        <h3> <?php echo $mensaje; ?></h3>
-
+        <h3> Turno reservado correctamente </h3>
+        <?php echo $_POST['fecha_turno']; ?>
 
     </main>
 </body>

@@ -9,7 +9,7 @@ $id_destino = $_GET['id_destino'];
 $id_vuelo_trayecto = $_GET['id_vuelo_trayecto'];
 
 if($cantidadPasajeros==0){
-    header("location:centro_medico");
+    header("location:centro_medico?nro_reserva=$nro_reserva");
     exit();
 }
 

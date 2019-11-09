@@ -14,12 +14,10 @@ include("conexion.php");
                         join modelo on modelo.id_modelo = equipo.fk_modelo
                         join cabina on cabina.fk_id_modelo = modelo.id_modelo
                         where reserva.nro_reserva = $nro_reserva AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva  
-																							WHERE reserva.nro_reserva  =$nro_reserva);";
+																							WHERE reserva.nro_reserva  =$nro_reserva limit 1)limit 1;";
 
      $result = mysqli_query($conn, $sqlTraeCapacidad);
      $datos=mysqli_fetch_assoc($result);
-     /*print_r($datos);
-     exit();*/
 
      mysqli_close($conn);
 
