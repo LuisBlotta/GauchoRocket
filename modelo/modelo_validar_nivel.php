@@ -23,7 +23,7 @@ function validarNivel(){
     if(!empty($datoUsuario[0])){
         $i=0;
         while ($i< count($datoVuelo)){
-            if ($datoUsuario[0]==$datoVuelo[$i]){
+            if (in_array($datoUsuario[0], $datoVuelo[$i])){
                 $resultado=1;
             }else{
                 $resultado=0;
