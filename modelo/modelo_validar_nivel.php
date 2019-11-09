@@ -21,7 +21,6 @@ function validarNivel(){
     $datoVuelo=mysqli_fetch_row($resultNivelVuelo);
 
     if(!empty($datoUsuario[0])){
-
         $numeros= array();
         foreach ($datoVuelo as $vuelo){
             $numeros[] = $vuelo;
@@ -34,7 +33,5 @@ function validarNivel(){
     }else{
         $resultado=2;
     }
-
     return $resultado;
-
 }

@@ -1,10 +1,12 @@
 drop database if exists gauchoRocket;
 create database gauchoRocket;
 use gauchoRocket;
+
+/*----------Tablas usuario----------*/  
 create table login (id_login int primary key auto_increment,
 					userConfirmado boolean not null,
                     hashConfirmacion varchar(50) not null,
-					nick varchar(50) not null,
+					nick varchar(50) not null unique,
                     password varchar(50) not null);
                     
 create table nivel_pasajero (id_nivel int primary key not null);
@@ -21,7 +23,8 @@ create table usuario (id_usuario int primary key auto_increment,
 
 insert into  login (userConfirmado, hashConfirmacion, nick, password) values (true,"f50686d5dc72f5d073c5295937bc58ce","admin", "e67732763718fbafa22f23adb5679c2f");
 insert into  usuario (nombre, mail, rol, fk_login) values ("admin", "admin@gauchorocket.com", 2,1) ;                      
-                        
+
+/*----------Tablas vuelo----------*/                        
 create table tipo_vuelo (id_tipo_vuelo int primary key, descripcion varchar(20));                        
 create table modelo (id_modelo int primary key, descripcion varchar(20) , fk_tipo_vuelo int not null, foreign key(fk_tipo_vuelo) references tipo_vuelo(id_tipo_vuelo));
 create table cabina (fk_id_modelo int, descripcion varchar(20) not null, capacidad int not null, primary key (fk_id_modelo, descripcion), foreign key (fk_id_modelo) references modelo(id_modelo));
@@ -37,12 +40,17 @@ create table vuelo (id_vuelo int primary key auto_increment, fk_equipo int not n
 create table trayecto (id_trayecto int primary key not null auto_increment,  fk_punto_partida int not null, fk_punto_llegada int not null, duracion int not null, precio int not null, foreign key(fk_punto_partida) references destino(id_destino), foreign key(fk_punto_llegada) references destino(id_destino));
 create table vuelo_trayecto (id_vuelo_trayecto int not null primary key auto_increment, fk_vuelo int not null, fk_trayecto int not null, foreign key(fk_vuelo) references vuelo(id_vuelo), foreign key(fk_trayecto) references trayecto(id_trayecto));
     
-/*Tablas reserva*/
+/*----------Tablas reserva----------*/
 create table estado_reserva(id_estado_reserva int primary key, descripcion varchar(20));
 create table asientos_reservados (id_asientos_reservados int auto_increment primary key, numero_asiento int not null, numero_reserva int not null);
 create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null, fk_estado_reserva int not null, fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_estado_reserva) references estado_reserva(id_estado_reserva), foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login));
 create table asientos_reserva (id_asientos_reserva int auto_increment primary key, fk_asientos_reservados int, fk_reserva int, foreign key(fk_asientos_reservados) references asientos_reservados(id_asientos_reservados), foreign key(fk_reserva) references reserva(id_reserva) );
 
+/*----------Tablas transaccion----------*/
+create table estado_transaccion(id_estado_transaccion int primary key not null, descripcion varchar(50));
+create table transaccion(id_transaccion int primary key auto_increment not null, cod_transaccion varchar(50) not null, fk_usuario int not null, fk_estado_transaccion int, fecha date not null, hora time not null, zona_horaria varchar(50) not null, nro_reserva int not null, foreign key (fk_usuario) references usuario(id_usuario),foreign key (fk_estado_transaccion) references estado_transaccion(id_estado_transaccion));
+
+INSERT INTO estado_transaccion(id_estado_transaccion, descripcion) values (0,"Error de datos"),(1,"Correcto");
 
 INSERT INTO estado_reserva(id_estado_reserva, descripcion) values (1, "Confirmada"), (2,"Pendiente"), (3,"Abonada y Pendiente"), (4,"Cancelada");
 
@@ -339,7 +347,7 @@ select cabina.capacidad from reserva join vuelo_trayecto on reserva.fk_id_vuelo_
                         where reserva.nro_reserva = 1610062491 AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva  
 																							WHERE reserva.nro_reserva  =1610062491);
 
-
+select * from transaccion
 select * from  cabina
 
 insert into asientos_reservados (numero_asiento, numero_reserva) values (1,652829274),(4,652829274),(6,652829274);
