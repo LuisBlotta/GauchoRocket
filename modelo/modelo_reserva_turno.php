@@ -69,10 +69,26 @@ $queryConsultalogins ="SELECT reserva.fk_login fk_login FROM reserva JOIN login 
             mysqli_query($conn, $sqlInsert);
             $i++;
       }
-            mysqli_close($conn);
+
+
+
+      mysqli_close($conn);
+
 
     } else
             header("location:form_turno?resultado=false&id_medico=$id_medico&nro_reserva=$nro_reserva");
+
+}
+function traerNomberMedico(){
+    $id_medico = $_GET['id_medico'];
+    $conn = getConexion();
+
+
+    $sqlTrarNombreInstituto="SELECT medico.nombre FROM medico WHERE medico.id_medico = $id_medico";
+    $resultadoNombreInstituto = mysqli_query($conn, $sqlTrarNombreInstituto);
+    $nombreMedico=mysqli_fetch_row($resultadoNombreInstituto);
+
+    return $nombreMedico;
 
 }
 
