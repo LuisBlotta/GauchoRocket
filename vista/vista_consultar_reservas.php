@@ -45,7 +45,7 @@
                             echo "<p>Cancelada</p>";
                         }
                         if ($reserva['estado_reserva']!=4){
-                            echo"<a href='#' class='btn-reservar btn btn-danger'>Cancelar</a>";
+                            echo"<a href='cancelar_vuelo?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-danger'>Cancelar</a>";
                         }
 
                         echo"</div>
