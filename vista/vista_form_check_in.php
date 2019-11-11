@@ -3,11 +3,12 @@ include("condicional_sesion.php");
 include_once("conexion.php");
 $conn=getConexion();
 $nro_reserva=$_GET['nro_reserva'];
+$i=1;
+
 $numeros= array();
 foreach ($asientosReservados as $asiento_reservado){
     $numeros[] = $asiento_reservado['numero_asiento'];
 }
-$i=1;
 
 //----Valida que haya pagado
 $sql="SELECT fk_estado_reserva FROM reserva WHERE nro_reserva=$nro_reserva";

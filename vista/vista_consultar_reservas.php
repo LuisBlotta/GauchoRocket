@@ -37,8 +37,9 @@
 
                         if ($reserva['estado_reserva']==2) {
                             //echo"<a href='pago?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Pagar</a>";
-                            echo"<button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button>";
+                            echo"<button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button><br><br>";
                                 include('vista_modal_pagar.php');
+                            echo"<a href='#' class='btn-reservar btn btn-danger'>Cancelar</a>";
                         }elseif ($reserva['estado_reserva']!=4) {
                            echo"<a href='#' class='btn-reservar btn btn-danger'>Cancelar</a>";
                         }else{
