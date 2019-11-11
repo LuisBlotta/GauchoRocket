@@ -14,8 +14,8 @@ $sql="SELECT fk_estado_reserva FROM reserva WHERE nro_reserva=$nro_reserva";
 $result = mysqli_query($conn, $sql);
 $estado_reserva=mysqli_fetch_row($result);
 
-if ($estado_reserva!=3){
-    if ($estado_reserva==1){
+if ($estado_reserva[0]!=3){
+    if ($estado_reserva[0]==1){
         header("location:consultar_reservas?check_in_realizado=true");
     }
     header("location:consultar_reservas?requiere_pago=true");
