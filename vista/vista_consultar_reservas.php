@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gaucho Rocket</title>
+    <title>Reservas</title>
     <?php include("head.php") ?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-info_vuelo.css">
     <link rel="stylesheet" type="text/css" href="public/css/estilos-reservas.css">

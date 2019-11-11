@@ -1,10 +1,3 @@
 <?php
-include("modelo/modelo_check_in.php");
-
-$asientosReservados = traerAsientosReservados();
-$datos= chech_in();
+include ("modelo/modelo_check_in.php");
 function check_in_index(){}
-include("vista/vista_check_in.php");
-
-
-?>
