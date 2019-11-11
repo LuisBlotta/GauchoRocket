@@ -29,24 +29,28 @@ if ($estado_reserva[0]!=3){
     <title>Check In</title>
     <?php include("head.php");?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
+    <link rel="stylesheet" type="text/css" href="public/css/estilos-check_in.css">
 </head>
 <body>
-    <main>
-        <?php
-        echo "<form action='check_in?nro_reserva=".$nro_reserva."' method='post'>";
-                while ($i <= $datos['capacidad']) {
+    <div>
+    <?php
+    echo"
+        <form class='form-check-in' action='check_in?nro_reserva=".$nro_reserva."' method='post'>
+            <div class='asientos'>";
+            while ($i <= $datos['capacidad']) {
                     if (in_array($i, $numeros)){
                         echo "<label><img src='public/img/lugar_ocupado.png'> 
                         <input type='checkbox' name='asiento[]' value='$i' disabled></label>";
-                        echo $i;
+                        //echo $i;
                     }else{
                         echo "<label> <img src='public/img/lugar_libre.png'>
                             <input type='checkbox' name='asiento[]' value='$i'> </label>";
-                        echo $i;
+                        //echo $i;
                     }
                     $i++;
                 }
         ?>
+            </div>
             <button class="btn btn-info">Confirmar</button>
         </form>
         <?php
