@@ -2,8 +2,8 @@
 include("conexion.php");
 validar_reserva();
 function validar_reserva(){
-$nro_reserva = $_POST['nro_reserva'];
-$nick = $_COOKIE["login"];
+    $nro_reserva = $_POST['nro_reserva'];
+    $nick = $_COOKIE["login"];
 
 
     $conn = getConexion();
@@ -15,7 +15,7 @@ $nick = $_COOKIE["login"];
 
 
     if (mysqli_num_rows($result)>0) {
-        header('location:check_in?nro_reserva='.$nro_reserva.'');
+        header('location:form_check_in?nro_reserva='.$nro_reserva.'');
      
 
     } else {

@@ -1,55 +1,72 @@
 <?php
 include("conexion.php");
 
- function chech_in(){
-     $conn = getConexion();
-     $nro_reserva = $_GET['nro_reserva'];
+check_in();
+function check_in(){
+    $nro_reserva=$_GET['nro_reserva'];
+    $i=0;
+    $asiento=Array();
+    $conn=getConexion();
 
-    ### Trae capacidad de de la cabina ###
-
-
-    $sqlTraeCapacidad="select cabina.capacidad, vuelo.dia_partida, vuelo.hora_partida from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto 
-						join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
-                        join equipo on equipo.id_equipo = vuelo.fk_equipo
-                        join modelo on modelo.id_modelo = equipo.fk_modelo
-                        join cabina on cabina.fk_id_modelo = modelo.id_modelo
-                        where reserva.nro_reserva = $nro_reserva AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva  
-																							WHERE reserva.nro_reserva  =$nro_reserva limit 1)limit 1;";
-
-     $result = mysqli_query($conn, $sqlTraeCapacidad);
-     $datos=mysqli_fetch_assoc($result);
-
-     mysqli_close($conn);
-
-     return $datos;
-}
-traerAsientosReservados();
-function traerAsientosReservados(){
-    $conn = getConexion();
-    $nro_reserva = $_GET['nro_reserva'];
-
-        $sqlTraerAsientosReservados = "select asientos_reservados.numero_asiento numero_asiento from asientos_reserva 
-                                        join asientos_reservados on asientos_reserva.fk_asientos_reservados  = asientos_reservados.id_asientos_reservados
-                                        join reserva on asientos_reserva.fk_reserva = reserva.id_reserva Where reserva.nro_reserva =$nro_reserva";
-
-    $result2 = mysqli_query($conn, $sqlTraerAsientosReservados);
-
-    $asientosReservados = Array();
-    if (mysqli_num_rows($result2) > 0) {
-        while($row = mysqli_fetch_assoc($result2)) {
-            $asiento_reservado = Array();
-            $asiento_reservado['numero_asiento'] =  $row["numero_asiento"];
-            $asientosReservados[] = $asiento_reservado;
-        }
+    //-----Guarda los asientos a un array
+    foreach ($_POST['asiento'] as $nro_asiento){
+        $asiento[$i]=$nro_asiento;
+        $i++;
     }
 
-  return $asientosReservados;
+    //-----Trae cantidad de lugares de la reserva
+    $sqlLugares="SELECT cantidad_lugares FROM reserva
+                 WHERE nro_reserva=$nro_reserva";
+    $resultLugares = mysqli_query($conn, $sqlLugares);
+    $lugares=mysqli_fetch_row($resultLugares);
+
+
+
+    //-----Validacion e insert en la tabla de asientos_reservados
+    if (sizeof($asiento)!=$lugares[0]){
+        header("location:form_check_in?nro_reserva=".$nro_reserva."&fallo=true");
+    }else{
+        $i=0;
+        while ($i<$lugares[0]){
+            $sql="INSERT INTO asientos_reservados (numero_asiento, numero_reserva)
+                     VALUES ($asiento[$i], $nro_reserva)";
+            $result = mysqli_query($conn, $sql);
+            $i++;
+        }
+
+        //-----Trae los id's
+        $sqlIDreserva="SELECT id_reserva FROM reserva WHERE nro_reserva=$nro_reserva";
+        $resultIDreserva = mysqli_query($conn, $sqlIDreserva);
+        $id_reserva=mysqli_fetch_row($resultIDreserva);
+
+        $sqlIDasientos="SELECT id_asientos_reservados FROM asientos_reservados WHERE numero_reserva=$nro_reserva";
+        $resultIDasientos = mysqli_query($conn, $sqlIDasientos);
+
+        $i=0;
+        $id_asientos = Array();
+        while($row = mysqli_fetch_assoc($resultIDasientos)) {
+            $id_asientos[$i] =  $row['id_asientos_reservados'];
+            $i++;
+        }
+
+        //-----Insert en la tabla de asientos_reserva
+        $i=0;
+        while ($i<sizeof($id_asientos)){
+            $sqlAsientosReserva="INSERT INTO asientos_reserva (fk_asientos_reservados, fk_reserva)
+                                 VALUES ($id_asientos[$i], $id_reserva[0])";
+            $result = mysqli_query($conn, $sqlAsientosReserva);
+            $i++;
+        }
+
+        //-----Update del estado de reserva
+        $sqlEstadoReserva = "UPDATE reserva 
+                             SET fk_estado_reserva = 1
+                             WHERE nro_reserva = $nro_reserva";
+        $resultEstadoReserva = mysqli_query($conn, $sqlEstadoReserva);
+
+        mysqli_close($conn);
+        header("location:consultar_reservas?check_in_exitoso=true");
+    }
 }
 
-
-
-
-
- ?>
-
-
+?>
