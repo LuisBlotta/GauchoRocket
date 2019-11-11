@@ -72,10 +72,10 @@ function cobrar(){
 
         $result = mysqli_query($conn, $sql);
         return $estado_pago=1;
-        header('location:consultar_reservas?estado_pago=1');
+        header('location:consultar_reservas?pago_exitoso=true');
     }else{
         return $estado_pago=0;
-        header('location:consultar_reservas?nro_reserva='.$nro_reserva.'&fallo_datos=1');
+        header('location:consultar_reservas?nro_reserva='.$nro_reserva.'&fallo_datos=true');
     }
 
     mysqli_close($conn);   

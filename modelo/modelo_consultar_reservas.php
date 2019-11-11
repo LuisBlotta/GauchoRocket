@@ -6,7 +6,9 @@ function getReservas(){
     $nick = $_COOKIE["login"];
     $conn = getConexion();
 
-    $sql = "SELECT reserva.nro_reserva nro_reserva, reserva.tipo_cabina tipo_cabina, reserva.cantidad_lugares cantidad_lugares, vuelo.hora_partida hora_partida, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, trayecto.precio precio, tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo, estado_reserva.id_estado_reserva estado_reserva
+    $sql = "SELECT reserva.nro_reserva nro_reserva, reserva.tipo_cabina tipo_cabina, reserva.cantidad_lugares cantidad_lugares, vuelo.hora_partida hora_partida, 
+                    vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, trayecto.precio precio, tipo_viaje.descripcion tipo_viaje, 
+                    tipo_vuelo.descripcion tipo_vuelo, estado_reserva.id_estado_reserva estado_reserva, estado_reserva.descripcion descripcion_estado
             FROM reserva
             JOIN estado_reserva ON reserva.fk_estado_reserva = estado_reserva.id_estado_reserva
             JOIN login ON reserva.fk_login = login.id_login
@@ -38,6 +40,7 @@ function getReservas(){
             $reserva['precio'] =  $row["precio"];
             $reserva['precio_total'] =$reserva['precio']*$reserva['cantidad_lugares'];
             $reserva['estado_reserva'] =  $row["estado_reserva"];
+            $reserva['descripcion_estado'] =  $row["descripcion_estado"];
             
             /*---------------------
             $sqlAcompañantes= "SELECT login.nick nick, usuario.nombre nombre

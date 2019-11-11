@@ -59,7 +59,7 @@ function registrar_transaccion(){
     mysqli_close($conn);
 
     if ($estado_pago==1){
-        header('location:consultar_reservas?estado_pago=1');
+        header('location:consultar_reservas?pago_exitoso=true');
     }elseif ($estado_pago==0){
         header('location:consultar_reservas?nro_reserva='.$nro_reserva.'&fallo_datos=1');
     }

@@ -1,11 +1,26 @@
 <?php
 include("condicional_sesion.php");
+include_once("conexion.php");
+$conn=getConexion();
 $nro_reserva=$_GET['nro_reserva'];
+$i=1;
+
 $numeros= array();
 foreach ($asientosReservados as $asiento_reservado){
     $numeros[] = $asiento_reservado['numero_asiento'];
 }
-$i=1;
+
+//----Valida que haya pagado
+$sql="SELECT fk_estado_reserva FROM reserva WHERE nro_reserva=$nro_reserva";
+$result = mysqli_query($conn, $sql);
+$estado_reserva=mysqli_fetch_row($result);
+
+if ($estado_reserva[0]!=3){
+    if ($estado_reserva[0]==1){
+        header("location:consultar_reservas?check_in_realizado=true");
+    }
+    header("location:consultar_reservas?requiere_pago=true");
+}
 
 ?>
 <!DOCTYPE html>
