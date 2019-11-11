@@ -20,8 +20,6 @@ function traeDatosCabina(){
     $result = mysqli_query($conn, $sqlTraeCapacidad);
     $datos=mysqli_fetch_assoc($result);
 
-    mysqli_close($conn);
-
     return $datos;
 }
 

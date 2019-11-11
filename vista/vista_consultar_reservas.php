@@ -57,6 +57,9 @@
     if (!empty($_GET['fallo_datos'])==1){
         echo "<script>alert('Hubo un error en pago de la reserva N°".$_GET['nro_reserva'].", por favor intentelo nuevamente');</script>";
     }
+    if (!empty($_GET['check_in_exitoso'])==true){
+        echo "<script>alert('Se ha realizado el check in correctamente');</script>";
+    }
     ?>
 </main>
 </body>

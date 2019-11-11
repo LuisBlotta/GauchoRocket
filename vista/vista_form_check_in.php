@@ -22,18 +22,22 @@ $i=1;
                 while ($i <= $datos['capacidad']) {
                     if (in_array($i, $numeros)){
                         echo "<label><img src='public/img/lugar_ocupado.png'> 
-                        <input type='checkbox' name='asiento[]' value='$i'></label>";
-
+                        <input type='checkbox' name='asiento[]' value='$i' disabled></label>";
+                        echo $i;
                     }else{
                         echo "<label> <img src='public/img/lugar_libre.png'>
                             <input type='checkbox' name='asiento[]' value='$i'> </label>";
                         echo $i;
-
                     }
                     $i++;
                 }
         ?>
             <button class="btn btn-info">Confirmar</button>
         </form>
+        <?php
+            if(!empty($_GET['fallo'])==true){
+                echo "<script>alert('Hubo un error con la cantidad de asientos ingresados, inténtelo nuevamente')</script>";
+            }
+        ?>
     </main>
 </body>
