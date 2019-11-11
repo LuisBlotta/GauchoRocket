@@ -51,14 +51,20 @@
         ?>
     </section>
     <?php
-    if (!empty($_GET['estado_pago'])==1){
+    if (!empty($_GET['pago_exitoso'])==true){
         echo "<script>alert('El pago ha sido realizado');</script>";
     }
-    if (!empty($_GET['fallo_datos'])==1){
+    if (!empty($_GET['fallo_datos'])==true){
         echo "<script>alert('Hubo un error en pago de la reserva N°".$_GET['nro_reserva'].", por favor intentelo nuevamente');</script>";
     }
     if (!empty($_GET['check_in_exitoso'])==true){
-        echo "<script>alert('Se ha realizado el check in correctamente');</script>";
+        echo "<script>alert('Se ha realizado el Check-In correctamente');</script>";
+    }
+    if (!empty($_GET['check_in_realizado'])==true){
+        echo "<script>alert('El Check-In ya fue realizado ');</script>";
+    }
+    if (!empty($_GET['requiere_pago'])==true){
+        echo "<script>alert('Debe abonar su reserva para realizar el Check-In');</script>";
     }
     ?>
 </main>
