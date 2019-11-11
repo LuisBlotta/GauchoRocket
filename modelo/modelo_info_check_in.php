@@ -7,7 +7,6 @@ function traeDatosCabina(){
 
     ### Trae capacidad de de la cabina ###
 
-
     $sqlTraeCapacidad="select cabina.capacidad, vuelo.dia_partida, vuelo.hora_partida from reserva 
                        join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto 
                        join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
@@ -28,9 +27,17 @@ function traerAsientosReservados(){
     $conn = getConexion();
     $nro_reserva = $_GET['nro_reserva'];
 
-        $sqlTraerAsientosReservados = "select asientos_reservados.numero_asiento numero_asiento from asientos_reserva 
-                                        join asientos_reservados on asientos_reserva.fk_asientos_reservados  = asientos_reservados.id_asientos_reservados
-                                        join reserva on asientos_reserva.fk_reserva = reserva.id_reserva Where reserva.nro_reserva =$nro_reserva";
+    $sqlTraeIdVuelo="SELECT fk_vuelo FROM vuelo_trayecto
+                     JOIN reserva ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
+                     WHERE reserva.nro_reserva=$nro_reserva";
+    $resultIdVuelo=mysqli_query($conn, $sqlTraeIdVuelo);
+    $fk_vuelo=mysqli_fetch_row($resultIdVuelo);
+
+    $sqlTraerAsientosReservados = "SELECT asientos_reservados.numero_asiento numero_asiento FROM asientos_reserva 
+                                    JOIN asientos_reservados ON asientos_reserva.fk_asientos_reservados  = asientos_reservados.id_asientos_reservados
+                                    JOIN reserva ON asientos_reserva.fk_reserva = reserva.id_reserva 
+                                    JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto=vuelo_trayecto.id_vuelo_trayecto                                    
+                                    WHERE vuelo_trayecto.fk_vuelo =$fk_vuelo[0]";
 
     $result2 = mysqli_query($conn, $sqlTraerAsientosReservados);
 
