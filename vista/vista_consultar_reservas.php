@@ -22,7 +22,8 @@
                         <article href='' class='card'>                        
                            <img class='card-img-top' src='public/img/".$reserva['destino'].".jpg' alt='reserva'>
                             <div class='card-body'>                                
-                                <p>N° de reserva: " . $reserva['nro_reserva'] . "</p>  
+                                <p>N° de reserva: " . $reserva['nro_reserva'] . "</p> 
+                                <p>Estado: ".$reserva['descripcion_estado']."</p><br> 
                                 <h2>" . $reserva['destino'] . "</h2>
                                 <p>Origen: " . $reserva['origen'] . "</p> 
                                 <p>Tipo de viaje: " . $reserva['tipo_viaje'] . "</p><br>
@@ -36,15 +37,17 @@
 
 
                         if ($reserva['estado_reserva']==2) {
-                            //echo"<a href='pago?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Pagar</a>";
-                            echo"<button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button><br><br>";
+                            echo"<button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button>";
                                 include('vista_modal_pagar.php');
-                            echo"<a href='#' class='btn-reservar btn btn-danger'>Cancelar</a>";
-                        }elseif ($reserva['estado_reserva']!=4) {
-                           echo"<a href='#' class='btn-reservar btn btn-danger'>Cancelar</a>";
-                        }else{
+                        }elseif ($reserva['estado_reserva']==3){
+                            echo "<a href='form_check_in?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Check-In</a>";
+                        }elseif($reserva['estado_reserva']==4){
                             echo "<p>Cancelada</p>";
-                        }                            
+                        }
+                        if ($reserva['estado_reserva']!=4){
+                            echo"<a href='#' class='btn-reservar btn btn-danger'>Cancelar</a>";
+                        }
+
                         echo"</div>
                         </article>";
             }
