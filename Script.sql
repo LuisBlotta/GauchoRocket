@@ -44,7 +44,9 @@ create table vuelo_trayecto (id_vuelo_trayecto int not null primary key auto_inc
 create table estado_reserva(id_estado_reserva int primary key, descripcion varchar(20));
 create table asientos_reservados (id_asientos_reservados int auto_increment primary key, numero_asiento int not null, numero_reserva int not null);
 create table reserva (id_reserva int primary key auto_increment, nro_reserva int not null, fk_id_vuelo_trayecto int not null, fk_estado_reserva int not null, fk_login int not null, tipo_cabina varchar(1), cantidad_lugares int, foreign key(fk_estado_reserva) references estado_reserva(id_estado_reserva), foreign key(fk_id_vuelo_trayecto) references vuelo_trayecto(id_vuelo_trayecto) ,foreign key(fk_login) references login(id_login));
-create table asientos_reserva (id_asientos_reserva int auto_increment primary key, fk_asientos_reservados int, fk_reserva int, foreign key(fk_asientos_reservados) references asientos_reservados(id_asientos_reservados), foreign key(fk_reserva) references reserva(id_reserva) );
+create table asientos_reserva (id_asientos_reserva int auto_increment primary key, fk_asientos_reservados int, fk_reserva int, foreign key(fk_asientos_reservados) references asientos_reservados(id_asientos_reservados), foreign key(fk_reserva) references reserva(id_reserva));
+
+create table lista_espera(id_lista_espera int auto_increment primary key, fk_reserva int not null, foreign key(fk_reserva) references reserva(id_reserva));
 
 /*----------Tablas transaccion----------*/
 create table estado_transaccion(id_estado_transaccion int primary key not null, descripcion varchar(50));
@@ -52,7 +54,8 @@ create table transaccion(id_transaccion int primary key auto_increment not null,
 
 INSERT INTO estado_transaccion(id_estado_transaccion, descripcion) values (0,"Error de datos"),(1,"Correcto");
 
-INSERT INTO estado_reserva(id_estado_reserva, descripcion) values (1, "Confirmada"), (2,"Pendiente"), (3,"Abonada y Pendiente"), (4,"Cancelada");
+INSERT INTO estado_reserva(id_estado_reserva, descripcion) values (1, "Confirmada"), (2,"Pendiente"), (3,"Abonada y pendiente"), (4,"Cancelada"),(5,"En lista de espera");
+
 INSERT INTO tipo_vuelo (id_tipo_vuelo, descripcion) values (1,"Orbital"),(2,"Baja aceleración"),(3,"Alta aceleración");
 INSERT INTO modelo (id_modelo, descripcion, fk_tipo_vuelo) values (1, "Aguila",3), (2, "Aguilucho",2), (3, "Calandria",1), (4, "Canario",2), (5, "Carancho",2), (6, "Colibri",1), (7, "Condor",3), (8, "Guanaco",3), (9, "Halcon",3), (10, "Zorzal",2);
 
@@ -101,7 +104,7 @@ INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) values 	
 																					(35, 2, 22, '20201103'),
                                                                                     
 																					(6, 3, 08, '20191001'), /*C1 entre destinos BA*/
-                                                                                    (6, 3, 08, '20191101'), /*C1 entre destinos BA al revez */
+                                                                                    (6, 3, 17, '20191112'), /*C1 entre destinos BA al revez */ /*cambio para probar 20191101*/ 
 
 																					(38, 3, 14, '20190802'),/*C1 entre destinos AA*/
                                                                                     (38, 3, 14, '20190902'),/*C1 entre destinos AA al revez*/

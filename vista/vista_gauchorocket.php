@@ -39,7 +39,7 @@
 		</div>
 		
 		<section class="cont_buscar_vuelos">
-			<h3>Vuelos</h3>
+			<h3>Buscar vuelos</h3>
 			<form class="buscar_vuelos" action="resultado_busqueda" method="post">
 				<!--<label class="mr-sm-2">Fecha de partida</label>-->
 				<div class="input-group">

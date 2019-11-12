@@ -32,27 +32,29 @@ if ($estado_reserva[0]!=3){
     <link rel="stylesheet" type="text/css" href="public/css/estilos-check_in.css">
 </head>
 <body>
-    <div>
-    <?php
+<?php
     echo"
-        <form class='form-check-in' action='check_in?nro_reserva=".$nro_reserva."' method='post'>
+        
+        <form class='form-check-in' action='check_in?nro_reserva=".$nro_reserva."' method='post'> 
+        <h3>Seleccione los asientos</h3>           
             <div class='asientos'>";
             while ($i <= $datos['capacidad']) {
                     if (in_array($i, $numeros)){
-                        echo "<label><img src='public/img/lugar_ocupado.png'> 
-                        <input type='checkbox' name='asiento[]' value='$i' disabled></label>";
+                        echo "<input type='checkbox' name='asiento[]' value='$i' id='asiento_$i' disabled> 
+                              <label class='asiento-ocupado' for='asiento_$i'></label>";
                         //echo $i;
                     }else{
-                        echo "<label> <img src='public/img/lugar_libre.png'>
-                            <input type='checkbox' name='asiento[]' value='$i'> </label>";
+                        echo "<input type='checkbox' name='asiento[]' value='$i' id='asiento_$i'>
+                              <label class='asiento-libre' for='asiento_$i'></label>";
                         //echo $i;
                     }
                     $i++;
-                }
-        ?>
-            </div>
-            <button class="btn btn-info">Confirmar</button>
+            }
+        echo"</div>";
+?>
+            <button class="btn-confirmar btn btn-info">Confirmar</button>
         </form>
+
         <?php
             if(!empty($_GET['fallo'])==true){
                 echo "<script>alert('Hubo un error con la cantidad de asientos ingresados, inténtelo nuevamente')</script>";
