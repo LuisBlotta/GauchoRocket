@@ -65,7 +65,6 @@ function check_in(){
         $resultEstadoReserva = mysqli_query($conn, $sqlEstadoReserva);
 
         mysqli_close($conn);
-        header("location:consultar_reservas?check_in_exitoso=true");
     }
 }
 
