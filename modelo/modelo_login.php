@@ -9,9 +9,39 @@ function login(){
     $conn = getConexion();
     $file = fopen("historial.txt", "a");
 
-    $query = "SELECT nick, password FROM login 
+    /*$query = "SELECT nick, password FROM login
                     WHERE nick ='$nick' AND password ='$password'";
-    $resultado = mysqli_query($conn, $query);
+    $resultado = mysqli_query($conn, $query);*/
+
+
+
+    if ($stmt = mysqli_prepare($conn, "SELECT nick, password FROM login WHERE nick = ? and password = ?")) {
+
+        /* ligar parámetros para marcadores */
+        mysqli_stmt_bind_param($stmt, "ss", $nick, $password);
+
+        /* ejecutar la consulta */
+        mysqli_stmt_execute($stmt);
+        /* obtener valor */
+
+        if($resulta=mysqli_stmt_fetch($stmt)) {
+
+
+            setcookie("login", $nick, time() + 10000);
+            session_start();
+            $_SESSION['usuario'] = true;
+            fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
+            fclose($file);
+
+        } else {
+            header('location:login_form?fallo=true');
+            fwrite($file, "El usuario $nick intentó ingresar y no pudo ". PHP_EOL );
+            fclose($file);
+        };
+
+        /* cerrar sentencia */
+        mysqli_stmt_close($stmt);
+    }
 
     //Revisa si el usuario está confirmado------------------------
     $query2 = "SELECT userConfirmado FROM login 
@@ -30,20 +60,13 @@ function login(){
             //------------------------------
             echo "<br><a type='button' class='btn btn-info' href='gauchorocket'>Volver al inicio</a>";
         }
-        echo "<br><br><a type='button' class='btn btn-info' href='pantalla-confirmacion?hash=".$hashConfirmacion."'>Confirmar</a>";
+        echo "<br><br><a type='button' class='btn btn-info' href='pantalla_confirmacion?hash=".$hashConfirmacion."'>Confirmar</a>";
         die();
     }
-    //-------------------------------------------------------------
-    if (mysqli_num_rows($resultado)>0) {
-        setcookie("login", $nick, time() + 10000);
-        session_start();
-        $_SESSION['usuario'] = true;
+    else{
         header('location:gauchorocket');
-        fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
-        fclose($file);
-    } else {
-        header('location:login_form?fallo=true');
-        fwrite($file, "El usuario $nick intentó ingresar y no pudo ". PHP_EOL );
-        fclose($file);
+
     }
+    //-------------------------------------------------------------
+
 }

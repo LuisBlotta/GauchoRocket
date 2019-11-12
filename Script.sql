@@ -53,7 +53,6 @@ create table transaccion(id_transaccion int primary key auto_increment not null,
 INSERT INTO estado_transaccion(id_estado_transaccion, descripcion) values (0,"Error de datos"),(1,"Correcto");
 
 INSERT INTO estado_reserva(id_estado_reserva, descripcion) values (1, "Confirmada"), (2,"Pendiente"), (3,"Abonada y Pendiente"), (4,"Cancelada");
-
 INSERT INTO tipo_vuelo (id_tipo_vuelo, descripcion) values (1,"Orbital"),(2,"Baja aceleración"),(3,"Alta aceleración");
 INSERT INTO modelo (id_modelo, descripcion, fk_tipo_vuelo) values (1, "Aguila",3), (2, "Aguilucho",2), (3, "Calandria",1), (4, "Canario",2), (5, "Carancho",2), (6, "Colibri",1), (7, "Condor",3), (8, "Guanaco",3), (9, "Halcon",3), (10, "Zorzal",2);
 
@@ -317,8 +316,8 @@ select reserva.cantidad_lugares cantidad_lugares   from reserva join vuelo on re
 select * from reserva join login on reserva.fk_login = login.id_login;
 
 
-         select * from asientos_reservados;      
-         select * from reserva;      
+         select * from asientos_reserva;      
+         select * from login;      
          select * from trayecto;
          select * from vuelo join trayecto on trayecto.fk_id_vuelo = vuelo.id_vuelo
          select * from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto   JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto  JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
@@ -357,7 +356,8 @@ insert into asientos_reservados (numero_asiento, numero_reserva) values (1,65282
 insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);
 
 
-
 */
                                 
-      
+                                           
+                                                                                            
+
