@@ -21,9 +21,17 @@ function getReservas(){
             JOIN equipo on vuelo.fk_equipo = equipo.id_equipo
             JOIN modelo on equipo.fk_modelo = modelo.id_modelo            
             JOIN tipo_vuelo on modelo.fk_tipo_vuelo = tipo_vuelo.id_tipo_vuelo
-            WHERE login.nick ='$nick'";
+            
+            WHERE login.nick ='$nick'";            
 
-    $result = mysqli_query($conn, $sql);    
+    $result = mysqli_query($conn, $sql); 
+
+    $sqlTieneTurno="SELECT turno.fk_login FROM turno
+                    JOIN login ON turno.fk_login = login.id_login
+                    WHERE login.nick= '$nick'";
+    
+    $resultTieneTurno = mysqli_query($conn, $sqlTieneTurno); 
+    $turno=mysqli_fetch_row($resultTieneTurno);   
 
     $reservas = Array();
     if (mysqli_num_rows($result) > 0) {
@@ -41,6 +49,7 @@ function getReservas(){
             $reserva['precio_total'] =$reserva['precio']*$reserva['cantidad_lugares'];
             $reserva['estado_reserva'] =  $row["estado_reserva"];
             $reserva['descripcion_estado'] =  $row["descripcion_estado"];
+            $reserva['turno_existente'] =  $turno[0];
             
             /*---------------------
             $sqlAcompañantes= "SELECT login.nick nick, usuario.nombre nombre

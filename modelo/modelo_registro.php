@@ -48,7 +48,7 @@ function registro(){
                 echo "<p>Por favor revisa tu correo para confirmar el registro</p>";
                 //----borrar si se hace con mail
                 echo "<br><a type='button' class='btn btn-info' href='gauchorocket?hash=".$hashConfirmacion."'>Volver al inicio</a>";
-                echo "<br><br><a type='button' class='btn btn-info' href='pantalla-confirmacion?hash=".$hashConfirmacion."'>Confirmar</a>";
+                echo "<br><br><a type='button' class='btn btn-info' href='pantalla_confirmacion?hash=".$hashConfirmacion."'>Confirmar</a>";
                 //------------------------------
                 //echo "<br><a type='button' class='btn btn-info' href='index.php'>Volver al inicio</a>";
                 setcookie("login", $nick, time() + 1000); // recuerda el nick en el login

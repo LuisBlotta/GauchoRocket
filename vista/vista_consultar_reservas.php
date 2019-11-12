@@ -36,6 +36,8 @@
                                 <h4>Total: $".$reserva['precio_total'].".-</h4><br>";
 
 
+
+
                         if ($reserva['estado_reserva']==2) {
                             echo"<button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button>";
                                 include('vista_modal_pagar.php');
@@ -44,9 +46,14 @@
                         }elseif($reserva['estado_reserva']==4){
                             echo "<p>Cancelada</p>";
                         }
+                        
+                        if(is_null($reserva['turno_existente'])){
+                            echo"<a href='centro_medico?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Sacar Turno</a>";
+                        } 
+                        
                         if ($reserva['estado_reserva']!=4){
                             echo"<a href='cancelar_vuelo?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-danger'>Cancelar</a>";
-                        }
+                        }                                              
 
                         echo"</div>
                         </article>";
