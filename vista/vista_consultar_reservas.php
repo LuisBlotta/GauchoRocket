@@ -33,29 +33,30 @@
                                 
                                 <p>Cantidad de pasajeros: " . $reserva['cantidad_lugares'] . "</p>   
                                 <p>Precio unitario: $".$reserva['precio'].".-</p>
-                                <h4>Total: $".$reserva['precio_total'].".-</h4><br>";
-
-
-
-
-                        if ($reserva['estado_reserva']==2) {
-                            echo"<button type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button>";
+                                <h4>Total: $".$reserva['precio_total'].".-</h4><br>
+                       
+                                <div class='botones'>";
+                            if ($reserva['estado_reserva']==2) {
                                 include('vista_modal_pagar.php');
-                        }elseif ($reserva['estado_reserva']==3){
-                            echo "<a href='form_check_in?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Check-In</a>";
-                        }elseif($reserva['estado_reserva']==4){
-                            echo "<p>Cancelada</p>";
-                        }
-                        
-                        if(is_null($reserva['turno_existente'])){
-                            echo"<a href='centro_medico?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-info'>Sacar Turno</a>";
-                        } 
-                        
-                        if ($reserva['estado_reserva']!=4){
-                            echo"<a href='cancelar_vuelo?nro_reserva=".$reserva['nro_reserva']."' class='btn-reservar btn btn-danger'>Cancelar</a>";
-                        }                                              
+                                echo"<button type='button' class='btn-action btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button>";
+                            }elseif ($reserva['estado_reserva']==3||$reserva['estado_reserva']==5){
+                                if (!is_null($reserva['turno_existente'])){
+                                    echo "<a href='form_check_in?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-success'>Check-In</a>";
+                                }
+                            }elseif($reserva['estado_reserva']==4){
+                                echo "<p>Cancelada</p>";
+                            }
 
-                        echo"</div>
+                            if(is_null($reserva['turno_existente'])){
+                                echo"<a href='centro_medico?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-info'>Sacar Turno</a>";
+                            }
+
+                            if ($reserva['estado_reserva']!=4){
+                                echo"<a href='cancelar_vuelo?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-danger'>Cancelar</a>";
+                            }
+
+                        echo"   </div>
+                            </div>
                         </article>";
             }
         }
@@ -76,6 +77,9 @@
     }
     if (!empty($_GET['requiere_pago'])==true){
         echo "<script>alert('Debe abonar su reserva para realizar el Check-In');</script>";
+    }
+    if (!empty($_GET['lista_espera'])==true){
+        echo "<script>alert('Usted ha sido ingresado a la lista de espera');</script>";
     }
     ?>
 </main>

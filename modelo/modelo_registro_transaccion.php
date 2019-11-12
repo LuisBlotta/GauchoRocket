@@ -3,8 +3,10 @@ include_once("conexion.php");
 include("head.php");
 registrar_transaccion();
 function registrar_transaccion(){
-    date_default_timezone_set("America/Argentina/Buenos_Aires");
+    $fecha=getFecha();
+    $hora=getHora();
     $zona_horaria=date_default_timezone_get();
+
     $conn = getConexion();
     $nro_reserva=$_GET['nro_reserva'];
     $nro_tarjeta=$_POST['numero_tarjeta'];
@@ -14,35 +16,6 @@ function registrar_transaccion(){
     $tarjeta_md5=md5($nro_tarjeta);
     $hoy=getdate();
     $cod_transaccion=hash('ripemd160', $hoy['seconds'].$hoy['minutes'].$hoy['hours'].$tarjeta_md5);
-
-    $mes=$hoy['mon'];
-    if ($mes<10){
-        $mes='0'.$mes;
-    }
-
-    $dia=$hoy['mday'];
-    if ($dia<10){
-        $dia='0'.$dia;
-    }
-
-    $hora=$hoy['hours'];
-    if ($hora<10){
-        $hora='0'.$hora;
-    }
-
-    $minutos=$hoy['minutes'];
-    if ($minutos<10){
-        $minutos='0'.$minutos;
-    }
-
-    $segundos=$hoy['seconds'];
-    if ($segundos<10){
-        $segundos='0'.$segundos;
-    }
-
-    $fecha=$hoy['year'].$mes.$dia;
-    $hora=$hora.$minutos.$segundos;
-
 
     //-----Trae id_usuario
     $traeIdUsuario="SELECT id_usuario FROM usuario
