@@ -10,6 +10,7 @@
     <h2>Resultado de la Búsqueda</h2>
     <section class="cont_vuelos">
         <?php
+
         foreach ($vuelos as $vuelo){
             echo "
 					<div class='card' style='width:300px'>
@@ -23,6 +24,7 @@
 						</div>
 							<a href='reservar_form?id_vuelo=".$vuelo['id_vuelo']."&id_trayecto=".$vuelo['id_trayecto']."&id_destino=".$vuelo['id_destino']."&id_vuelo_trayecto=".$vuelo['id_vuelo_trayecto']."&id_origen=".$vuelo['id_origen']."&fecha_ida=". $vuelo['fecha_ida'] ."' class='btn btn-info stretched-link'>Reservar</a>							
 					</div>";
+
         }
         ?>
     </section>
