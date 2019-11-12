@@ -45,7 +45,7 @@
                                 <div class="cont-numero-cvv">
 
                                     <div class="cont-number">
-                                        <label for="cardNumber">Número</label>
+                                        <label for="cardNumber">Número (5470 5141 5141 5064)</label>
                                         <div class="cont-card-number">
                                             <div class="input-group-prepend">
                                                 <p id="visa">Visa</p>
