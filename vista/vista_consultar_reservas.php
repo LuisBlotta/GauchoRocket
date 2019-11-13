@@ -41,7 +41,7 @@
                                 echo"<button type='button' class='btn-action btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button>";
                             }elseif ($reserva['estado_reserva']==3){
                                 if (!is_null($reserva['turno_existente'])){
-                                    echo "<a href='form_check_in?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-success'>Check-In</a>";
+                                    echo "<a href='validar_fecha_check_in?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-success'>Check-In</a>";
                                 }
                             }elseif($reserva['estado_reserva']==4){
                                 echo "<p>Cancelada</p>";
