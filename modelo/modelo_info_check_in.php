@@ -1,9 +1,15 @@
 <?php
-include("conexion.php");
+include_once("conexion.php");
+
 
 function traeDatosCabina(){
     $conn = getConexion();
     $nro_reserva = $_GET['nro_reserva'];
+
+    
+    
+        
+    
 
     ### Trae capacidad de de la cabina ###
 

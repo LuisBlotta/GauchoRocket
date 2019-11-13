@@ -30,3 +30,10 @@ function getFechaCompleta(){
     $fecha_completa=$fecha['año'].$fecha['mes'].$fecha['dia'];
     return $fecha_completa;
 }
+
+function getFechaConGuiones(){
+    $fecha=getFecha();
+    $fecha_guiones=$fecha['año']."-".$fecha['mes']."-".$fecha['dia'];
+    return $fecha_guiones;
+}
+

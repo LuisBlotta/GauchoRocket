@@ -2,8 +2,7 @@
 include_once("conexion.php");
 include("head.php");
 cobrar();
-function cobrar(){ 
-    
+function cobrar(){     
 
     $nro_reserva=$_GET['nro_reserva'];
 

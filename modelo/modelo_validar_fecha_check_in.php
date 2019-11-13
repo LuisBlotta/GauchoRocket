@@ -1,9 +1,8 @@
 <?php
 include_once("conexion.php");
 
-validar_fecha();
 function validar_fecha(){
-    $fecha_actual = getFecha();
+    $fecha_actual = getFechaConGuiones();
     $hora_actual = getHora();
     $nro_reserva = $_GET['nro_reserva'];
     $conn = getConexion();
@@ -25,35 +24,43 @@ function validar_fecha(){
         }
     }
 
+    $id_reserva=$reserva['id_reserva'];
 
-    //-----Divide la fecha de partida en Año, Mes y Dia
-    $fechaEnteraReserva = strtotime($reserva['fecha_partida']);
+  
 
-    $año_partida = date("Y", $fechaEnteraReserva);
-    $mes_partida = date("m", $fechaEnteraReserva);
-    $dia_partida = date("d", $fechaEnteraReserva);
-
+   
     //$puede_realizar_checkIn=true;
 
-    if ($fecha_actual['año'] == $año_partida) {
-        if ($mes_partida == $fecha_actual['mes']) {
-            if ($dia_partida-$fecha_actual['dia']<2){
-                if($hora_actual['hora']-$reserva['hora_partida']<2){
+    $datetime1 = new DateTime($fecha_actual);
+    $datetime2 = new DateTime($reserva['fecha_partida']);
+    $interval = $datetime1->diff($datetime2);
+    $interval->format('%a');
+    
 
-                    $sqlListaEspera="INSERT INTO lista_espera (fk_reserva)
-                                 VALUES (".$reserva['id_reserva'].")";
 
-                    $sqlEstadoReserva="UPDATE reserva 
-                                        SET fk_estado_reserva = 5
-                                        WHERE nro_reserva = $nro_reserva"; //Estado -> En lista de espera
-                    $resultsEstadoReserva = mysqli_query($conn, $sqlEstadoReserva);
-                    //$puede_realizar_checkIn=false;
+    if(($interval->format('%a'))>2){
+        header("location:consultar_reservas");
+    }
 
-                    header("location:consultar_reservas?lista_espera=true");
-                }
-            }
+    elseif(($interval->format('%a'))<=2){        
+        if($reserva['hora_partida']-$hora_actual['hora']>=2){
+            $puede_realizar_checkIn=true;
+            return $puede_realizar_checkIn;
+        }else{
+            $sqlListaEspera="INSERT INTO lista_espera (fk_reserva)
+                            VALUES ($id_reserva)";
+            $resultListaEspera = mysqli_query($conn, $sqlListaEspera);
+
+            $sqlEstadoReserva="UPDATE reserva 
+                                SET fk_estado_reserva = 5
+                                WHERE nro_reserva = $nro_reserva"; //Estado -> En lista de espera
+            $resultEstadoReserva = mysqli_query($conn, $sqlEstadoReserva);
+            //$puede_realizar_checkIn=false;
+
+            header("location:consultar_reservas?lista_espera=true");
         }
     }
+       
 
     /*else{
         header("location:modelo/modelo_cancelar_vuelo.php");

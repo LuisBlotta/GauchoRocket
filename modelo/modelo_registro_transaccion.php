@@ -3,8 +3,8 @@ include_once("conexion.php");
 include("head.php");
 registrar_transaccion();
 function registrar_transaccion(){
-    $fecha=getFecha();
-    $hora=getHora();
+    $fecha=getFechaCompleta();
+    $hora=getHoraCompleta();
     $zona_horaria=date_default_timezone_get();
 
     $conn = getConexion();

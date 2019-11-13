@@ -104,7 +104,7 @@ INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) values 	
 																					(35, 2, 22, '20201103'),
                                                                                     
 																					(6, 3, 08, '20191001'), /*C1 entre destinos BA*/
-                                                                                    (6, 3, 17, '20191112'), /*C1 entre destinos BA al revez */ /*cambio para probar 20191101*/ 
+                                                                                    (6, 3, 22, '20191112'), /*C1 entre destinos BA al revez */ /*cambio para probar 20191101*/ 
 
 																					(38, 3, 14, '20190802'),/*C1 entre destinos AA*/
                                                                                     (38, 3, 14, '20190902'),/*C1 entre destinos AA al revez*/
@@ -358,9 +358,11 @@ select * from asientos_reserva
 insert into asientos_reservados (numero_asiento, numero_reserva) values (1,652829274),(4,652829274),(6,652829274);
 insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);
 
+select * from lista_espera
+
+
 
 */
-                                
-                                           
+
                                                                                             
 
