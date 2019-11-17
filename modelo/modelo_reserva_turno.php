@@ -1,6 +1,6 @@
 <?php
 
-include("conexion.php");
+include_once("conexion.php");
 include("head.php");
 getTurnos();
 

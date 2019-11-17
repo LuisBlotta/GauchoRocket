@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include_once("conexion.php");
 validar_reserva();
 function validar_reserva(){
     $nro_reserva = $_POST['nro_reserva'];
