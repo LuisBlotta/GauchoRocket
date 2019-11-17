@@ -327,11 +327,10 @@ select * from reserva join login on reserva.fk_login = login.id_login;
          select * from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto   JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto  JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
             JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
          
-         UPDATE usuario 
-         SET fk_nivel=null 
-         WHERE id_usuario=3; 
+         UPDATE usuario SET fk_nivel=null WHERE id_usuario=2; 
+         UPDATE usuario SET fk_nivel=null WHERE id_usuario=3; 
 
-                                            
+
                                             
         select reserva.cantidad_lugares cantidad_lugares from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
 											join vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
