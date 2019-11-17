@@ -31,7 +31,9 @@ function getReservas(){
                     WHERE login.nick= '$nick'";
     
     $resultTieneTurno = mysqli_query($conn, $sqlTieneTurno); 
-    $turno=mysqli_fetch_row($resultTieneTurno);   
+    $turno=mysqli_fetch_row($resultTieneTurno);
+
+    $tiene_nivel=tieneNivel($nick);
 
     $reservas = Array();
     if (mysqli_num_rows($result) > 0) {
@@ -49,8 +51,8 @@ function getReservas(){
             $reserva['precio_total'] =$reserva['precio']*$reserva['cantidad_lugares'];
             $reserva['estado_reserva'] =  $row["estado_reserva"];
             $reserva['descripcion_estado'] =  $row["descripcion_estado"];
+            $reserva['tiene_nivel'] =  $tiene_nivel;
             $reserva['turno_existente'] =  $turno[0];
-            
             /*---------------------
             $sqlAcompañantes= "SELECT login.nick nick, usuario.nombre nombre
                        FROM login 
