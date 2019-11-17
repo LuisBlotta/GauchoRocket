@@ -321,12 +321,15 @@ select * from reserva join login on reserva.fk_login = login.id_login;
 
          select * from asientos_reserva;      
          select * from login;      
+		 select * from usuario;     
          select * from trayecto;
          select * from vuelo join trayecto on trayecto.fk_id_vuelo = vuelo.id_vuelo
          select * from reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto   JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto  JOIN destino d0 on trayecto.fk_punto_llegada = d0.id_destino
             JOIN destino d1 on trayecto.fk_punto_partida = d1.id_destino
          
-         
+         UPDATE usuario 
+         SET fk_nivel=null 
+         WHERE id_usuario=3; 
 
                                             
                                             
@@ -359,7 +362,7 @@ insert into asientos_reservados (numero_asiento, numero_reserva) values (1,65282
 insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);
 
 select * from lista_espera
-
+SELECT fk_login FROM turno WHERE fecha='2019-11-17'
 
 
 */
