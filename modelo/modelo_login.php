@@ -1,6 +1,6 @@
 <?php
 include("head.php");
-include("conexion.php");
+include_once("conexion.php");
 login();
 function login(){
 
