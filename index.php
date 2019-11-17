@@ -1,5 +1,6 @@
 <?php
 include("sesion.php");
+include ("controlador/controlador_verificar_turno.php");//CHEQUEAR
 include_once("header.php");
 
 $routes = parseRoutes();
