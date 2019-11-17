@@ -2,7 +2,7 @@
 include_once("conexion.php");
 
 //tieneNivel();
-function tieneNivel($nick){
+/*function tieneNivel($nick){
     //$nick = $_COOKIE["login"];
     //$nick = $valor;
     $conn = getConexion();
@@ -19,7 +19,7 @@ function tieneNivel($nick){
         $tiene_nivel=false;
     }
     return $tiene_nivel;
-}
+}*/
 
 function validarNivel(){
     $id_vuelo=$_GET['id_vuelo'];
@@ -33,18 +33,27 @@ function validarNivel(){
     $resultNivelUsuario = mysqli_query($conn, $buscarNivelUsuario);
     $datoUsuario=mysqli_fetch_row($resultNivelUsuario);
 
-    $buscarNivelVuelo = "SELECT nivel_modelo.fk_nivel FROM nivel_modelo
+    $buscarNivelVuelo = "SELECT nivel_modelo.fk_nivel nivel_vuelo FROM nivel_modelo
                             JOIN modelo ON nivel_modelo.fk_modelo = modelo.id_modelo
                             JOIN equipo ON equipo.fk_modelo = modelo.id_modelo
                             JOIN vuelo ON vuelo.fk_equipo = equipo.id_equipo
                             WHERE vuelo.id_vuelo ='$id_vuelo'";
     $resultNivelVuelo = mysqli_query($conn, $buscarNivelVuelo);
-    $datoVuelo=mysqli_fetch_row($resultNivelVuelo);
+    //$datoVuelo=mysqli_fetch_row($resultNivelVuelo);
+
+    $datoVuelos = Array();
+    if (mysqli_num_rows($resultNivelVuelo) > 0) {
+        while($row = mysqli_fetch_assoc($resultNivelVuelo)) {
+            $datoVuelo = Array();
+            $datoVuelo['nivel_vuelo'] =  $row["nivel_vuelo"];
+            $datoVuelos[] = $datoVuelo;
+        }
+    }
 
     if($tiene_nivel==true){
         $numeros= array();
-        foreach ($datoVuelo as $vuelo){
-            $numeros[] = $vuelo;
+        foreach ($datoVuelos as $datoVuelo){
+            $numeros[] = $datoVuelo['nivel_vuelo'];
         }
         if (in_array($datoUsuario[0], $numeros)){
             $resultado=1; //Tiene el nivel necesario
