@@ -2,9 +2,9 @@
 include_once("conexion.php");
 
 
-function traeDatosCabina(){
+function traeDatosCabina($nro_reserva){
     $conn = getConexion();
-    $nro_reserva = $_GET['nro_reserva'];
+    //$nro_reserva = $_GET['nro_reserva'];
 
     ### Trae capacidad de de la cabina ###
 
@@ -15,7 +15,7 @@ function traeDatosCabina(){
                        join modelo on modelo.id_modelo = equipo.fk_modelo
                        join cabina on cabina.fk_id_modelo = modelo.id_modelo
                        where reserva.nro_reserva = $nro_reserva AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva  
-                                                                                            WHERE reserva.nro_reserva  =$nro_reserva limit 1)limit 1;";
+                                                                                            WHERE reserva.nro_reserva = $nro_reserva limit 1)limit 1;";
 
     $result = mysqli_query($conn, $sqlTraeCapacidad);
     $datos=mysqli_fetch_assoc($result);
@@ -23,10 +23,10 @@ function traeDatosCabina(){
     return $datos;
 }
 
-traerAsientosReservados();
-function traerAsientosReservados(){
+//traerAsientosReservados();
+function traerAsientosReservados($nro_reserva){
     $conn = getConexion();
-    $nro_reserva = $_GET['nro_reserva'];
+    //$nro_reserva = $_GET['nro_reserva'];
 
     $sqlTraeIdVuelo="SELECT fk_vuelo FROM vuelo_trayecto
                      JOIN reserva ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
