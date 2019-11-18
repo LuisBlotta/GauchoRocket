@@ -19,11 +19,8 @@ create table usuario (id_usuario int primary key auto_increment,
                         fk_login int not null,
                         foreign key(fk_login) references login(id_login),
                         foreign key(fk_nivel) references nivel_pasajero(id_nivel));
-
-
 insert into  login (userConfirmado, hashConfirmacion, nick, password) values (true,"f50686d5dc72f5d073c5295937bc58ce","admin", "e67732763718fbafa22f23adb5679c2f");
 insert into  usuario (nombre, mail, rol, fk_login) values ("admin", "admin@gauchorocket.com", 2,1) ;                      
-
 /*----------Tablas vuelo----------*/                        
 create table tipo_vuelo (id_tipo_vuelo int primary key, descripcion varchar(20));                        
 create table modelo (id_modelo int primary key, descripcion varchar(20) , fk_tipo_vuelo int not null, foreign key(fk_tipo_vuelo) references tipo_vuelo(id_tipo_vuelo));
@@ -50,7 +47,7 @@ create table lista_espera(id_lista_espera int auto_increment primary key, fk_res
 
 /*----------Tablas transaccion----------*/
 create table estado_transaccion(id_estado_transaccion int primary key not null, descripcion varchar(50));
-create table transaccion(id_transaccion int primary key auto_increment not null, cod_transaccion varchar(50) not null, fk_usuario int not null, fk_estado_transaccion int, fecha date not null, hora time not null, zona_horaria varchar(50) not null, nro_reserva int not null, foreign key (fk_usuario) references usuario(id_usuario),foreign key (fk_estado_transaccion) references estado_transaccion(id_estado_transaccion));
+create table transaccion(id_transaccion int primary key auto_increment not null, cod_transaccion varchar(50) not null, fk_login int not null, fk_estado_transaccion int, fecha date not null, hora time not null, zona_horaria varchar(50) not null, nro_reserva int not null, foreign key (fk_login) references login(id_login),foreign key (fk_estado_transaccion) references estado_transaccion(id_estado_transaccion));
 
 INSERT INTO estado_transaccion(id_estado_transaccion, descripcion) values (0,"Error de datos"),(1,"Correcto");
 
@@ -95,7 +92,7 @@ INSERT INTO equipo (fk_modelo, matricula) values   (1, "AA1"),(1, "AA5"), (1, "A
 INSERT INTO destino (id_destino, descripcion) values (1, "Buenos Aires"), (2, "Ankara"),(3,"Estacion Espacial Internacional"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encelado"), (11, "Titan");                                                                    
 INSERT INTO tipo_viaje (id_tipo_viaje, descripcion) values (1, "Suborbital"), (2, "Tour"), (3,"Entre destinos");         
 
-INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) values 		(3, 1, 12, '20191001'), /*orbitales*/
+INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) values 		(3, 1, 23, '20191116'), /*orbitales*/
 																					(24, 1, 15, '20191001'),
 																					(11, 1, 17, '20191002'),
 																					(25, 1, 18, '20191002'),
@@ -358,7 +355,6 @@ select * from asientos_reserva
 insert into asientos_reservados (numero_asiento, numero_reserva) values (1,652829274),(4,652829274),(6,652829274);
 insert into asientos_reserva (fk_asientos_reservados,fk_reserva) values (1,1),(2,1),(3,1);
 
-select * from lista_espera
 
 
 
