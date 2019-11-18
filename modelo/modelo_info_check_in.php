@@ -6,11 +6,6 @@ function traeDatosCabina(){
     $conn = getConexion();
     $nro_reserva = $_GET['nro_reserva'];
 
-    
-    
-        
-    
-
     ### Trae capacidad de de la cabina ###
 
     $sqlTraeCapacidad="select cabina.capacidad, vuelo.dia_partida, vuelo.hora_partida from reserva 
