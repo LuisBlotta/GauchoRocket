@@ -329,6 +329,10 @@ select * from reserva join login on reserva.fk_login = login.id_login;
          
          UPDATE usuario SET fk_nivel=null WHERE id_usuario=2; 
          UPDATE usuario SET fk_nivel=null WHERE id_usuario=3; 
+         
+         UPDATE vuelo SET dia_partida='20191118', hora_partida=21 WHERE id_vuelo=9; 
+		
+		 UPDATE reserva SET fk_estado_reserva=3 WHERE id_reserva=10; 
 
 
                                             
