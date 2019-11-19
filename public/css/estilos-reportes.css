@@ -7,7 +7,9 @@
 .reportes{
     width: 100%;
 }
-
+.imagelayer > image{
+    display: none!important;
+}
 @media only screen and (min-width: 48em){
     .reportes{
         width: 80%;

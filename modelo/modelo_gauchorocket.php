@@ -1,6 +1,7 @@
 <?php
 include_once("conexion.php");
 
+
 function getVuelos(){
 
     $conn = getConexion();

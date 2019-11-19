@@ -28,13 +28,31 @@ function getClientes(){
     mysqli_close($conn);
     return $clientes;
 }
+function _data_last_month_day() {
+    $month = date('m');
+    $year = date('Y');
+    $day = date("d", mktime(0,0,0, $month+1, 0, $year));
+
+    return date('Y-m-d', mktime(0,0,0, $month, $day, $year));
+};
+
+/** Actual month first day **/
+function _data_first_month_day() {
+    $month = date('m');
+    $year = date('Y');
+    return date('Y-m-d', mktime(0,0,0, $month, 1, $year));
+}
 
 
 function facturacionMensual(){
+    $ultimoDia=_data_last_month_day();
+    $primerDia=_data_first_month_day();
     $conn = getConexion();
     $sql = "select sum(trayecto.precio) precio from transaccion join reserva on transaccion.nro_reserva = reserva.nro_reserva 
 											 join vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
-											join trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto	";
+											join trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto
+											WHERE transaccion.fecha BETWEEN '$primerDia'AND '$ultimoDia'	";
+
     $result = mysqli_query($conn, $sql);
 
     $facturacionMensual=mysqli_fetch_row($result);
@@ -65,5 +83,26 @@ function cabinaMasVendida(){
        $cabinaMayor = "Cabina Suite con ".$cabinaS[0]. " lugares vendidos";
    }
 return  $cabinaMayor;
+
+
 }
 
+
+function cantidadPasajeroscabina()
+{
+    $conn = getConexion();
+    $sqlCabinaF = "select sum(cantidad_lugares) cantidad_lugares from reserva where tipo_cabina = 'f'";
+    $resultF = mysqli_query($conn, $sqlCabinaF);
+    $cabinaF = mysqli_fetch_row($resultF);
+
+    $sqlCabinaG = "select sum(cantidad_lugares) cantidad_lugares from reserva where tipo_cabina = 'g'";
+    $resultG = mysqli_query($conn, $sqlCabinaG);
+    $cabinaG = mysqli_fetch_row($resultG);
+
+    $sqlCabinaS = "select sum(cantidad_lugares) cantidad_lugares from reserva where tipo_cabina = 's'";
+    $resultS = mysqli_query($conn, $sqlCabinaS);
+    $cabinaS = mysqli_fetch_row($resultS);
+
+    $datosCabina= array($cabinaF[0],$cabinaG[0],$cabinaS[0]);
+   return $datosCabina;
+}

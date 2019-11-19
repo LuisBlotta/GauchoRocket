@@ -1,7 +1,21 @@
 <html>
 <head>
     <title>Form reportes</title>
-    <?php include("head.php");?>
+    <?php include("head.php");
+    include("charts/lib/inc/chartphp_dist.php");
+    $torta = new chartphp();
+    $torta->data = array(array(
+        array('Familiar',$datosCabina[0]),
+        array('General',$datosCabina[1]),
+        array('Suite',$datosCabina[2])
+    ));
+    $torta->chart_type = "donut";
+    $out = $torta->render("c1");
+    ?>
+
+    <link rel="stylesheet" href="charts/lib/js/chartphp.css">
+    <script src="charts/lib/js/jquery.min.js"></script>
+    <script src="charts/lib/js/chartphp.js"></script>
     <link rel="stylesheet" href="public/css/estilos-reportes.css">
 </head>
 
@@ -13,6 +27,7 @@
     <h4> $<?=  $facturacionMensual[0] ?></h4>
 
 </section>
+
 <br><br>
 
 
@@ -39,7 +54,10 @@
     <h3>Cabina más vendida:</h3>
     <h5> <?=  $cabinaMasVendida ?></h5>
 </section>
-
+<br><br>
+<section>
+    <?php echo "$out"; ?>
+</section>
 
 </body>
 </html>
