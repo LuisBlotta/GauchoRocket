@@ -1,4 +1,9 @@
 <?php
+
+if (empty($_SESSION['admin']) || !isset($_COOKIE["login"])) {
+    header('location:gauchorocket');
+}
+
 include_once("conexion.php");
 
 

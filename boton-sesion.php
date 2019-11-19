@@ -1,5 +1,5 @@
 <?php
-	if (!empty($_SESSION['usuario'])){
+	if (!empty($_SESSION['usuario'])||!empty($_SESSION['admin'])){
 		echo "<a type='button' class='btn btn-info btn-sesion' href= 'logout'>Cerrar Sesión</a>";
 	}else{	
 		//----borrar si se hace con mail	

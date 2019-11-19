@@ -1,5 +1,5 @@
 <?php
-	if (empty($_SESSION['usuario'])||!isset($_COOKIE["login"])) {
+	if (empty($_SESSION['usuario'])&&empty($_SESSION['admin'])||!isset($_COOKIE["login"])) {
     	header('location:gauchorocket');
 	}
 ?>
