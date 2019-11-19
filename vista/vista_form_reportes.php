@@ -3,14 +3,14 @@
     <title>Form reportes</title>
     <?php include("head.php");
     include("charts/lib/inc/chartphp_dist.php");
-    $p = new chartphp();
-    $p->data = array(array(
+    $torta = new chartphp();
+    $torta->data = array(array(
         array('Familiar',$datosCabina[0]),
         array('General',$datosCabina[1]),
         array('Suite',$datosCabina[2])
     ));
-    $p->chart_type = "donut";
-    $out = $p->render("c1");
+    $torta->chart_type = "donut";
+    $out = $torta->render("c1");
     ?>
 
     <link rel="stylesheet" href="charts/lib/js/chartphp.css">
@@ -27,6 +27,7 @@
     <h4> $<?=  $facturacionMensual[0] ?></h4>
 
 </section>
+
 <br><br>
 
 
