@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include_once("conexion.php");
 confirmar();
 function confirmar(){
     $conn = getConexion();
