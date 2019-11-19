@@ -72,3 +72,5 @@ El usuario mauro ingresó correctamente
 El usuario mauro intentó ingresar y no pudo 
 El usuario admin intentó ingresar y no pudo 
 El usuario asdad intentó ingresar y no pudo 
+El usuario admin ingresó correctamente
+El usuario mauro ingresó correctamente

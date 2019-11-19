@@ -24,8 +24,11 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="consultar_reservas">Reservas</a>
-					</li>      
-					<li class="nav-item item-sesion">						
+					</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="form_reportes">Administración</a>
+                    </li>
+                    <li class="nav-item item-sesion">
 						<?php include("boton-sesion.php") ?>
 					</li>
 				</ul>				
