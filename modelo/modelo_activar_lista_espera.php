@@ -30,6 +30,7 @@ function activar_lista_espera(){
         }
     }
 
+    /*----------Trae datos----------*/
     foreach ($datosListaEspera as $lista_espera) {
         $nro_reserva = $lista_espera['nro_reserva'];
 
@@ -42,7 +43,7 @@ function activar_lista_espera(){
         $asientos_libres = $capacidad_cabina - $cantidad_asientos_reservados;
     }
 
-
+    /*----------Usa datos----------*/
     foreach ($datosListaEspera as $lista_espera){
         if ($asientos_libres>=$lista_espera['cantidad_lugares']){
             echo "id: ".$lista_espera['id_lista_espera']." puede entrar<br>";
