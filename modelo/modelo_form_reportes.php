@@ -65,5 +65,26 @@ function cabinaMasVendida(){
        $cabinaMayor = "Cabina Suite con ".$cabinaS[0]. " lugares vendidos";
    }
 return  $cabinaMayor;
+
+
 }
 
+
+function cantidadPasajeroscabina()
+{
+    $conn = getConexion();
+    $sqlCabinaF = "select sum(cantidad_lugares) cantidad_lugares from reserva where tipo_cabina = 'f'";
+    $resultF = mysqli_query($conn, $sqlCabinaF);
+    $cabinaF = mysqli_fetch_row($resultF);
+
+    $sqlCabinaG = "select sum(cantidad_lugares) cantidad_lugares from reserva where tipo_cabina = 'g'";
+    $resultG = mysqli_query($conn, $sqlCabinaG);
+    $cabinaG = mysqli_fetch_row($resultG);
+
+    $sqlCabinaS = "select sum(cantidad_lugares) cantidad_lugares from reserva where tipo_cabina = 's'";
+    $resultS = mysqli_query($conn, $sqlCabinaS);
+    $cabinaS = mysqli_fetch_row($resultS);
+
+    $datosCabina= array($cabinaF[0],$cabinaG[0],$cabinaS[0]);
+   return $datosCabina;
+}

@@ -1,7 +1,21 @@
 <html>
 <head>
     <title>Form reportes</title>
-    <?php include("head.php");?>
+    <?php include("head.php");
+    include("charts/lib/inc/chartphp_dist.php");
+    $p = new chartphp();
+    $p->data = array(array(
+        array('Familiar',$datosCabina[0]),
+        array('General',$datosCabina[1]),
+        array('Suite',$datosCabina[2])
+    ));
+    $p->chart_type = "donut";
+    $out = $p->render("c1");
+    ?>
+
+    <link rel="stylesheet" href="charts/lib/js/chartphp.css">
+    <script src="charts/lib/js/jquery.min.js"></script>
+    <script src="charts/lib/js/chartphp.js"></script>
     <link rel="stylesheet" href="public/css/estilos-reportes.css">
 </head>
 
@@ -39,7 +53,9 @@
     <h3>Cabina más vendida:</h3>
     <h5> <?=  $cabinaMasVendida ?></h5>
 </section>
-
+<section>
+    <?php echo "$out"; ?>
+</section>
 
 </body>
 </html>
