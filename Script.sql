@@ -409,3 +409,4 @@ UPDATE turno SET fecha='20191118' WHERE id_turno=1;
 
                                                                                             
 
+select sum(trayecto.precio) precio from transaccion join reserva on transaccion.nro_reserva = reserva.nro_reserva join vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto join trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto WHERE transaccion.fecha BETWEEN '2019-11-01'AND '2019-11-30' 
