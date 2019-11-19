@@ -54,6 +54,7 @@
     <h3>Cabina más vendida:</h3>
     <h5> <?=  $cabinaMasVendida ?></h5>
 </section>
+<br><br>
 <section>
     <?php echo "$out"; ?>
 </section>
