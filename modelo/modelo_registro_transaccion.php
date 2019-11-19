@@ -18,15 +18,14 @@ function registrar_transaccion(){
     $cod_transaccion=hash('ripemd160', $hoy['seconds'].$hoy['minutes'].$hoy['hours'].$tarjeta_md5);
 
     //-----Trae id_usuario
-    $traeIdUsuario="SELECT id_usuario FROM usuario
-                    JOIN login ON login.id_login = usuario.fk_login
+    $traeIdUsuario="SELECT id_login FROM login
                     WHERE login.nick = '$nick'";
     $resultUsuario = mysqli_query($conn, $traeIdUsuario);
     $id_usuario=mysqli_fetch_row($resultUsuario);
     $id_usuario=$id_usuario[0];
     //--------------------
 
-    $sql = "INSERT INTO transaccion (cod_transaccion, fk_usuario, fk_estado_transaccion, fecha, hora, zona_horaria, nro_reserva) 
+    $sql = "INSERT INTO transaccion (cod_transaccion, fk_login, fk_estado_transaccion, fecha, hora, zona_horaria, nro_reserva) 
             VALUES ('$cod_transaccion', $id_usuario, $estado_pago, '$fecha', '$hora','$zona_horaria', $nro_reserva)";
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
