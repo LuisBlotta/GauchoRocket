@@ -43,21 +43,69 @@ function activar_lista_espera(){
         $asientos_libres = $capacidad_cabina - $cantidad_asientos_reservados;
     }
 
+
     /*----------Usa datos----------*/
+    $i=1;
     foreach ($datosListaEspera as $lista_espera){
+        /*----------Array de asientos----------*/
+        $asiento = Array();
+        $i=1;
+        while($i<=$capacidad_cabina){
+            $asiento[$i]="libre";
+
+            foreach($asientos_reservados as $asiento_reservado){
+                if ($i==$asiento_reservado['numero_asiento']){
+                    $asiento[$i]="ocupado";
+                }
+            }
+            $i++;
+        }
+        /*--------------------------------------*/
+
         if ($asientos_libres>=$lista_espera['cantidad_lugares']){
-            echo "id: ".$lista_espera['id_lista_espera']." puede entrar<br>";
-            echo "cantidad de lugares: ".$lista_espera['cantidad_lugares']."<br>";
-            $asientos_libres=$asientos_libres-$lista_espera['cantidad_lugares'];
+            $i=1;
+            $cant_insert=0;
+            while($cant_insert < $lista_espera['cantidad_lugares']) {
+                while ($i <= $capacidad_cabina) {
+                    if ($asiento[$i] == "libre") {
+                        $sqlAsientosReservados = "INSERT INTO asientos_reservados (numero_asiento, numero_reserva)
+                                                    VALUES ( $i, " . $lista_espera['nro_reserva'] . ")";
+                        echo $sqlAsientosReservados . "<br>";
+                        //$resultAsientosReservados = mysqli_query($conn, $sqlAsientosReservados);
+                        $cant_insert++;
+                        echo $cant_insert."<br>";
+                    }
+                    $i++;
+                }
+            }
+
+                   /* //-----Trae los id's
+                    $sqlIDasientos = "SELECT id_asientos_reservados FROM asientos_reservados WHERE numero_reserva=" . $lista_espera['nro_reserva'];
+                    $resultIDasientos = mysqli_query($conn, $sqlIDasientos);
+
+                    $j = 0;
+                    $id_asientos = Array();
+                    while ($row = mysqli_fetch_assoc($resultIDasientos)) {
+                        $id_asientos[$j] = $row['id_asientos_reservados'];
+                        $j++;
+                    }
+
+                    //-----Insert en la tabla de asientos_reserva
+                    $j = 0;
+                    while ($j < sizeof($id_asientos)) {
+                        $sqlAsientosReserva = "INSERT INTO asientos_reserva (fk_asientos_reservados, fk_reserva)
+                                 VALUES ($id_asientos[$j], " . $lista_espera['fk_reserva'] . ")";
+                        $result = mysqli_query($conn, $sqlAsientosReserva);
+                        $j++;
+                        echo $sqlAsientosReserva . "<br>";
+                    }
+                $i++;
+            }*/
+
         }else{
             $lista_espera['id_lista_espera']."no puede entrar<br>";
         }
-        echo "asientos libres: ".$asientos_libres."<br><br>";
-
-        foreach($asientos_reservados as $asiento_reservado){
-            $numero_asiento=$asiento_reservado['numero_asiento'];
-        }
-
     }
+    echo "<br>asientos libres: ".$asientos_libres."<br><br>";
     exit();
 }
