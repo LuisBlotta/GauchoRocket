@@ -9,3 +9,7 @@ El usuario user ingresó correctamente
 El usuario Mauro ingresó correctamente
 El usuario user ingresó correctamente
 El usuario Mauro ingresó correctamente
+El usuario admin ingresó correctamente
+El usuario admin ingresó correctamente
+El usuario user ingresó correctamente
+El usuario admin ingresó correctamente

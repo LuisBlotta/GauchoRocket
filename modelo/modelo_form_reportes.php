@@ -28,6 +28,8 @@ function getClientes(){
     mysqli_close($conn);
     return $clientes;
 }
+/** Actual month last day **/
+
 function _data_last_month_day() {
     $month = date('m');
     $year = date('Y');

@@ -23,8 +23,10 @@
 <h1 class="titulo">Reportes</h1>
 
 <section class="container card reportes">
-    <h3>Facturación Mensual:</h3>
+    <h3>Facturación mes actual:</h3>
     <h4> $<?=  $facturacionMensual[0] ?></h4>
+    <a href="form_facturacion_meses_anteriores">Consultar meses anteriores
+    </a>
 
 </section>
 
