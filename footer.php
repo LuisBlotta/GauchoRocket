@@ -2,7 +2,6 @@
 		<section class="navbar bg-dark">
 			<ul class="grupo">
 				<li>Blotta, Luis</li>	
-				<li>Villalba, Milagros</li>
 				<li>Visser, Ana Micaela</li>
 			</ul>
 			
