@@ -10,6 +10,14 @@
 .imagelayer > image{
     display: none!important;
 }
+
+.js-plotly-plot [style]{
+    display: none;
+}
+.js-plotly-plot div [style]{
+    display: block;
+}
+
 @media only screen and (min-width: 48em){
     .reportes{
         width: 80%;
