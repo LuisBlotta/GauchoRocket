@@ -17,6 +17,7 @@ function traeDatosCabina($nro_reserva){
                        where reserva.nro_reserva = $nro_reserva AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva  
                                                                                             WHERE reserva.nro_reserva = $nro_reserva limit 1)limit 1;";
 
+
     $result = mysqli_query($conn, $sqlTraeCapacidad);
     $datos=mysqli_fetch_assoc($result);
 
@@ -34,11 +35,20 @@ function traerAsientosReservados($nro_reserva){
     $resultIdVuelo=mysqli_query($conn, $sqlTraeIdVuelo);
     $fk_vuelo=mysqli_fetch_row($resultIdVuelo);
 
+    $sqlTraetipoCabina="SELECT tipo_cabina FROM reserva
+                        WHERE reserva.nro_reserva=$nro_reserva";
+    $resultTipoCabina=mysqli_query($conn, $sqlTraetipoCabina);
+    $tipoCabina=mysqli_fetch_row($resultTipoCabina);
+
+
+
     $sqlTraerAsientosReservados = "SELECT asientos_reservados.numero_asiento numero_asiento FROM asientos_reserva 
                                     JOIN asientos_reservados ON asientos_reserva.fk_asientos_reservados  = asientos_reservados.id_asientos_reservados
                                     JOIN reserva ON asientos_reserva.fk_reserva = reserva.id_reserva 
-                                    JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto=vuelo_trayecto.id_vuelo_trayecto                                    
-                                    WHERE vuelo_trayecto.fk_vuelo =$fk_vuelo[0]";
+                                    JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto=vuelo_trayecto.id_vuelo_trayecto       
+                                                                                          
+                                    WHERE vuelo_trayecto.fk_vuelo =$fk_vuelo[0] AND reserva.tipo_cabina='$tipoCabina[0]'";
+
 
     $result2 = mysqli_query($conn, $sqlTraerAsientosReservados);
 
