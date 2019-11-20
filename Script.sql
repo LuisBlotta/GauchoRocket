@@ -60,7 +60,10 @@ CREATE TABLE turno (id_turno INT PRIMARY KEY AUTO_INCREMENT NOT NULL, fecha DATE
 /*----------Administrador----------*/
 INSERT INTO  login (userConfirmado, hashConfirmacion, nick, password) VALUES (true,"f50686d5dc72f5d073c5295937bc58ce","admin", "e67732763718fbafa22f23adb5679c2f");
 INSERT INTO  usuario (nombre, mail, rol, fk_login) VALUES ("admin", "admin@gauchorocket.com", 2,1) ;
-/*---------------------------------*/
+/*-------------Usuario-------------*/
+INSERT INTO  login (userConfirmado, hashConfirmacion, nick, password) VALUES (true,"f50686d5dc72f5d073c5295937bc58ce","user", "e67732763718fbafa22f23adb5679c2f");
+INSERT INTO  usuario (nombre, mail, rol, fk_login) VALUES ("user", "user@gauchorocket.com", 1,2);
+
 
 INSERT INTO estado_transaccion(id_estado_transaccion, descripcion) VALUES (0,"Error de datos"),(1,"Correcto");
 
@@ -311,107 +314,17 @@ SELECT * FROM medico;
 SELECT * FROM turno;
 
 
-
-SELECT vuelo.id_vuelo, vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, tipo_viaje.descripcion tipo_viaje
-            FROM vuelo
-            JOIN trayecto ON vuelo.id_vuelo = trayecto.fk_id_vuelo
-            JOIN destino d0 ON trayecto.fk_punto_llegada = d0.id_destino
-            JOIN destino d1 ON trayecto.fk_punto_partida = d1.id_destino
-            JOIN tipo_viaje ON vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje
-WHERE d1.descripcion='Europa' OR d0.descripcion='Encelado';
-
-
-SELECT cabina.capacidad FROM vuelo
-       JOIN equipo on vuelo.fk_equipo = equipo.id_equipo
-       JOIN modelo on modelo.id_modelo = equipo.fk_modelo
-       JOIN cabina on cabina.fk_id_modelo = modelo.id_modelo
-WHERE vuelo.id_vuelo = 13 AND cabina.descripcion = 'f';
-                                        
-
-SELECT reserva.cantidad_lugares cantidad_lugares FROM reserva
-        JOIN vuelo ON reserva.fk_vuelo = vuelo.id_vuelo
-        JOIN equipo ON equipo.id_equipo = vuelo.fk_equipo
-        JOIN modelo ON equipo.fk_modelo = modelo.id_modelo
-WHERE reserva.tipo_cabina = "F" AND reserva.fk_vuelo = 1;
-
-SELECT * FROM reserva JOIN login ON reserva.fk_login = login.id_login;
-
-SELECT * FROM vuelo JOIN trayecto ON trayecto.fk_id_vuelo = vuelo.id_vuelo;
-
-SELECT * FROM reserva
-    JOIN vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
-    JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto
-    JOIN destino d0 ON trayecto.fk_punto_llegada = d0.id_destino
-    JOIN destino d1 ON trayecto.fk_punto_partida = d1.id_destino;
-                                            
-SELECT reserva.cantidad_lugares cantidad_lugares FROM reserva
-        JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
-        JOIN vuelo ON vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
-        JOIN trayecto ON trayecto.id_trayecto = vuelo_trayecto.fk_trayecto
-        JOIN destino d0 ON trayecto.fk_punto_llegada = d0.id_destino
-        JOIN destino d1 ON trayecto.fk_punto_partida = d1.id_destino
-        WHERE reserva.tipo_cabina = 'S'
-            AND vuelo_trayecto.fk_vuelo = 1
-            AND vuelo_trayecto.fk_trayecto = 1
-            AND  d0.id_destino= 1
-            OR  d0.id_destino= 2
-            OR  d0.id_destino= 3
-            OR  d0.id_destino= 4
-            OR  d0.id_destino= 5;
-
-SELECT reserva.nro_reserva nro_reserva, reserva.tipo_cabina tipo_cabina, reserva.cantidad_lugares cantidad_lugares, vuelo.hora_partida hora_partida,
-    vuelo.dia_partida fecha_ida, d1.descripcion origen, d0.descripcion destino, trayecto.precio precio, nivel_pasajero.id_numero nivel_pasajero,
-    tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo, estado_reserva.descripcion estado_reserva
-FROM reserva
-    JOIN estado_reserva ON reserva.fk_estado_reserva = estado_reserva.id_estado_reserva
-    JOIN login ON reserva.fk_login = login.id_login
-    JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
-    JOIN vuelo ON vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
-    JOIN trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto
-    JOIN destino d0 ON trayecto.fk_punto_llegada = d0.id_destino
-    JOIN destino d1 ON trayecto.fk_punto_partida = d1.id_destino
-    JOIN tipo_viaje ON vuelo.fk_tipo_viaje = tipo_viaje.id_tipo_viaje
-    JOIN equipo ON vuelo.fk_equipo = equipo.id_equipo
-    JOIN modelo ON equipo.fk_modelo = modelo.id_modelo
-    JOIN nivel_pasajero ON nivel_pasajero.fk_id_modelo = modelo.id_modelo
-    JOIN tipo_vuelo ON modelo.fk_tipo_vuelo = tipo_vuelo.id_tipo_vuelo WHERE login.nick ='admin';
-
-SELECT login.nick nick, usuario.nombre nombre FROM login
-    JOIN usuario ON usuario.fk_login = login.id_login
-    JOIN reserva ON reserva.fk_login = login.id_login
-WHERE reserva.nro_reserva = 1166377634 AND login.nick <> 'admin'
-
-SELECT cabina.capacidad FROM reserva JOIN vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
-						JOIN vuelo on vuelo.id_vuelo = vuelo_trayecto.fk_vuelo
-                        JOIN equipo on equipo.id_equipo = vuelo.fk_equipo
-                        JOIN modelo on modelo.id_modelo = equipo.fk_modelo
-                        JOIN cabina on cabina.fk_id_modelo = modelo.id_modelo
-WHERE reserva.nro_reserva = 1610062491 AND cabina.descripcion = (SELECT reserva.tipo_cabina FROM reserva
-                                                                    WHERE reserva.nro_reserva  =1610062491);
-SELECT equipo.matricula, modelo.descripcion, cabina.descripcion, cabina.capacidad FROM equipo
-JOIN modelo ON equipo.fk_modelo = modelo. id_modelo
-JOIN cabina ON cabina.fk_id_modelo = modelo.id_modelo ORDER BY equipo.id_equipo;
-
-
-
 INSERT INTO asientos_reservados (numero_asiento, numero_reserva) VALUES (1,652829274),(4,652829274),(6,652829274);
 INSERT INTO asientos_reserva (fk_asientos_reservados,fk_reserva) VALUES (1,1),(2,1),(3,1);
 
-
 UPDATE usuario SET fk_nivel=null;
-UPDATE vuelo SET dia_partida='20191119', hora_partida=17 WHERE id_vuelo=9;
+
+UPDATE vuelo SET dia_partida='20191120', hora_partida=7 WHERE id_vuelo=9;
 UPDATE vuelo SET dia_partida='20191119', hora_partida=17 WHERE id_vuelo=10;
 
 UPDATE reserva SET fk_estado_reserva=3 WHERE id_reserva=1;
 UPDATE turno SET fecha='20191118' WHERE id_turno=1;
 
 UPDATE asientos_reserva SET fk_asientos_reservados=null, fk_reserva=null WHERE id_asientos_reserva=7;
-
-
-select sum(trayecto.precio) precio from transaccion join reserva on transaccion.nro_reserva = reserva.nro_reserva join vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto join trayecto ON vuelo_trayecto.fk_trayecto = trayecto.id_trayecto WHERE transaccion.fecha BETWEEN '2019-11-01'AND '2019-11-30' 
-
-
+UPDATE asientos_reservados SET numero_asiento=5 WHERE id_asientos_reservados=5;
 */               
-
-
-
