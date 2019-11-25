@@ -24,3 +24,4 @@ El usuario user ingresó correctamente
 El usuario user ingresó correctamente
 El usuario user ingresó correctamente
 El usuario user ingresó correctamente
+El usuario admin ingresó correctamente
