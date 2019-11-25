@@ -7,7 +7,7 @@
 </head>
 <body>
 <main>
-    <h2>Resultado de la Búsqueda</h2>
+    <h2 class="titulo_busqueda">Ofrecemos</h2>
     <section class="cont_vuelos">
         <?php
 

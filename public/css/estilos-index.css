@@ -47,7 +47,11 @@
 	-moz-box-shadow: 8px 10px 11px -7px rgba(0,0,0,0.2);
 	box-shadow: 8px 10px 11px -7px rgba(0,0,0,0.2);
 }
-
+.titulo_busqueda{
+	text-align: center;
+	margin-top: 30px;
+	color: #1988da;
+}
 @media only screen and (min-width: 48em){
 	.cont_buscar_vuelos{
 		width: 70%;
