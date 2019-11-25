@@ -17,16 +17,14 @@ $varaible = traerNomberMedico();
     <section class="container card">
         <h2> Turno reservado correctamente </h2>
 
-        <?php   echo "<br>";
-                echo "<h5> Fecha: ".$_POST['fecha_turno']."</h5> ";
-                echo "<br>";
-                echo "<h5> Instituto: ".$varaible[0]."</h5>";
-                echo "<br>";
-                echo "<h5>Los turnos se entregarán por órden de llegada.</h5>";
-                echo "<br>";
-                 echo "<h5>Por favor asistir con 4 hs de ayuno.</h5>";
-
-        ?>
+        <article class="datos_turno">
+            <?php echo "<h4><img src='public/img/calendar.png'> ".$_POST['fecha_turno']."</h4> "; ?>
+            <?php echo "<h4> Instituto: ".$varaible[0]."</h4>";?>
+        </article>
+        <article class="aviso_turno">
+            <?php echo "<h5>Será atendido por órden de llegada.</h5>";?>
+            <?php echo "<h5>Por favor asistir con 4 hs de ayuno.</h5>";?>
+        </article>
     </section>
     </main>
 </body>
