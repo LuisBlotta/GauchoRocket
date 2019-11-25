@@ -65,7 +65,7 @@ function getVuelos()
 
 
     } else {
-        echo "<h2 class='error-busqueda col-sm-12' >No hay vuelos programados con dichos parámetros</h2>";
+        echo "<h2 class='error-busqueda col-sm-12' >Vuelo no encontrado</h2>";
 
 
         $sql = "SELECT vuelo_trayecto.id_vuelo_trayecto id_vuelo_trayecto ,vuelo_trayecto.fk_vuelo id_vuelo,  vuelo_trayecto.fk_trayecto id_trayecto, vuelo.dia_partida fecha_ida, d1.descripcion origen, d1.id_destino id_origen, d0.descripcion destino, d0.id_destino id_destino,tipo_viaje.descripcion tipo_viaje, tipo_vuelo.descripcion tipo_vuelo 
@@ -99,6 +99,6 @@ function getVuelos()
 
         }
         mysqli_close($conn);
-        return $vuelos;
-    }
+
+    } return $vuelos;
 }
