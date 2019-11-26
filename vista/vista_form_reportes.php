@@ -53,14 +53,9 @@
 <section class="container card reportes">
     <h3>Facturación por cliente</h3>
 <form action="facturacion_cliente" method="post">
-    <label for="">Clientes:</label>
-    <select name="cliente" class="custom-select mr-sm-2">
-        <?php
+    <label for="">Cliente:</label>
 
-        foreach ($clientes as $cliente){
-            echo"<option value=".$cliente['id_login'].">".$cliente['nick']."</option> ";
-        }
-        ?>
+    <input class="form-control mr-sm-2" type="text" name="nick" placeholder="Nick">
 
     </select>
 

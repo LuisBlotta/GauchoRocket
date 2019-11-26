@@ -54,8 +54,7 @@
         </table>
 
 
-
-
+    <a href="pdf?nick=Mauro">Pubicar a pdf</a>
 
 
 

@@ -6,17 +6,26 @@ include_once("conexion.php");
 
 
 function getFacturacion(){
-    $fk_login = $_POST['cliente'];
-
 
     $conn = getConexion();
+    if (isset($_GET['nick'])){
+        $nick = $_GET['nick'];
+    }else{
+    $nick = $_POST['nick'];}
+
+    $sqlGetId="SELECT id_login FROM login WHERe nick = '$nick'";
+    $result = mysqli_query($conn, $sqlGetId);
+    $dato = mysqli_fetch_row($result);
+
+
 
     $sql = "SELECT transaccion.cod_transaccion, transaccion.nro_reserva, transaccion.fecha, trayecto.precio precio from transaccion JOIN reserva ON transaccion.nro_reserva = reserva.nro_reserva
                                                 JOIN vuelo_trayecto ON vuelo_trayecto.id_vuelo_trayecto = reserva.fk_id_vuelo_trayecto
                                                 JOIN trayecto ON trayecto.id_trayecto = fk_trayecto
-                                                WHERE reserva.fk_login = $fk_login
+                                                WHERE reserva.fk_login = $dato[0]
                                                 ";
     $result = mysqli_query($conn, $sql);
+
 
 
     $transacciones = Array();

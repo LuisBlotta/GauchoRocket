@@ -6,28 +6,6 @@ if (empty($_SESSION['admin']) || !isset($_COOKIE["login"])) {
 
 include_once("conexion.php");
 
-
-function getClientes(){
-
-    $conn = getConexion();
-
-    $sql = "SELECT id_login, nick from login";
-    $result = mysqli_query($conn, $sql);
-
-
-    $clientes = Array();
-    if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-            $cliente = Array();
-            $cliente['nick'] =  $row["nick"];
-            $cliente['id_login'] =  $row["id_login"];
-
-            $clientes[] = $cliente;
-        }
-    }
-    mysqli_close($conn);
-    return $clientes;
-}
 /** Actual month last day **/
 
 function _data_last_month_day() {
