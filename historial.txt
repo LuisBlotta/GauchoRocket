@@ -25,3 +25,12 @@ El usuario user ingresó correctamente
 El usuario user ingresó correctamente
 El usuario user ingresó correctamente
 El usuario admin ingresó correctamente
+El usuario admin ingresó correctamente
+El usuario user ingresó correctamente
+El usuario admin ingresó correctamente
+El usuario Marcos ingresó correctamente
+El usuario admin ingresó correctamente
+El usuario marcos ingresó correctamente
+El usuario admin ingresó correctamente
+El usuario marcos intentó ingresar y no pudo 
+El usuario marcos ingresó correctamente

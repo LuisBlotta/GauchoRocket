@@ -11,6 +11,23 @@
     ));
     $torta->chart_type = "donut";
     $out = $torta->render("c1");
+
+    $barrasEquipo = new chartphp();
+    $barrasEquipo->data = array(
+        array(
+            array($equipos[0],$cantidadXCabina[0]),
+            array($equipos[1],$cantidadXCabina[1]),
+            array($equipos[2],$cantidadXCabina[2]),
+            array($equipos[3],$cantidadXCabina[3]),
+            array($equipos[4],$cantidadXCabina[4]),
+            array($equipos[5],$cantidadXCabina[5]),
+            array($equipos[6],$cantidadXCabina[6]),
+            array($equipos[7],$cantidadXCabina[7]),
+            array($equipos[8],$cantidadXCabina[8]),
+            array($equipos[9],$cantidadXCabina[9]))
+    );
+    $barrasEquipo->chart_type = "bar";
+    $out2 = $barrasEquipo->render("c1");
     ?>
 
     <link rel="stylesheet" href="charts/lib/js/chartphp.css">
@@ -50,16 +67,19 @@
     <br><br><button type="submit" class="btn btn-info">Buscar</button>
 
 </form>
+
 </section>
 <br><br>
 <section class="container card reportes">
-    <h3>Cabina más vendida:</h3>
-    <h5> <?=  $cabinaMasVendida ?></h5>
-</section>
-<br><br>
-<section>
+    <h3 for="">Reporte mensual por equipo:</h3>
+    <?php echo "$out2"; ?>
+    <h3 style="margin-top: -10px;">Promedio por Cabina:</h3>
+
     <?php echo "$out"; ?>
+
 </section>
+
+
 
 </body>
 </html>

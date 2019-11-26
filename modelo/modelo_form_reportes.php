@@ -108,3 +108,78 @@ function cantidadPasajeroscabina()
     $datosCabina= array($cabinaF[0],$cabinaG[0],$cabinaS[0]);
    return $datosCabina;
 }
+
+function obtenerEquipos()
+{ /*https://www.chartphp.com/how-to-create-bar-chart-php/*/
+
+    $conn = getConexion();
+    $obtenerEquipos = "select id_modelo, descripcion from modelo ";
+    $result = mysqli_query($conn, $obtenerEquipos);
+
+
+    $modelos = Array();
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $modelo = Array();
+            $modelo['descripcion'] = $row["descripcion"];
+
+            $modelos[] = $modelo;
+
+        }
+
+    }
+
+    return $modelos;
+}
+
+    function cantidadXCabina(){
+
+        $ultimoDia=_data_last_month_day();
+        $primerDia=_data_first_month_day();
+    $modelos = obtenerEquipos();
+        $conn = getConexion();
+
+        $cantidades = Array();
+    foreach ($modelos as $modelo) {
+
+
+        $sql="SELECT count(id_reserva) cantidad FROM reserva join vuelo_trayecto on reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
+						join vuelo on vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
+						join equipo on vuelo.fk_equipo = equipo.id_equipo
+                        join modelo on equipo.fk_modelo = modelo.id_modelo
+                        where modelo.descripcion ='$modelo[descripcion]' AND vuelo.dia_partida BETWEEN '$primerDia'AND '$ultimoDia'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+
+        $cant = Array();
+        $cant['cantidad'] =  $row["cantidad"];
+
+        $cantidades[] = $cant;
+
+    }
+
+    $equipos= Array();
+    foreach ($modelos as $modelo) {
+        $equipos[] = $modelo['descripcion'];
+
+    }
+    $cantXCabina = Array();
+    foreach ($cantidades as $cantidad) {
+        $cantXCabina[] = $cantidad['cantidad'];
+
+    }
+
+    mysqli_close($conn);
+    return $cantXCabina;
+}
+function listarModelos(){
+    $modelos = obtenerEquipos();
+    $equipos= Array();
+    foreach ($modelos as $modelo) {
+        $equipos[] = $modelo['descripcion'];
+
+    }
+    return $equipos;
+}
