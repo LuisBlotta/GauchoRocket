@@ -24,7 +24,7 @@
 					</li>
                     <?php
 
-                    if (!empty($_SESSION['usuario']) || !isset($_COOKIE["login"])) {
+                    if (!empty($_SESSION['usuario'])) {
                    echo"     <li class='nav-item'>
 						<a class='nav-link' href='consultar_reservas'>Reservas</a>
 					</li>";
