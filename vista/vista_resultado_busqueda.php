@@ -17,8 +17,7 @@
     					<img class='card-img-top' src='public/img/".$vuelo['destino'].".jpg' alt='Card image' style='width:100%''>
 						<div class='card-body'>
 							<h2>" . $vuelo['destino'] . "</h2>		
-							<h4>" . $vuelo['tipo_viaje'] . "</h4>	
-							<h4>" . $vuelo['tipo_vuelo'] . "</h4>											
+							<h4>" . $vuelo['tipo_viaje'] . "</h4>										
 							<p class='card-text'>Origen: " . $vuelo['origen'] . "</p>
 							<p class='card-text'><img src='public/img/calendar.png'> " . $vuelo['fecha_ida'] . "</p>				
 						</div>
