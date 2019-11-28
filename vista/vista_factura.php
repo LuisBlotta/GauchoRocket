@@ -19,7 +19,7 @@
                             
               <article>
                   <h3>Número de factura:</h3>
-                  <h3>".$datos_transaccion['cod_transaccion']."</h3>
+                  <h5>".$datos_transaccion['cod_transaccion']."</h5>
                   <p>(Guarda una copia de este recibo como referencia)</p>
               </article>
               
