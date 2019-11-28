@@ -47,7 +47,7 @@ CREATE TABLE lista_espera(id_lista_espera INT AUTO_INCREMENT PRIMARY KEY, fk_res
 
 /*----------Tablas transaccion----------*/
 CREATE TABLE estado_transaccion(id_estado_transaccion INT PRIMARY KEY NOT NULL, descripcion VARCHAR(50));
-CREATE TABLE transaccion(id_transaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL, cod_transaccion VARCHAR(50) NOT NULL, fk_login INT NOT NULL, fk_estado_transaccion INT, fecha DATE NOT NULL, hora time NOT NULL, zona_horaria VARCHAR(50) NOT NULL, nro_reserva INT NOT NULL, FOREIGN KEY (fk_login) REFERENCES login(id_login),FOREIGN KEY (fk_estado_transaccion) REFERENCES estado_transaccion(id_estado_transaccion));
+CREATE TABLE transaccion(id_transaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL, cod_transaccion VARCHAR(50) NOT NULL, fk_login INT NOT NULL, fk_estado_transaccion INT, fecha DATE NOT NULL, hora time NOT NULL, zona_horaria VARCHAR(50) NOT NULL, nro_reserva INT NOT NULL, nro_tarjeta INT NOT NULL, tipo_tarjeta VARCHAR(20), FOREIGN KEY (fk_login) REFERENCES login(id_login),FOREIGN KEY (fk_estado_transaccion) REFERENCES estado_transaccion(id_estado_transaccion));
 
 /*----------Tablas centro médico----------*/
 CREATE TABLE medico (id_medico INT PRIMARY KEY AUTO_INCREMENT NOT NULL, nombre VARCHAR(60) NOT NULL, direccion VARCHAR(70) NOT NULL);
@@ -59,10 +59,10 @@ CREATE TABLE turno (id_turno INT PRIMARY KEY AUTO_INCREMENT NOT NULL, fecha DATE
 
 /*----------Administrador----------*/
 INSERT INTO  login (userConfirmado, hashConfirmacion, nick, password) VALUES (true,"f50686d5dc72f5d073c5295937bc58ce","admin", "e67732763718fbafa22f23adb5679c2f");
-INSERT INTO  usuario (nombre, mail, rol, fk_login) VALUES ("admin", "admin@gauchorocket.com", 2,1) ;
+INSERT INTO  usuario (nombre, mail, rol, fk_login) VALUES ("Administrador", "admin@gauchorocket.com", 2,1) ;
 /*-------------Usuario-------------*/
 INSERT INTO  login (userConfirmado, hashConfirmacion, nick, password) VALUES (true,"f50686d5dc72f5d073c5295937bc58ce","user", "e67732763718fbafa22f23adb5679c2f");
-INSERT INTO  usuario (nombre, mail, rol, fk_login) VALUES ("user", "user@gauchorocket.com", 1,2);
+INSERT INTO  usuario (nombre, mail, rol, fk_login) VALUES ("Usuario", "user@gauchorocket.com", 1,2);
 
 
 INSERT INTO estado_transaccion(id_estado_transaccion, descripcion) VALUES (0,"Error de datos"),(1,"Correcto");
@@ -552,7 +552,7 @@ INSERT INTO asientos_reserva (fk_asientos_reservados,fk_reserva) VALUES (1,1),(2
 
 UPDATE usuario SET fk_nivel=null;
 
-UPDATE vuelo SET dia_partida='20191120', hora_partida=7 WHERE id_vuelo=9;
+UPDATE vuelo SET dia_partida='20191126', hora_partida=21 WHERE id_vuelo=9;
 UPDATE vuelo SET dia_partida='20191119', hora_partida=17 WHERE id_vuelo=10;
 
 UPDATE reserva SET fk_estado_reserva=3 WHERE id_reserva=1;
@@ -560,4 +560,8 @@ UPDATE turno SET fecha='20191118' WHERE id_turno=1;
 
 UPDATE asientos_reserva SET fk_asientos_reservados=null, fk_reserva=null WHERE id_asientos_reserva=7;
 UPDATE asientos_reservados SET numero_asiento=5 WHERE id_asientos_reservados=5;
+
+ALTER TABLE transaccion ADD nro_tarjeta INT;
+ALTER TABLE transaccion ADD tipo_tarjeta VARCHAR(20);
+
 */               
