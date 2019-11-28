@@ -44,6 +44,7 @@ CREATE TABLE reserva (id_reserva INT PRIMARY KEY AUTO_INCREMENT, nro_reserva INT
 CREATE TABLE asientos_reserva (id_asientos_reserva INT AUTO_INCREMENT PRIMARY KEY, fk_asientos_reservados INT, fk_reserva INT, FOREIGN KEY(fk_asientos_reservados) REFERENCES asientos_reservados(id_asientos_reservados), FOREIGN KEY(fk_reserva) REFERENCES reserva(id_reserva));
 
 CREATE TABLE lista_espera(id_lista_espera INT AUTO_INCREMENT PRIMARY KEY, fk_reserva INT NOT NULL, FOREIGN KEY(fk_reserva) REFERENCES reserva(id_reserva));
+CREATE TABLE reserva_cancelada(id_reserva_cancelada INT AUTO_INCREMENT PRIMARY KEY, fk_reserva INT NOT NULL, FOREIGN KEY(fk_reserva) REFERENCES reserva(id_reserva));
 
 /*----------Tablas transaccion----------*/
 CREATE TABLE estado_transaccion(id_estado_transaccion INT PRIMARY KEY NOT NULL, descripcion VARCHAR(50));
@@ -537,6 +538,7 @@ SELECT * FROM asientos_reservados;
 SELECT * FROM reserva;
 SELECT * FROM asientos_reserva;
 SELECT * FROM lista_espera;
+SELECT * FROM reserva_cancelada;
 
 ----------Tablas transaccion----------
 SELECT * FROM estado_transaccion;
@@ -552,7 +554,7 @@ INSERT INTO asientos_reserva (fk_asientos_reservados,fk_reserva) VALUES (1,1),(2
 
 UPDATE usuario SET fk_nivel=null;
 
-UPDATE vuelo SET dia_partida='20191126', hora_partida=21 WHERE id_vuelo=9;
+UPDATE vuelo SET dia_partida='20191128', hora_partida=16 WHERE id_vuelo=1;
 UPDATE vuelo SET dia_partida='20191119', hora_partida=17 WHERE id_vuelo=10;
 
 UPDATE reserva SET fk_estado_reserva=3 WHERE id_reserva=1;
