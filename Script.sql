@@ -69,7 +69,7 @@ INSERT INTO estado_transaccion(id_estado_transaccion, descripcion) VALUES (0,"Er
 
 INSERT INTO estado_reserva(id_estado_reserva, descripcion) VALUES (1, "Confirmada"), (2,"Pendiente"), (3,"Abonada y pendiente"), (4,"Cancelada"),(5,"En lista de espera");
 
-INSERT INTO tipo_vuelo (id_tipo_vuelo, descripcion) VALUES (1,"Orbital"),(2,"Baja aceleración"),(3,"Alta aceleración");
+INSERT INTO tipo_vuelo (id_tipo_vuelo, descripcion) VALUES (1,"Orbital"),(2,"Baja aceleracion"),(3,"Alta aceleracion");
 INSERT INTO modelo (id_modelo, descripcion, fk_tipo_vuelo) VALUES (1, "Aguila",3), (2, "Aguilucho",2), (3, "Calandria",1), (4, "Canario",2), (5, "Carancho",2), (6, "Colibri",1), (7, "Condor",3), (8, "Guanaco",3), (9, "Halcon",3), (10, "Zorzal",2);
 
 INSERT INTO cabina (fk_id_modelo, descripcion, capacidad) VALUES (1, "G", 200), (1, "F", 75), (1, "S", 25) ,
@@ -108,13 +108,13 @@ INSERT INTO equipo (fk_modelo, matricula) VALUES   (1, "AA1"),(1, "AA5"), (1, "A
 INSERT INTO destino (id_destino, descripcion) VALUES (1, "Buenos Aires"), (2, "Ankara"),(3,"Estacion Espacial Internacional"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encelado"), (11, "Titan");
 INSERT INTO tipo_viaje (id_tipo_viaje, descripcion) VALUES (1, "Suborbital"), (2, "Tour"), (3,"Entre destinos");
 
-INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) VALUES 		(3, 1, 18, '20191125'), /*orbitales*/
+INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) VALUES 		(13, 1, 18, '20191125'), /*orbitales*/
 																					(24, 1, 15, '20191001'),
 																					(11, 1, 17, '20191002'),
 																					(25, 1, 18, '20191002'),
 																					(12, 1, 09, '20201107'),
-																					(34, 2, 12, '20191027'),/*tour*/
-																					(35, 2, 22, '20201103'),
+																					(26, 2, 12, '20191027'),/*tour*/
+																					(27, 2, 22, '20201103'),
                                                                                     
 																					(6, 3, 08, '20191001'), /*C1 entre destinos BA BS AS*/
 																					(6, 3, 08, '20191001'), /*C1 entre destinos BA ANKARA*/
