@@ -1,8 +1,9 @@
 <?php
 include("sesion.php");
+include_once("header.php");
 include ("controlador/controlador_verificar_turno.php");
 include ("controlador/controlador_activar_lista_espera.php");
-include_once("header.php");
+include ("controlador/controlador_borrar_reservas_canceladas.php");
 
 $routes = parseRoutes();
 $moduleName = extractModuleName($routes);
@@ -15,7 +16,8 @@ if( file_exists($filename) ){
     include_once($filename);
     call_user_func( $moduleName . '_' . $action);
 } else {
-    echo ' <div class="w3-container w3-content w3-center w3-padding-64" >La pagina solicitada no existe</div>';
+    include ("head.php");
+    echo "<h2 style='color:#17a2b8; text-align:center; margin-top: 50px'>La pagina solicitada no existe</h2>";
 }
 
 /*
