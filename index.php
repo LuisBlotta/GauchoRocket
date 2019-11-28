@@ -1,6 +1,7 @@
 <?php
 include("sesion.php");
-include ("controlador/controlador_verificar_turno.php");//CHEQUEAR
+include ("controlador/controlador_verificar_turno.php");
+include ("controlador/controlador_activar_lista_espera.php");
 include_once("header.php");
 
 $routes = parseRoutes();
