@@ -7,29 +7,47 @@ function borrar_reservas(){
     $hora_actual=getHora();
     $conn=getConexion();
 
-    $sqlListaCancelacion="SELECT reserva_cancelada.fk_reserva, reserva.nro_reserva nro_reserva, vuelo.dia_partida fecha_partida, vuelo.hora_partida hora_partida
+    $sqlListaCancelacion="SELECT reserva_cancelada.fk_reserva id_reserva, reserva.nro_reserva nro_reserva, vuelo.dia_partida fecha_partida, vuelo.hora_partida hora_partida
                           FROM reserva_cancelada 
                                 JOIN reserva ON reserva.id_reserva = reserva_cancelada.fk_reserva
                                 JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
                                 JOIN vuelo ON vuelo_trayecto.fk_vuelo = vuelo.id_vuelo";
     $resultListaCancelacion = mysqli_query($conn, $sqlListaCancelacion);
 
-    $lista_reservas_canceladas=Array();
+    $reservas_a_borrar=Array();
     if (mysqli_num_rows($resultListaCancelacion) > 0) {
         while($row = mysqli_fetch_assoc($resultListaCancelacion)) {
             $reserva = Array();
-            $reserva['fk_reserva'] =  $row["fk_reserva"];
+            $reserva['id_reserva'] =  $row["id_reserva"];
             $reserva['fecha_partida'] =  $row["fecha_partida"];
             $reserva['hora_partida'] =  $row["hora_partida"];
             $reserva['nro_reserva'] =  $row["nro_reserva"];
-            $lista_reservas_canceladas[]=$reserva;
+            $reservas_a_borrar[]=$reserva;
         }
     }
 
-    foreach ($lista_reservas_canceladas as $reserva){
+    $sqlReservasAntiguas="SELECT reserva.id_reserva id_reserva, reserva.nro_reserva nro_reserva, vuelo.dia_partida fecha_partida, vuelo.hora_partida hora_partida
+                          FROM reserva
+                                JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
+                                JOIN vuelo ON vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
+                          WHERE vuelo.dia_partida <= '$fecha_actual' AND vuelo.hora_partida <=".$hora_actual['hora'];
+    $resultReservasAntiguas = mysqli_query($conn, $sqlReservasAntiguas);
+
+    if (mysqli_num_rows($resultReservasAntiguas) > 0) {
+        while($row = mysqli_fetch_assoc($resultReservasAntiguas)) {
+            $reserva = Array();
+            $reserva['id_reserva'] =  $row["id_reserva"];
+            $reserva['fecha_partida'] =  $row["fecha_partida"];
+            $reserva['hora_partida'] =  $row["hora_partida"];
+            $reserva['nro_reserva'] =  $row["nro_reserva"];
+            $reservas_a_borrar[]=$reserva;
+        }
+    }
+
+    foreach ($reservas_a_borrar as $reserva){
         if($reserva['fecha_partida']<=$fecha_actual && $reserva['hora_partida']<=$hora_actual['hora']){
             $sqlTieneAsientos="SELECT asientos_reserva.fk_reserva FROM asientos_reserva
-                               WHERE asientos_reserva.fk_reserva =".$reserva['fk_reserva'];
+                               WHERE asientos_reserva.fk_reserva =".$reserva['id_reserva'];
             $resultTieneAsientos = mysqli_query($conn, $sqlTieneAsientos);
 
             if (mysqli_num_rows($resultTieneAsientos) > 0) {
@@ -55,13 +73,12 @@ function borrar_reservas(){
 
                 $resultDelAsientosReserva = mysqli_query($conn, $sqlDelAsientosReserva);
                 $resultDelAsientosReservados = mysqli_query($conn, $sqlDelAsientosReservados);
-                echo "entro al if<br>";
             }
 
-            $sqlDelReservasCanceladas="DELETE FROM reserva_cancelada WHERE fk_reserva=".$reserva['fk_reserva'];
+            $sqlDelReservasCanceladas="DELETE FROM reserva_cancelada WHERE fk_reserva=".$reserva['id_reserva'];
             $resultDelReservasCanceladas = mysqli_query($conn, $sqlDelReservasCanceladas);
 
-            $sqlDelReserva="DELETE FROM reserva WHERE id_reserva =".$reserva['fk_reserva'];
+            $sqlDelReserva="DELETE FROM reserva WHERE id_reserva =".$reserva['id_reserva'];
 
             /*echo $sqlDelAsientosReserva."<br>";
             echo $sqlDelAsientosReservados."<br>";
