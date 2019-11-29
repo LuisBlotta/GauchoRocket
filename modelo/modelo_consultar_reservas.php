@@ -53,25 +53,26 @@ function getReservas(){
             $reserva['descripcion_estado'] =  $row["descripcion_estado"];
             $reserva['tiene_nivel'] =  $tiene_nivel;
             $reserva['turno_existente'] =  $turno[0];
-            /*---------------------
-            $sqlAcompañantes= "SELECT login.nick nick, usuario.nombre nombre
+
+            $sqlAcompañantes= "SELECT login.nick nick, usuario.nombre nombre, usuario.fk_nivel nivel
                        FROM login 
                        JOIN usuario ON usuario.fk_login = login.id_login
                        JOIN reserva ON reserva.fk_login = login.id_login
                        WHERE reserva.nro_reserva = $reserva[nro_reserva]
-                       AND login.nick <> '$nick'";                     
+                       AND login.nick <> '$nick'";
                        
             $resultAcompañantes = mysqli_query($conn, $sqlAcompañantes);
-            
-            $i=0;
-            while($row = mysqli_fetch_assoc($resultAcompañantes)) {
+            if (mysqli_num_rows($result) > 0) {
                 $acompañantes = Array();
-                $acompañantes['nick'] =  $row["nick"];
-                $acompañantes['nombre'] =  $row["nombre"]; 
-
-                $reserva[]=$acompañantes;
+                while ($row = mysqli_fetch_assoc($resultAcompañantes)) {
+                    $acompañante = Array();
+                    $acompañante['nick'] = $row["nick"];
+                    $acompañante['nombre'] = $row["nombre"];
+                    $acompañante['nivel'] = $row["nivel"];
+                    $acompañantes[] = $acompañante;
+                }
+                $reserva['acompañantes'] = $acompañantes;
             }
-            -----------------------*/
             $reservas[] = $reserva;
         }
     }else{
