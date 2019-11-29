@@ -101,7 +101,7 @@ INSERT INTO equipo (fk_modelo, matricula) VALUES   (1, "AA1"),(1, "AA5"), (1, "A
                                                 (5, "BA4"), (5, "BA5"), (5, "BA6"), (5, "BA7"), 
                                                 (6, "O3"), (6, "O4"), (6, "O5"), (6, "O8"), (6, "O9"), 
 												(7, "AA2"), (7, "AA6"), (7, "AA10"), (7, "AA14"), (7, "AA18"),
-                                                (8, "AA4"), (8, "AA8"), (8, "AA12"), (8, "AA16"),  
+                                                (8, "AA4"), (8, "AA8"), (8, "AA12"), (8, "AA16"),  /*Tour*/
 												(9, "AA3"), (9, "AA7"), (9, "AA11"), (9, "AA15"), (9, "AA19"), 
                                                 (10, "BA1"), (10, "BA2"), (10, "BA3");
                                                                      
@@ -114,8 +114,8 @@ INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) VALUES 	
 																					(11, 1, 17, '20191002'),
 																					(25, 1, 18, '20191002'),
 																					(12, 1, 09, '20201107'),
-																					(26, 2, 12, '20191027'),/*tour*/
-																					(27, 2, 22, '20201103'),
+																					(34, 2, 12, '20191027'),/*tour*/
+																					(35, 2, 22, '20201103'),
                                                                                     
 																					(6, 3, 08, '20191001'), /*C1 entre destinos BA BS AS*/
 																					(6, 3, 08, '20191001'), /*C1 entre destinos BA ANKARA*/
@@ -552,9 +552,9 @@ SELECT * FROM turno;
 INSERT INTO asientos_reservados (numero_asiento, numero_reserva) VALUES (1,652829274),(4,652829274),(6,652829274);
 INSERT INTO asientos_reserva (fk_asientos_reservados,fk_reserva) VALUES (1,1),(2,1),(3,1);
 
-UPDATE usuario SET fk_nivel=null;
+UPDATE usuario SET fk_nivel=3;
 
-UPDATE vuelo SET dia_partida='20191128', hora_partida=16 WHERE id_vuelo=1;
+UPDATE vuelo SET dia_partida='20191212', hora_partida=5 WHERE id_vuelo=1;
 UPDATE vuelo SET dia_partida='20191119', hora_partida=17 WHERE id_vuelo=10;
 
 UPDATE reserva SET fk_estado_reserva=3 WHERE id_reserva=1;
@@ -565,5 +565,4 @@ UPDATE asientos_reservados SET numero_asiento=5 WHERE id_asientos_reservados=5;
 
 ALTER TABLE transaccion ADD nro_tarjeta INT;
 ALTER TABLE transaccion ADD tipo_tarjeta VARCHAR(20);
-
 */               

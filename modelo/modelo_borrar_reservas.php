@@ -3,8 +3,9 @@ include_once("conexion.php");
 
 borrar_reservas();
 function borrar_reservas(){
-    $fecha_actual=getFechaConGuiones();
+    /*$fecha_actual=getFechaConGuiones();
     $hora_actual=getHora();
+    $hora_actual=$hora_actual['hora'];
     $conn=getConexion();
 
     $sqlListaCancelacion="SELECT reserva_cancelada.fk_reserva id_reserva, reserva.nro_reserva nro_reserva, vuelo.dia_partida fecha_partida, vuelo.hora_partida hora_partida
@@ -30,7 +31,7 @@ function borrar_reservas(){
                           FROM reserva
                                 JOIN vuelo_trayecto ON reserva.fk_id_vuelo_trayecto = vuelo_trayecto.id_vuelo_trayecto
                                 JOIN vuelo ON vuelo_trayecto.fk_vuelo = vuelo.id_vuelo
-                          WHERE vuelo.dia_partida <= '$fecha_actual' AND vuelo.hora_partida <=".$hora_actual['hora'];
+                          WHERE vuelo.dia_partida <= '$fecha_actual'";
     $resultReservasAntiguas = mysqli_query($conn, $sqlReservasAntiguas);
 
     if (mysqli_num_rows($resultReservasAntiguas) > 0) {
@@ -44,8 +45,9 @@ function borrar_reservas(){
         }
     }
 
+
     foreach ($reservas_a_borrar as $reserva){
-        if($reserva['fecha_partida']<=$fecha_actual && $reserva['hora_partida']<=$hora_actual['hora']){
+        if($reserva['fecha_partida']<$fecha_actual||($reserva['fecha_partida']==$fecha_actual&&$reserva['hora_partida']+2==$hora_actual)){
             $sqlTieneAsientos="SELECT asientos_reserva.fk_reserva FROM asientos_reserva
                                WHERE asientos_reserva.fk_reserva =".$reserva['id_reserva'];
             $resultTieneAsientos = mysqli_query($conn, $sqlTieneAsientos);
@@ -80,14 +82,14 @@ function borrar_reservas(){
 
             $sqlDelReserva="DELETE FROM reserva WHERE id_reserva =".$reserva['id_reserva'];
 
-            /*echo $sqlDelAsientosReserva."<br>";
-            echo $sqlDelAsientosReservados."<br>";
-            echo $sqlDelReservasCanceladas."<br>";
-            echo $sqlDelReserva."<br>";
-            exit();*/
+            //echo $sqlDelAsientosReserva."<br>";
+            //echo $sqlDelAsientosReservados."<br>";
+            //echo $sqlDelReservasCanceladas."<br>";
+            //echo $sqlDelReserva."<br>";
+            //exit();
 
             $resultDelReserva = mysqli_query($conn, $sqlDelReserva);
         }
     }
-    mysqli_close($conn);
+    mysqli_close($conn);*/
 }
