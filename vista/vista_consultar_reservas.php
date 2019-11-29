@@ -1,4 +1,36 @@
 <?php include("condicional_sesion.php");?>
+<?php
+if (!empty($_GET['fallo_datos'])==true){
+    echo '<div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              Hubo un error en pago de la reserva N°'.$_GET['nro_reserva'].', por favor intentelo nuevamente
+          </div>';
+}
+if (!empty($_GET['check_in_exitoso'])==true){
+    echo '<div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              Se ha realizado el Check-In correctamente
+          </div>';
+}
+if (!empty($_GET['check_in_realizado'])==true){
+    echo '<div class="alert alert-info alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              El Check-In ya fue realizado
+          </div>';
+}
+if (!empty($_GET['requiere_pago'])==true){
+    echo '<div class="alert alert-info alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              Debe abonar su reserva para realizar el Check-In
+          </div>';
+}
+if (!empty($_GET['lista_espera'])==true){
+    echo '<div class="alert alert-info alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              Usted ha sido ingresado a la lista de espera
+          </div>';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,23 +139,6 @@
         }
         ?>
     </section>
-    <?php
-    if (!empty($_GET['fallo_datos'])==true){
-        echo "<script>alert('Hubo un error en pago de la reserva N°".$_GET['nro_reserva'].", por favor intentelo nuevamente');</script>";
-    }
-    if (!empty($_GET['check_in_exitoso'])==true){
-        echo "<script>alert('Se ha realizado el Check-In correctamente');</script>";
-    }
-    if (!empty($_GET['check_in_realizado'])==true){
-        echo "<script>alert('El Check-In ya fue realizado ');</script>";
-    }
-    if (!empty($_GET['requiere_pago'])==true){
-        echo "<script>alert('Debe abonar su reserva para realizar el Check-In');</script>";
-    }
-    if (!empty($_GET['lista_espera'])==true){
-        echo "<script>alert('Usted ha sido ingresado a la lista de espera');</script>";
-    }
-    ?>
 </main>
 </body>
 </html>
