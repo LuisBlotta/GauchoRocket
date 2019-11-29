@@ -32,6 +32,7 @@ if ($estado_reserva[0]!=3){
     <link rel="stylesheet" type="text/css" href="public/css/estilos-check_in.css">
 </head>
 <body>
+<main>
 <?php
     echo"
         
