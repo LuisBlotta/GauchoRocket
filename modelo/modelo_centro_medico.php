@@ -8,7 +8,7 @@ include_once("conexion.php");
 confirmarSiNecesitanTurno();
 function confirmarSiNecesitanTurno(){
 
-    /*Ver si tiene nivel de vuelo*/  /*Ver si tiene nivel de vuelo*/
+    /*Ver si tiene nivel de vuelo*/
     $conn = getConexion();
     $nro_reserva = $_GET['nro_reserva'];
 
@@ -17,7 +17,7 @@ function confirmarSiNecesitanTurno(){
             WHERE nro_reserva=$nro_reserva AND usuario.fk_nivel IS NULL";
 
 
-           
+
          $resultlogin = mysqli_query($conn, $queryConsultalogins);
          if(mysqli_num_rows($resultlogin)==0){
              header('location: gauchorocket');
@@ -25,9 +25,6 @@ function confirmarSiNecesitanTurno(){
 }
 
 function getCentroMedico(){
-
-
-
 
     $conn = getConexion();
 

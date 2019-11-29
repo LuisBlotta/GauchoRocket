@@ -22,9 +22,11 @@
                 $datetime1 = new DateTime($reserva['fecha_ida']);
                 $datetime2 = new DateTime($fecha_actual);
                 $interval = $datetime1->diff($datetime2);
-                $interval->format('%a');
+             $interval->format('%R%a');
 
-                if(($interval->format('%a'))<2){
+
+
+                if(($interval->format('%R%a'))<2){
                     echo "
                             <article href='' class='card'>                        
                                <img class='card-img-top' src='public/img/".$reserva['destino'].".jpg' alt='reserva'>
@@ -85,9 +87,9 @@
                 $datetime1 = new DateTime($reserva['fecha_ida']);
                 $datetime2 = new DateTime($fecha_actual);
                 $interval = $datetime1->diff($datetime2);
-                $interval->format('%a');
+                $interval->format('%R%a');
 
-                if(($interval->format('%a'))>=2) {
+                if(($interval->format('%R%a'))>=2) {
                     echo "  <tr>
                                 <td>".$reserva['nro_reserva']."</td>
                                 <td>".$reserva['fecha_ida']."</td>
