@@ -1,9 +1,7 @@
 <?php
 include_once("conexion.php");
 
-function validarNivel(){
-    $id_vuelo=$_GET['id_vuelo'];
-    $nick = $_COOKIE["login"];
+function validarNivel($id_vuelo, $nick){
     $conn = getConexion();
     $tiene_nivel=tieneNivel($nick);
 
@@ -19,7 +17,6 @@ function validarNivel(){
                             JOIN vuelo ON vuelo.fk_equipo = equipo.id_equipo
                             WHERE vuelo.id_vuelo ='$id_vuelo'";
     $resultNivelVuelo = mysqli_query($conn, $buscarNivelVuelo);
-    //$datoVuelo=mysqli_fetch_row($resultNivelVuelo);
 
     $datoVuelos = Array();
     if (mysqli_num_rows($resultNivelVuelo) > 0) {

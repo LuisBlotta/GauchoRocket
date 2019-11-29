@@ -1,8 +1,7 @@
 <?php
 include_once("conexion.php");
+
 function tieneNivel($nick){
-    //$nick = $_COOKIE["login"];
-    //$nick = $valor;
     $conn = getConexion();
 
     $buscarNivelUsuario = "SELECT usuario.fk_nivel nivel_pasajero FROM usuario
@@ -18,4 +17,3 @@ function tieneNivel($nick){
     }
     return $tiene_nivel;
 }
-?>
