@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>Reservas</title>
-    <?php include("head.php") ?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-info_vuelo.css">
     <link rel="stylesheet" type="text/css" href="public/css/estilos-reservas.css">
 </head>
@@ -24,8 +23,6 @@
                 $interval = $datetime1->diff($datetime2);
              $interval->format('%R%a');
 
-
-
                 if(($interval->format('%R%a'))<2){
                     echo "
                             <article href='' class='card'>                        
@@ -40,8 +37,12 @@
                                     <h4><img src='public/img/calendar.png'> " . $reserva['fecha_ida'] . "</h4>
                                     <h4><img src='public/img/clock.png'> " . $reserva['hora_partida'] . ":00</h4><br> 
                                     
-                                    <p>Cantidad de pasajeros: " . $reserva['cantidad_lugares'] . "</p>   
-                                    <p>Precio unitario: $".$reserva['precio'].".-</p>
+                                    <p>Cantidad de pasajeros: " . $reserva['cantidad_lugares'] . "</p>";
+                            foreach ($reserva['acompañantes'] as $acompañante){
+                                echo"<br><p>Acompañantes:</p>                                     
+                                     <p>• ".$acompañante['nick']."<span class='num-nivel'>".$acompañante['nivel']."</span></p><br>";
+                            }
+                               echo "<p>Precio unitario: $".$reserva['precio'].".-</p>
                                     <h4>Total: $".$reserva['precio_total'].".-</h4><br>
                            
                                     <div class='botones'>";
