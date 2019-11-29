@@ -52,7 +52,7 @@ CREATE TABLE transaccion(id_transaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 
 /*----------Tablas centro médico----------*/
 CREATE TABLE medico (id_medico INT PRIMARY KEY AUTO_INCREMENT NOT NULL, nombre VARCHAR(60) NOT NULL, direccion VARCHAR(70) NOT NULL);
-CREATE TABLE turno (id_turno INT PRIMARY KEY AUTO_INCREMENT NOT NULL, fecha DATE, nombre VARCHAR(50) NOT NULL, fk_medico INT NOT NULL, fk_login INT NOT NULL,
+CREATE TABLE turno (id_turno INT PRIMARY KEY AUTO_INCREMENT NOT NULL, fecha DATE, fk_medico INT NOT NULL, fk_login INT NOT NULL,
                     FOREIGN KEY(fk_medico) REFERENCES medico(id_medico), FOREIGN KEY(fk_login) REFERENCES login(id_login));
 
 
@@ -109,7 +109,7 @@ INSERT INTO equipo (fk_modelo, matricula) VALUES   (1, "AA1"),(1, "AA5"), (1, "A
 INSERT INTO destino (id_destino, descripcion) VALUES (1, "Buenos Aires"), (2, "Ankara"),(3,"Estacion Espacial Internacional"),(4,"Orbital Hotel"), (5, "Luna"), (6,"Marte"),(7,"Ganimedes"), (8, "Europa"), (9, "Io"), (10, "Encelado"), (11, "Titan");
 INSERT INTO tipo_viaje (id_tipo_viaje, descripcion) VALUES (1, "Suborbital"), (2, "Tour"), (3,"Entre destinos");
 
-INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) VALUES 		(13, 1, 18, '20191125'), /*orbitales*/
+INSERT INTO vuelo (fk_equipo, fk_tipo_viaje, hora_partida, dia_partida) VALUES 		(13, 1, 18, '20191215'), /*orbitales*/
 																					(24, 1, 15, '20191001'),
 																					(11, 1, 17, '20191002'),
 																					(25, 1, 18, '20191002'),

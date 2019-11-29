@@ -13,7 +13,7 @@
 <body>
 <main>
 
-    <section class="medico">
+    <section class="container" style="text-align: center">
         <?php
         foreach ($medicos as $medico) {
             echo "
@@ -25,9 +25,15 @@
         }
         ?>
         <?php echo"<form method='post' action='reserva_turno?id_medico=$id_medico&nro_reserva=$nro_reserva'>"?>
-            <input class="form-control" type="text" name="nombre" required placeholder="Nombre y Apellido">
-            <input class="form-control" type="text" name="email" required placeholder="E-mail">
-            <input class="form-control" type="date" name="fecha_turno">
+
+
+        <div class="input-group" style="width: 20%; margin: auto">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><img src="public/img/calendar.png"></span>
+            </div>
+            <input type="date" name="fecha_turno" class="form-control mr-sm-2" >
+        </div>
+        <br>
             <button class="btn btn-info">Reservar</button>
         </form>
     </section>

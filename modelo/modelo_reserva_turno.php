@@ -8,7 +8,6 @@ function getTurnos()
 {
 
     $id_medico = $_GET['id_medico'];
-    $nombre = $_POST['nombre'];
     $nick = $_COOKIE["login"];
     $fecha_turno = $_POST['fecha_turno'];
     $nro_reserva=$_GET['nro_reserva'];
@@ -63,8 +62,8 @@ $queryConsultalogins ="SELECT reserva.fk_login fk_login FROM reserva JOIN login 
       $i = 0;
       while ($i < count($ids)){
 
-    $sqlInsert = "INSERT INTO turno (fecha, nombre, fk_medico, fk_login)
-                   values ('$fecha_turno', '$nombre', '$id_medico', $ids[$i])";
+    $sqlInsert = "INSERT INTO turno (fecha,  fk_medico, fk_login)
+                   values ('$fecha_turno', '$id_medico', $ids[$i])";
 
             mysqli_query($conn, $sqlInsert);
             $i++;
