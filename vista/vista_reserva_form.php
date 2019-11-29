@@ -7,7 +7,6 @@ include_once("conexion.php");
     <title>Reserva de pasaje</title>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-form_reserva.css">
     <?php
-        include("head.php");
         $id_vuelo=$_GET['id_vuelo'];
         $id_trayecto=$_GET['id_trayecto'];
         $id_destino = $_GET['id_destino'];

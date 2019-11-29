@@ -2,8 +2,6 @@
 <html>
 <head>
     <title>Registro</title>
-    <?php include("head.php");?>
-    
     <link rel="stylesheet" type="text/css" href="public/css/estilos-login-registro.css">
 </head>
 <body>

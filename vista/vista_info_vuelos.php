@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Gaucho Rocket</title>
-    <?php include("head.php") ?>
+    <?php //include("head.php") ?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-info_vuelo.css">
 </head>
 <body>

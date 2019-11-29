@@ -7,7 +7,7 @@ include ("condicional_sesion.php");
 <html>
 <head>
 	<title>Pase de Abordaje</title>
-    <?php include("head.php"); ?>
+    <?php// include("head.php"); ?>
 </head>
 <body>
 	<?php echo '<img src="'.$qr.'" /><hr/>'; ?>

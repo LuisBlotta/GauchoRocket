@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Form reportes</title>
-    <?php include("head.php");
+    <?php //include("head.php");
     include("charts/lib/inc/chartphp_dist.php");
     $torta = new chartphp();
     $torta->data = array(array(

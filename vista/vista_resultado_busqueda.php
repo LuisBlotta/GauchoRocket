@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Resultado de la Búsqueda</title> <meta charset="UTF-8">
-    <?php include("head.php"); ?>
+    <title>Resultado de la Búsqueda</title>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
 </head>
 <body>

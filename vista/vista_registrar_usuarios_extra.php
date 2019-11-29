@@ -1,5 +1,4 @@
 <?php
-include("head.php");
 include_once("conexion.php");
 include("condicional_sesion.php");
 $cantidadPasajeros = $_GET['cantidadPasajeros'];
