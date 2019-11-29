@@ -9,9 +9,9 @@ $nro_reserva = $_GET['nro_reserva']?>
 </head>
 <body>
     <main>
-        <h3 style="margin-top: 20px;">Reserva turno en nuestros centros médicos</h3>
+        <h1 style="margin-top: 20px; text-align: center">Reserva turno en nuestros centros médicos</h1>
 
-        <section class="cont_vuelos">
+        <section class="cont_vuelos ">
             <?php
 
             foreach ($medicos as $medico){
