@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Iniciar Sesión</title>
-    <?php include("head.php")?>
+    <?php //include("head.php")?>
 </head>
 <body>
 <form action="facturacion_meses_anteriores" method="post">

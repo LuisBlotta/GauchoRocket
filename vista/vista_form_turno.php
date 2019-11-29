@@ -4,7 +4,7 @@
 <head>
     <title>Reserva Centro Médico</title>
     <?php
-        include("head.php");
+        //include("head.php");
         $id_medico=$_GET['id_medico'];
         $nro_reserva = $_GET['nro_reserva']
     ?>

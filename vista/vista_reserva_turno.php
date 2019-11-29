@@ -8,7 +8,6 @@ $varaible = traerNomberMedico();
 <html>
 <head>
     <title>Reserva Exitosa</title>
-    <?php include("head.php") ?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-reserva_turnos.css">
 
 </head>

@@ -27,7 +27,7 @@ if ($estado_reserva[0]!=3){
 <html>
 <head>
     <title>Check In</title>
-    <?php include("head.php");?>
+    <?php// include("head.php");?>
     <link rel="stylesheet" type="text/css" href="public/css/estilos-index.css">
     <link rel="stylesheet" type="text/css" href="public/css/estilos-check_in.css">
 </head>

@@ -8,3 +8,5 @@ El usuario juancito ingresó correctamente
 El usuario user ingresó correctamente
 El usuario lblotta ingresó correctamente
 El usuario user ingresó correctamente
+El usuario user ingresó correctamente
+El usuario user ingresó correctamente

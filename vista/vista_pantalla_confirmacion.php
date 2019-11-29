@@ -1,6 +1,6 @@
 <?php
 //----borrar si se hace con mail
-include("head.php");
+//include("head.php");
 $hashConfirmacion=$_GET["hash"];
 echo "Gracias por registrarte en GauchoRocket<br>";
 echo "Haz click aquí para confirmar<br>";
