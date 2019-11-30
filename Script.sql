@@ -547,13 +547,12 @@ SELECT * FROM transaccion;
 SELECT * FROM medico;
 SELECT * FROM turno;
 
-
 INSERT INTO asientos_reservados (numero_asiento, numero_reserva) VALUES (1,652829274),(4,652829274),(6,652829274);
 INSERT INTO asientos_reserva (fk_asientos_reservados,fk_reserva) VALUES (1,1),(2,1),(3,1);
 
 UPDATE usuario SET fk_nivel=1;
 
-UPDATE vuelo SET dia_partida='20191212', hora_partida=5 WHERE id_vuelo=1;
+UPDATE vuelo SET dia_partida='20191130', hora_partida=20 WHERE id_vuelo=1;
 UPDATE vuelo SET dia_partida='20191212', hora_partida=17 WHERE id_vuelo=10;
 
 UPDATE reserva SET fk_estado_reserva=3 WHERE id_reserva=1;
