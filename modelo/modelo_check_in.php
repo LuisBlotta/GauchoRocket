@@ -66,6 +66,6 @@ function check_in(){
 
         mysqli_close($conn);
     }
+    header("location:pase_abordaje?nro_reserva=".$nro_reserva);
 }
 
-?>

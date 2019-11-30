@@ -102,7 +102,7 @@ if (!empty($_GET['lista_espera'])==true){
                             </article>";
                 }
             }
-            echo "<h3>Reservas Antiguas</h3>
+            echo "<h3 class='antiguas'>Reservas Antiguas</h3>
                     <div class='container card'>
                         <table class='table'>
                                 <tbody>
