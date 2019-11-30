@@ -31,7 +31,7 @@ include ("condicional_sesion.php");
                                     <span><img src='public/img/calendar.png'> ".$dato['fecha_ida']."</span>
                                     <span><img src='public/img/clock.png'> ".$dato['hora_partida'].":00</span>
                                   </p>";
-                                echo "<p>
+                                echo "<p class='ult-linea'>
                                         <span>Asiento: <span class='num-cabina'>".$asiento[$i]."</span></span>
                                         <span>Cabina: <span class='num-cabina'>".$dato['tipo_cabina']."</span></span>
                                       </p>";
