@@ -1,6 +1,6 @@
 <?php
 include("condicional_sesion.php");
-$varaible = traerNomberMedico();
+$variable = traerNomberMedico();
 
 ?>
 
@@ -18,7 +18,7 @@ $varaible = traerNomberMedico();
 
         <article class="datos_turno">
             <?php echo "<h4><img src='public/img/calendar.png'> ".$_POST['fecha_turno']."</h4> "; ?>
-            <?php echo "<h4> Instituto: ".$varaible[0]."</h4>";?>
+            <?php echo "<h4> Instituto: ".$variable[0]."</h4>";?>
         </article>
         <article class="aviso_turno">
             <?php echo "<h5>Será atendido por órden de llegada.</h5>";?>
