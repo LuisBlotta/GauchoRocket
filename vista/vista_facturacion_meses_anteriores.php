@@ -1,20 +1,27 @@
 <html>
 <head>
-    <title>Form reportes</title>
-    <?php// include("head.php"); ?>
+    <title>Facturación de Meses Anteriores</title>
+    <link rel="stylesheet" type="text/css" href="public/css/estilos-reportes.css">
 </head>
 
 <body>
-<h1 class="titulo">Reportes</h1>
+    <main>
+        <h1 class="titulo">Reportes</h1>
+        <section class="container card reportes">
+            <?php
+                if(!isset($resultado[2])){
+                    echo "<h3>Facturacion de ".$resultado[1]."</h3>";
+                }else{
+                    echo "<h3>Facturacion de ".$resultado[1]." a ".$resultado[2]."</h3>";
+                }
 
-<section class="container card reportes">
-    <h3>Facturación mes actual:</h3>
-    <h4> $<?=  $resultado[0] ?></h4>
-
-
-</section>
-
-
-
+                if (is_null($resultado[0])){
+                    echo "<h5>No se facturó en el mes</h5>";
+                }else{
+                    echo "<h4> $".$resultado[0]."</h4>";
+                }
+            ?>
+        </section>
+    </main>
 </body>
 </html>
