@@ -48,9 +48,9 @@
                                         <label for="cardNumber">Número (5470 5141 5141 5064)</label>
                                         <div class="cont-card-number">
                                             <div class="input-group-prepend">
-                                                <p id="visa">Visa</p>
-                                                <p id="mastercard">Mastercard</p>
-                                                <p id="amex">Amex</p>
+                                                <p id="visa"><img src="public/img/visa.png"></p>
+                                                <p id="mastercard"><img src="public/img/mcard.png"></p>
+                                                <p id="amex"><img src="public/img/amex.png"></p>
                                             </div>
                                             <input type="text" class="form-control" id="cardNumber" name="numero_tarjeta">
                                         </div>
