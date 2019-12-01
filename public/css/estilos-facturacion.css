@@ -1,0 +1,17 @@
+.form-meses{
+    width: 40%;
+
+    margin-top: 100px;
+    padding: 20px;
+
+    border-radius: .25rem;
+
+    background-color: #fff;
+
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3);
+}
+.form-meses .inputs{
+    margin-bottom: 30px;
+}

@@ -37,44 +37,42 @@
 </head>
 
 <body>
-<h1 class="titulo">Reportes</h1>
+    <main>
+        <h1 class="titulo">Reportes</h1>
 
-<section class="container card reportes">
-    <h3>Facturación mes actual:</h3>
-    <h4> $<?=  $facturacionMensual[0] ?></h4>
-    <a href="form_facturacion_meses_anteriores">Consultar meses anteriores
-    </a>
+        <section class="container card reportes">
+            <h3>Facturación mes actual:</h3>
+            <h4> $<?=  $facturacionMensual[0] ?></h4>
+            <a href="form_facturacion_meses_anteriores">Consultar meses anteriores
+            </a>
 
-</section>
+        </section>
 
-<br><br>
-
-
-<section class="container card reportes">
-    <h3>Facturación por cliente</h3>
-<form action="facturacion_cliente" method="post">
-    <label for="">Cliente:</label>
-
-    <input class="form-control mr-sm-2" type="text" name="nick" placeholder="Nick">
-
-    </select>
-
-    <br><br><button type="submit" class="btn btn-info">Buscar</button>
-
-</form>
-
-</section>
-<br><br>
-<section class="container card reportes">
-    <h3 for="">Reporte mensual por equipo:</h3>
-    <?php echo "$out2"; ?>
-    <h3 style="margin-top: -10px;">Promedio por Cabina:</h3>
-
-    <?php echo "$out"; ?>
-
-</section>
+        <br><br>
 
 
+        <section class="container card reportes">
+            <h3>Facturación por cliente</h3>
+        <form action="facturacion_cliente" method="post">
+            <label for="">Cliente:</label>
 
+            <input class="form-control mr-sm-2" type="text" name="nick" placeholder="Nick">
+
+            </select>
+
+            <br><br><button type="submit" class="btn btn-info">Buscar</button>
+
+        </form>
+
+        </section>
+        <br><br>
+        <section class="container card reportes">
+            <h3 for="">Reporte mensual por equipo:</h3>
+            <?php echo "$out2"; ?>
+            <h3 style="margin-top: -10px;">Promedio por Cabina:</h3>
+
+            <?php echo "$out"; ?>
+        </section>
+    </main>
 </body>
 </html>
