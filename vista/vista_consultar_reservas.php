@@ -78,6 +78,7 @@ if (!empty($_GET['lista_espera'])==true){
                                     <h4>Total: $".$reserva['precio_total'].".-</h4><br>
                            
                                     <div class='botones'>";
+                            if(($interval->format('%R%a'))<1){
                                 if ($reserva['estado_reserva']==2) {
                                     include('vista_modal_pagar.php');
                                     echo"<button type='button' class='btn-action btn btn-info' data-toggle='modal' data-target='#myModal".$reserva['nro_reserva']."'>Pagar</button>";
@@ -96,6 +97,7 @@ if (!empty($_GET['lista_espera'])==true){
                                 if ($reserva['estado_reserva']!=4){
                                     echo"<a href='cancelar_vuelo?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-danger'>Cancelar</a>";
                                 }
+                            }
 
                             echo"   </div>
                                 </div>
