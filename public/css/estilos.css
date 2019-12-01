@@ -187,3 +187,19 @@ footer .btn-sesion{
 		margin-top: 50px;
 	}
 }
+/*----------Factura PDF----------*/
+
+.facturacion-cliente{
+	width: 60%;
+	margin: auto;
+	margin-top: 50px;
+}
+.facturacion-cliente h1{
+	margin-bottom: 20px;
+}
+.facturacion-cliente .card{
+	padding: 30px;
+}
+.facturacion-cliente table{
+	background-color: #fff;
+}

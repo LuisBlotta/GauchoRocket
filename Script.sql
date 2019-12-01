@@ -552,7 +552,7 @@ INSERT INTO asientos_reserva (fk_asientos_reservados,fk_reserva) VALUES (1,1),(2
 
 UPDATE usuario SET fk_nivel=1;
 
-UPDATE vuelo SET dia_partida='20191130', hora_partida=20 WHERE id_vuelo=1;
+UPDATE vuelo SET dia_partida='20191130', hora_partida=23 WHERE id_vuelo=1;
 UPDATE vuelo SET dia_partida='20191212', hora_partida=17 WHERE id_vuelo=10;
 
 UPDATE reserva SET fk_estado_reserva=3 WHERE id_reserva=1;
