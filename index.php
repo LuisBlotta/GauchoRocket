@@ -6,6 +6,7 @@ include ("controlador/controlador_verificar_turno.php");
 include ("controlador/controlador_activar_lista_espera.php");
 include ("controlador/controlador_validar_reserva_nivel.php");
 //include ("controlador/controlador_borrar_reservas_canceladas.php");
+include ("controlador/controlador_borrar_asientos_cancelados.php");
 
 $routes = parseRoutes();
 $moduleName = extractModuleName($routes);
