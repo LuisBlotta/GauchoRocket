@@ -18,6 +18,12 @@ if (!empty($_GET['check_in_realizado'])==true){
               El Check-In ya fue realizado
           </div>';
 }
+if (!empty($_GET['fallo_fecha_check_in'])==true){
+    echo '<div class="alert alert-info alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              El Check In se activará 2 días antes del despegue.
+          </div>';
+}
 if (!empty($_GET['requiere_pago'])==true){
     echo '<div class="alert alert-info alert-dismissible">
               <button type="button" class="close" data-dismiss="alert">&times;</button>

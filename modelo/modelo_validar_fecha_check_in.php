@@ -34,7 +34,7 @@ function validar_fecha(){
 
 
     if(($interval->format('%a'))>2){
-        header("location:consultar_reservas");
+        header("location:consultar_reservas?fallo_fecha_check_in=true");
     }elseif(($interval->format('%a'))<=2){
         if(($interval->format('%a'))==0 && $reserva['hora_partida']-$hora_actual['hora']<=2){
             header("location:lista_espera?nro_reserva=".$nro_reserva);
