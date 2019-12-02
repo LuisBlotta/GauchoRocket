@@ -100,7 +100,7 @@ if (!empty($_GET['lista_espera'])==true){
                                     echo"<a href='centro_medico?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-info'>Sacar Turno</a>";
                                 }
 
-                                if ($reserva['estado_reserva']!=4){
+                                if ($reserva['estado_reserva']!=4&&($interval->format('%R%a'))<-1){
                                     echo"<a href='cancelar_vuelo?nro_reserva=".$reserva['nro_reserva']."' class='btn-action btn btn-danger'>Cancelar</a>";
                                 }
                             }
