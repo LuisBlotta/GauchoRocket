@@ -1,6 +1,6 @@
 <?php
 include_once("conexion.php");
-include("head.php");
+
 registrar_transaccion();
 function registrar_transaccion(){
     $fecha=getFechaCompleta();

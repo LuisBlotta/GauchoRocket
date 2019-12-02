@@ -26,7 +26,7 @@ if ($cantidadPasajeros > 0){
                 <input class='form-control mr-sm-2' type='text' name='nick' placeholder='Nick' required>
                
 				<label for='mail'>E-mail</label>
-				<input class='form-control mr-sm-2' type='text' name='mail' placeholder='E-mail' required>		
+				<input class='form-control mr-sm-2' type='email' name='mail' placeholder='E-mail' required>		
 				
 				<br>                                
 				<button class='btn btn-info'>Agregar</button>

@@ -21,8 +21,8 @@
         }
         ?>
         <div class="form-group">
-            <label for="user_name">Nombre de Usuario</label>
-            <input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Usuario" value='<?php echo $a; ?>'>
+            <label for="user_name">Nick</label>
+            <input class="form-control mr-sm-2" type="text" name="user_name" placeholder="Nick" value='<?php echo $a; ?>'>
         </div>
 
         <div class="form-group">

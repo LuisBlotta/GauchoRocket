@@ -43,6 +43,8 @@ function facturacionMensual(){
 
 function cabinaMasVendida(){
     $conn = getConexion();
+    $cabinaMayor="";
+
     $sqlCabinaF="select sum(cantidad_lugares) cantidad_lugares from reserva where tipo_cabina = 'f'";
     $resultF = mysqli_query($conn, $sqlCabinaF);
     $cabinaF=mysqli_fetch_row($resultF);

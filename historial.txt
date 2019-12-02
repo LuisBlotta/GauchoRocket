@@ -1,27 +1,5 @@
 Historial:
-El usuario admin ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario JUANCITO intentó ingresar y no pudo 
-El usuario juancito intentó ingresar y no pudo 
-El usuario juancito ingresó correctamente
-El usuario user ingresó correctamente
-El usuario lblotta ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario admin ingresó correctamente
+El usuario MicaVsr ingresó correctamente
 El usuario admin ingresó correctamente
 El usuario user ingresó correctamente
 El usuario admin ingresó correctamente
-El usuario user ingresó correctamente
-El usuario admin ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario user ingresó correctamente
-El usuario admin ingresó correctamente
-El usuario user ingresó correctamente
