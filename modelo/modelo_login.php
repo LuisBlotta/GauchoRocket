@@ -30,22 +30,6 @@ function login(){
 
 
         if($resulta=mysqli_stmt_fetch($stmt)) {
-
-
-            setcookie("login", $nick, time() + 10000);
-            if ( $rol['rol']==1){
-                session_start();
-                $_SESSION['usuario'] = true;
-            }elseif ($rol['rol']){
-                session_start();
-                $_SESSION['admin'] = true;
-            }
-
-
-            fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
-            fclose($file);
-
-
             //Revisa si el usuario está confirmado------------------------
             $query2 = "SELECT userConfirmado FROM login 
                     WHERE nick ='$nick' AND password ='$password'";
@@ -60,7 +44,7 @@ function login(){
                     $hashConfirmacion=$_GET["hash"];
                     echo "<br><a type='button' class='btn btn-info' href='gauchorocket?hash=".$hashConfirmacion."'>Volver al inicio</a>";
                 }else{
-                //------------------------------
+                    //------------------------------
                     echo "<br><a type='button' class='btn btn-info' href='gauchorocket'>Volver al inicio</a>";
                 }
                 echo "<br><br><a type='button' class='btn btn-info' href='pantalla_confirmacion?hash=".$hashConfirmacion."'>Confirmar</a>";
@@ -70,6 +54,17 @@ function login(){
                 header('location:gauchorocket');
             }
 
+            setcookie("login", $nick, time() + 10000);
+            if ( $rol['rol']==1){
+                session_start();
+                $_SESSION['usuario'] = true;
+            }elseif ($rol['rol']){
+                session_start();
+                $_SESSION['admin'] = true;
+            }
+
+            fwrite($file, "El usuario $nick ingresó correctamente". PHP_EOL );
+            fclose($file);
         } else {
 
             header('location:login_form?fallo=true');
