@@ -9,9 +9,18 @@
 				<li class="nav-item">
 					<a class="nav-link" href="gauchorocket">Inicio</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="consultar_reservas">Reservas</a>
-				</li>                
+                <?php
+                if (!empty($_SESSION['usuario'])) {
+                    echo"<li class='nav-item'>
+                                <a class='nav-link' href='consultar_reservas'>Reservas</a>
+                            </li>";
+                }
+                if (!empty($_SESSION['admin'])) {
+                    echo "<li class='nav-item'>
+                                <a class='nav-link' href='form_reportes'>Administración</a>
+                            </li>";
+                }
+                ?>
 				<li class="nav-item btn-sesion">					
 					<?php include("boton-sesion.php") ?>
 				</li>
