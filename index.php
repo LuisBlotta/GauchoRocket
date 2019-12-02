@@ -18,7 +18,18 @@ if( file_exists($filename) ){
     include_once($filename);
     call_user_func( $moduleName . '_' . $action);
 } else {
-    echo "<h2 style='color:#17a2b8; text-align:center; margin-top: 50px'>La pagina solicitada no existe</h2>";
+    echo "<section class='container'>
+              <h2 style='color:#17a2b8; text-align:center; margin-top: 50px'>La pagina solicitada no existe</h2>
+                   <div class='row'>
+                       <div class='col-sm-4'>                           
+                       </div>
+                       <div class='col-sm-4' style='display: flex; justify-content: center; margin-top: 50px'>
+                           <a href='gauchorocket' class='btn btn-info'>Ir al inicio</a>
+                       </div>
+                       <div class='col-sm-4'>                          
+                       </div>
+                   </div>              
+          </section>";
 }
 
 /*
