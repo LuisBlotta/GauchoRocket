@@ -20,8 +20,6 @@ function check_in(){
     $resultLugares = mysqli_query($conn, $sqlLugares);
     $lugares=mysqli_fetch_row($resultLugares);
 
-
-
     //-----Validacion e insert en la tabla de asientos_reservados
     if (sizeof($asiento)!=$lugares[0]){
         header("location:form_check_in?nro_reserva=".$nro_reserva."&fallo=true");
@@ -65,7 +63,7 @@ function check_in(){
         $resultEstadoReserva = mysqli_query($conn, $sqlEstadoReserva);
 
         mysqli_close($conn);
+        header("location:pase_abordaje?nro_reserva=".$nro_reserva);
     }
-    header("location:pase_abordaje?nro_reserva=".$nro_reserva);
 }
 

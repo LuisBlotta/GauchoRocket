@@ -21,7 +21,12 @@ if ($estado_reserva[0]!=3){
     }
     header("location:consultar_reservas?requiere_pago=true");
 }
-
+if(!empty($_GET['fallo'])==true){
+    echo '<div class="alert alert-danger alert-dismissible">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          Hubo un error con la cantidad de asientos ingresados, inténtelo nuevamente
+                      </div>';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,11 +60,5 @@ if ($estado_reserva[0]!=3){
 ?>
             <button class="btn-confirmar btn btn-info">Confirmar</button>
         </form>
-
-        <?php
-            if(!empty($_GET['fallo'])==true){
-                echo "<script>alert('Hubo un error con la cantidad de asientos ingresados, inténtelo nuevamente')</script>";
-            }
-        ?>
     </main>
 </body>

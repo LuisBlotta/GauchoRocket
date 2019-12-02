@@ -69,7 +69,7 @@ function activar_lista_espera(){
                                         VALUES ( " . $asientos_libres[$i] . ", " . $lista_espera['nro_reserva'] . ")";
                 $resultAsientosReservados = mysqli_query($conn, $sqlAsientosReservados);
 
-                echo $sqlAsientosReservados . "<br><br>";
+                //echo $sqlAsientosReservados . "<br><br>";
                 $cant_insert++;
                 $i++;
             }
@@ -92,7 +92,7 @@ function activar_lista_espera(){
                          VALUES ($id_asientos[$j], " . $lista_espera['fk_reserva'] . ")";
                 $result = mysqli_query($conn, $sqlAsientosReserva);
                 $j++;
-                echo $sqlAsientosReserva . "<br><br>";
+               // echo $sqlAsientosReserva . "<br><br>";
             }
 
             //------Update estado de reserva
