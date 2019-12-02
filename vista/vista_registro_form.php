@@ -16,6 +16,11 @@
             <div class="form-group">
                 <label for="user_name">Nick</label>
                 <input class="form-control mr-sm-2" type="text" name="nick" placeholder="Nick" required>
+                <?php
+                if(isset($_GET["falloNick"]) && $_GET["falloNick"] == 'true'){
+                    echo "<p style='color:red'>El Nick ya a sido tomado, por favor escoja otro</p>";
+                }
+                ?>
             </div>
             <div class="form-group">
                 <label for="user_name">Email</label>
@@ -32,7 +37,7 @@
 
             <?php
             if(isset($_GET["falloPass"]) && $_GET["falloPass"] == 'true'){
-                echo "<div style='color:red'>Las contraseñas no coinciden</div>";
+                echo "<p style='color:red'>Las contraseñas no coinciden</p>";
             }
             ?>
             <button class="btn btn-info">Registrarse</button><br><br>

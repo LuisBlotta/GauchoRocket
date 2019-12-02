@@ -23,8 +23,9 @@ function registro(){
         $count = mysqli_num_rows($result);
 
         if ($count == 1) {
-            echo "<br />". "El Nombre de Usuario ya a sido tomado." . "<br />";
-            echo "<a href='registro-form.php'>Por favor escoga otro Nombre</a>";
+            //echo "<br />". "El Nombre de Usuario ya a sido tomado." . "<br />";
+            //echo "<a href='registro-form.php'>Por favor escoga otro Nombre</a>";
+            header('location:registro_form?falloNick=true');
         }else{
             //Inserto datos en la tabla login
             $query = "INSERT INTO login (userConfirmado, hashConfirmacion, nick, password)
@@ -76,7 +77,7 @@ function registro(){
         mysqli_close($conn);
     }
     else{
-        header('location:registro-form?falloPass=true');
+        header('location:registro_form?falloPass=true');
     }
 }
 
