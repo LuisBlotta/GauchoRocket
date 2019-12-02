@@ -59,6 +59,9 @@ header .nav-item{
 	border-bottom: solid 1px gray;
 	
 }
+header .nav-item .dropdown:hover{
+	cursor: pointer;
+}
 
 .nav-item.item-sesion{
 	margin-top: 20px;
