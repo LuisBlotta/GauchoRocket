@@ -25,3 +25,7 @@ El usuario user ingresó correctamente
 El usuario user ingresó correctamente
 El usuario admin ingresó correctamente
 El usuario user ingresó correctamente
+El usuario user ingresó correctamente
+El usuario user ingresó correctamente
+El usuario <zx<xz intentó ingresar y no pudo 
+El usuario user intentó ingresar y no pudo 

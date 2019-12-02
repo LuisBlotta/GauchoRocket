@@ -10,7 +10,7 @@
         <h2 class="titulo">Registrarse</h2>
         <form action="registro" method="post">
             <div class="form-group">
-                <label for="user_name">Nombre de Usuario</label>
+                <label for="user_name">Nombre</label>
                 <input class="form-control mr-sm-2" type="text" name="nombre" placeholder="Nombre" required>
             </div>
             <div class="form-group">
